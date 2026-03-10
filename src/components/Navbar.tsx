@@ -77,7 +77,7 @@ function DesktopDropdown({
     >
       <Link
         href={item.href}
-        className={`font-nav text-[11px] xl:text-xs font-semibold tracking-[0.12em] transition-colors duration-300 hover:opacity-70 flex items-center gap-1 ${
+        className={`font-nav text-[11px] xl:text-xs font-medium tracking-[0.1em] transition-colors duration-300 hover:opacity-70 flex items-center gap-1 whitespace-nowrap ${
           scrolled ? 'text-navy-900' : 'text-white/90'
         }`}
       >
@@ -103,7 +103,7 @@ function DesktopDropdown({
               key={sub.href}
               href={sub.href}
               onClick={() => setOpen(false)}
-              className="block px-6 py-2.5 font-nav text-[11px] font-semibold tracking-[0.1em] text-navy-900/70 hover:text-accent-500 hover:bg-silver-100/60 transition-colors"
+              className="block px-6 py-2.5 font-nav text-[11px] font-medium tracking-[0.1em] text-navy-900/70 hover:text-accent-500 hover:bg-silver-100/60 transition-colors"
             >
               {sub.label}
             </Link>
@@ -191,25 +191,27 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-sm py-3 md:py-4'
-            : 'bg-transparent py-4 md:py-6'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-8 py-3 md:py-4"
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 flex items-center justify-between">
+        <div
+          className={`max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex items-center justify-between rounded-full border transition-all duration-500 ${
+            scrolled
+              ? 'bg-white/80 backdrop-blur-xl shadow-lg border-white/20 py-2.5'
+              : 'bg-white/10 backdrop-blur-xl border-white/15 py-3'
+          }`}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
             <Image
               src="/logo.png"
               alt="Aenon Church Logo"
-              width={40}
-              height={40}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover"
+              width={36}
+              height={36}
+              className="w-8 h-8 rounded-full object-cover"
               priority
             />
             <span
-              className={`text-base sm:text-lg font-bold tracking-tight transition-colors duration-300 font-nav ${
+              className={`text-sm font-medium tracking-tight transition-colors duration-300 font-nav ${
                 scrolled ? 'text-navy-900' : 'text-white'
               }`}
             >
@@ -218,7 +220,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((link) =>
               link.sub ? (
                 <DesktopDropdown
@@ -230,7 +232,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-nav text-[11px] xl:text-xs font-semibold tracking-[0.12em] transition-colors duration-300 hover:opacity-70 ${
+                  className={`font-nav text-[11px] xl:text-xs font-medium tracking-[0.1em] transition-colors duration-300 hover:opacity-70 whitespace-nowrap ${
                     scrolled ? 'text-navy-900' : 'text-white/90'
                   }`}
                 >
@@ -240,7 +242,7 @@ export default function Navbar() {
             )}
             <Link
               href="/give"
-              className="btn-primary !py-2.5 !px-5 !text-[10px] xl:!text-xs font-nav !gap-0"
+              className="btn-primary !py-2 !px-5 !text-[11px] xl:!text-xs font-nav !gap-0 !rounded-full shrink-0"
             >
               GIVING
             </Link>

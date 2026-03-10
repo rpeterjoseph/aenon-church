@@ -2,98 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
-
-/* Lenia Sans - Main body font */
+/* Neue Montreal - Primary font */
 @font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-Thin.ttf') format('truetype');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-ExtraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-Light.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-Regular.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-Medium.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-Bold.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Bold.otf') format('opentype');
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-Black.ttf') format('truetype');
-  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 /* Italic variants */
 @font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-Italic.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Italic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-MediumItalic.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-MediumItalic.otf') format('opentype');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-SemiBoldItalic.ttf') format('truetype');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Lenia Sans';
-  src: url('/fonts/LeniaSans-BoldItalic.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-BoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -113,7 +76,7 @@
   }
 
   body {
-    font-family: 'Lenia Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Neue Montreal', system-ui, -apple-system, sans-serif;
     background-color: #FFFFFF;
     color: #0C1220;
     overflow-x: hidden;
@@ -151,7 +114,7 @@
   }
 
   .label-text {
-    @apply text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-silver-400;
+    @apply text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-silver-400 font-nav;
   }
 
   .body-lg {
@@ -163,19 +126,19 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-4 bg-accent-500 text-white text-sm font-semibold
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-accent-500 text-white text-sm font-medium
            uppercase tracking-[0.15em] rounded-full transition-all duration-300
            hover:bg-accent-600 hover:scale-105 hover:shadow-2xl;
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-navy-900 text-navy-900 text-sm font-semibold
+    @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-navy-900 text-navy-900 text-sm font-medium
            uppercase tracking-[0.15em] rounded-full transition-all duration-300
            hover:bg-accent-500 hover:text-white hover:border-accent-500 hover:scale-105;
   }
 
   .btn-white {
-    @apply inline-flex items-center gap-2 px-8 py-4 bg-white text-navy-900 text-sm font-semibold
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-white text-navy-900 text-sm font-medium
            uppercase tracking-[0.15em] rounded-full transition-all duration-300
            hover:bg-silver-100 hover:scale-105 hover:shadow-2xl;
   }

@@ -50,7 +50,7 @@ export default function Footer() {
                 height={40}
                 className="w-10 h-10 rounded-full object-cover"
               />
-              <span className="text-lg font-bold tracking-tight font-nav">AENON CHURCH</span>
+              <span className="text-lg font-medium tracking-tight font-nav">AENON CHURCH</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-8">
               A Christ-centered community in Tarnaka, Hyderabad committed to
@@ -74,7 +74,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-nav text-sm font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
+            <h4 className="font-nav text-sm font-medium uppercase tracking-[0.2em] text-white/40 mb-6">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="font-nav text-sm font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
+            <h4 className="font-nav text-sm font-medium uppercase tracking-[0.2em] text-white/40 mb-6">
               Connect
             </h4>
             <ul className="space-y-3">
@@ -114,7 +114,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-nav text-sm font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
+            <h4 className="font-nav text-sm font-medium uppercase tracking-[0.2em] text-white/40 mb-6">
               Visit Us
             </h4>
             <div className="space-y-4">
@@ -151,7 +151,7 @@ export default function Footer() {
               <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-3">
                 Service Times
               </p>
-              <p className="text-white/70 text-sm font-medium">
+              <p className="text-white/70 text-sm font-medium font-nav">
                 Sun 8AM &middot; 10AM &middot; 7PM
               </p>
               <p className="text-white/50 text-sm mt-1">

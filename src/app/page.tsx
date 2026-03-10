@@ -75,7 +75,7 @@ export default function Home() {
                 href="https://www.youtube.com/aenonchurch"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-3 sm:py-4 text-white/80 text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
+                className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-3 sm:py-4 text-white/80 text-xs sm:text-sm font-medium uppercase tracking-[0.15em] rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
               >
                 <Play className="w-4 h-4" fill="currentColor" />
                 Watch Online
@@ -117,7 +117,7 @@ export default function Home() {
             {/* Left Card - Mission statement */}
             <div className="reveal reveal-delay-1 bg-navy-950 text-white rounded-2xl p-8 md:p-12 flex flex-col justify-between noise-bg min-h-[280px]">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-6 font-nav">Our Heart</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-6 font-medium">Our Heart</p>
                 <p className="text-lg md:text-xl text-white/80 leading-relaxed">
                   Whether you are taking your first step of faith or have been walking
                   with Christ for years, there is a place for you here. Come as you
@@ -125,7 +125,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="mt-8">
-                <Link href="/about" className="inline-flex items-center gap-2 text-accent-400 text-sm font-semibold uppercase tracking-[0.15em] hover:text-accent-300 transition-colors group">
+                <Link href="/about" className="inline-flex items-center gap-2 text-accent-400 text-sm font-medium uppercase tracking-[0.15em] hover:text-accent-300 transition-colors group">
                   Our Story
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -133,39 +133,28 @@ export default function Home() {
             </div>
 
             {/* Right Card - Service times */}
-            <div className="reveal reveal-delay-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Sunday Services */}
-              <div className="sm:col-span-2 bg-silver-100 rounded-2xl p-8 md:p-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <Sun className="w-5 h-5 text-navy-900/40" />
-                  <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav">Sunday Services</p>
-                </div>
-                <p className="text-3xl md:text-4xl font-bold text-navy-900">
-                  8<span className="text-navy-900/30 mx-1">:</span>00
-                  <span className="text-navy-900/20 mx-2">&middot;</span>
-                  10<span className="text-navy-900/30 mx-1">:</span>00
-                  <span className="text-navy-900/20 mx-2">&middot;</span>
-                  7<span className="text-navy-900/30 mx-1">:</span>00
+            <div className="reveal reveal-delay-2 bg-silver-100 rounded-2xl p-8 md:p-10">
+              <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-8">Service Times</p>
+              <div className="space-y-0 divide-y divide-silver-200">
+                {[
+                  { day: 'Sunday', service: 'Worship Services', time: '8 AM  ·  10 AM  ·  7 PM' },
+                  { day: 'Wednesday', service: 'Bible Study', time: '7:00 PM' },
+                  { day: 'Friday', service: 'Prayer Meeting', time: '11:00 AM' },
+                  { day: 'Saturday', service: 'Youth Meeting', time: '7:00 PM' },
+                ].map((item) => (
+                  <div key={item.day} className="flex items-baseline justify-between py-4 first:pt-0 last:pb-0">
+                    <div>
+                      <p className="text-navy-900 font-bold text-sm md:text-base">{item.day}</p>
+                      <p className="text-silver-400 text-xs mt-0.5">{item.service}</p>
+                    </div>
+                    <p className="text-navy-900 font-medium text-sm md:text-base tabular-nums">{item.time}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 pt-6 border-t border-silver-200">
+                <p className="text-silver-400 text-xs leading-relaxed">
+                  In-person & YouTube Live &middot; All are welcome
                 </p>
-                <p className="text-silver-400 text-sm mt-2">AM &middot; AM &middot; PM — In-person & YouTube Live</p>
-              </div>
-
-              {/* Wednesday Bible Study */}
-              <div className="bg-silver-100 rounded-2xl p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Wednesday Bible Study</p>
-                <p className="text-lg font-bold text-navy-900">7:00 PM</p>
-              </div>
-
-              {/* Friday Prayer */}
-              <div className="bg-silver-100 rounded-2xl p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Friday Prayer</p>
-                <p className="text-lg font-bold text-navy-900">11:00 AM</p>
-              </div>
-
-              {/* Saturday Youth Meeting */}
-              <div className="bg-silver-100 rounded-2xl p-6 sm:col-span-2">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Saturday Youth Meeting</p>
-                <p className="text-lg font-bold text-navy-900">7:00 PM</p>
               </div>
             </div>
           </div>
@@ -327,7 +316,7 @@ export default function Home() {
                   <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/[0.03] rounded-full translate-y-1/2 -translate-x-1/2" />
                   <div className="relative z-10">
-                    <span className="inline-block px-3 py-1 bg-white/10 text-white/70 text-xs font-semibold rounded-full uppercase tracking-wider backdrop-blur-sm">
+                    <span className="inline-block px-3 py-1 bg-white/10 text-white/70 text-xs font-medium rounded-full uppercase tracking-wider backdrop-blur-sm">
                       {ministry.tag}
                     </span>
                   </div>
@@ -379,7 +368,7 @@ export default function Home() {
             </Link>
             <Link
               href="/give"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/30 text-white text-sm font-semibold uppercase tracking-[0.15em] rounded-full hover:bg-white/10 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/30 text-white text-sm font-medium uppercase tracking-[0.15em] rounded-full hover:bg-white/10 transition-all duration-300"
             >
               Give Online
               <Heart className="w-4 h-4" />
@@ -443,7 +432,7 @@ export default function Home() {
                       <h3 className="text-lg font-bold text-navy-900 group-hover:text-accent-500 transition-colors">
                         {item.title}
                       </h3>
-                      <span className="px-2 py-0.5 bg-accent-500/10 text-accent-500 text-[10px] font-semibold uppercase tracking-wider rounded-full">
+                      <span className="px-2 py-0.5 bg-accent-500/10 text-accent-500 text-[10px] font-medium uppercase tracking-wider rounded-full">
                         {item.tag}
                       </span>
                     </div>
@@ -493,7 +482,7 @@ export default function Home() {
                     <MapPin className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
-                    <p className="font-semibold text-navy-900 mb-1">Our Location</p>
+                    <p className="font-medium text-navy-900 mb-1">Our Location</p>
                     <p className="text-silver-400 text-sm">
                       Tarnaka, Secunderabad,<br />
                       Hyderabad, Telangana, India
@@ -506,7 +495,7 @@ export default function Home() {
                     <Clock className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
-                    <p className="font-semibold text-navy-900 mb-1">Sunday Services</p>
+                    <p className="font-medium text-navy-900 mb-1">Sunday Services</p>
                     <p className="text-silver-400 text-sm">
                       8:00 AM &middot; 10:00 AM &middot; 7:00 PM
                     </p>
@@ -518,7 +507,7 @@ export default function Home() {
                     <Calendar className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
-                    <p className="font-semibold text-navy-900 mb-1">Midweek &amp; More</p>
+                    <p className="font-medium text-navy-900 mb-1">Midweek &amp; More</p>
                     <p className="text-silver-400 text-sm">
                       Bible Study Wed 7PM &middot; Prayer Fri 11AM &middot; Youth Sat 7PM
                     </p>

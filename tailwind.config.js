@@ -31,9 +31,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Lenia Sans', 'system-ui', 'sans-serif'],
-        nav: ['Work Sans', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Georgia', 'Times New Roman', 'serif'],
+        sans: ['Neue Montreal', 'system-ui', 'sans-serif'],
+        nav: ['Neue Montreal', 'system-ui', 'sans-serif'],
+        display: ['Neue Montreal', 'Georgia', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',
