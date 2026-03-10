@@ -53,41 +53,60 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto w-full section-padding pb-16 sm:pb-20 md:pb-28">
-          <div className="max-w-3xl">
-            <p className="label-text text-white/50 mb-4 sm:mb-6 animate-fade-in text-[10px] sm:text-xs md:text-sm">
-              Aenon Church &mdash; Tarnaka, Hyderabad
-            </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] text-white mb-6 sm:mb-8 animate-slide-up">
-              Welcome
-              <br />
-              Home.
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg mb-8 sm:mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              A place to belong. A place to grow. A community rooted in
-              Christ and committed to His purpose.
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              <Link href="/about" className="btn-white justify-center sm:justify-start text-xs sm:text-sm">
-                Plan Your Visit
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-              <a
-                href="https://www.youtube.com/aenonchurch"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-3 sm:py-4 text-white/80 text-xs sm:text-sm font-medium uppercase tracking-[0.15em] rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
-              >
-                <Play className="w-4 h-4" fill="currentColor" />
-                Watch Online
-              </a>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+            {/* Left - Text */}
+            <div>
+              <p className="label-text text-white/50 mb-4 sm:mb-6 animate-fade-in text-[10px] sm:text-xs md:text-sm">
+                Aenon Church &mdash; Tarnaka, Hyderabad
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] text-white mb-6 sm:mb-8 animate-slide-up">
+                Welcome
+                <br />
+                Home.
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg mb-8 sm:mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+                A place to belong. A place to grow. A community rooted in
+                Christ and committed to His purpose.
+              </p>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+                <Link href="/about" className="btn-white justify-center sm:justify-start text-xs sm:text-sm">
+                  Plan Your Visit
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href="https://www.youtube.com/aenonchurch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-3 sm:py-4 text-white/80 text-xs sm:text-sm font-medium uppercase tracking-[0.15em] rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
+                >
+                  <Play className="w-4 h-4" fill="currentColor" />
+                  Watch Online
+                </a>
+              </div>
+            </div>
+
+            {/* Right - Image Collage */}
+            <div className="hidden lg:block animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <div className="grid grid-cols-12 grid-rows-6 gap-3 h-[480px] xl:h-[540px]">
+                {/* Top-left large image */}
+                <div className="col-span-7 row-span-4 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-700 to-navy-900 border border-white/10">
+                  <img src="/images/hero1.jpeg" alt="Church worship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                </div>
+                {/* Top-right tall image */}
+                <div className="col-span-5 row-span-3 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-800 to-navy-950 border border-white/10">
+                  <img src="/images/hero-2.jpg" alt="Church community" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                </div>
+                {/* Bottom-right image */}
+                <div className="col-span-5 row-span-3 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-600 to-navy-800 border border-white/10">
+                  <img src="/images/hero-3.jpg" alt="Church fellowship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                </div>
+                {/* Bottom-left small image */}
+                <div className="col-span-7 row-span-2 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-700 to-navy-950 border border-white/10">
+                  <img src="/images/hero-4.jpg" alt="Church events" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-          <span className="text-white/30 text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent animate-pulse" />
         </div>
       </section>
 
@@ -442,6 +461,47 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5 text-silver-300 group-hover:text-accent-500 group-hover:translate-x-1 transition-all mt-4 md:mt-0" />
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================= */}
+      {/* VOLUNTEERING OPPORTUNITIES */}
+      {/* ============================================= */}
+      <section className="section-gap bg-white">
+        <div className="max-w-7xl mx-auto section-padding">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left - Text */}
+            <div>
+              <p className="reveal label-text text-accent-500 mb-4">Ways to Serve</p>
+              <h2 className="reveal heading-md text-navy-900 mb-8">
+                Volunteering
+                <br />
+                Opportunities
+              </h2>
+              <p className="reveal reveal-delay-1 body-lg mb-10">
+                If you want to use your skills to serve the Lord and become a
+                volunteer, you can be part of our Vision Team. Fill out the
+                application and we will contact you.
+              </p>
+              <div className="reveal reveal-delay-2">
+                <Link href="/contact" className="btn-outline">
+                  Volunteer Application
+                </Link>
+              </div>
+            </div>
+
+            {/* Right - Image */}
+            <div className="reveal reveal-delay-1">
+              <div className="rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-silver-200 to-silver-100">
+                <img
+                  src="/images/volunteer.jpeg"
+                  alt="Volunteer serving at Aenon Church"
+                  className="w-full h-full object-cover"
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
