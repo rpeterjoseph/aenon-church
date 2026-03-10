@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
+
+/* Lenia Sans - Main body font */
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Italic variants */
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lenia Sans';
+  src: url('/fonts/LeniaSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Lenia Sans', system-ui, -apple-system, sans-serif;
+    background-color: #FFFFFF;
+    color: #0A1128;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #0A1128;
+    color: #FFFFFF;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 xl:px-32;
+  }
+
+  .section-gap {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+
+  .heading-xl {
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95];
+  }
+
+  .heading-lg {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05];
+  }
+
+  .heading-md {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1];
+  }
+
+  .heading-sm {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight leading-tight;
+  }
+
+  .label-text {
+    @apply text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-silver-400;
+  }
+
+  .body-lg {
+    @apply text-lg md:text-xl text-silver-500 leading-relaxed;
+  }
+
+  .body-md {
+    @apply text-base md:text-lg text-silver-400 leading-relaxed;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-navy-900 text-white text-sm font-semibold
+           uppercase tracking-[0.15em] rounded-full transition-all duration-300
+           hover:bg-navy-700 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-navy-900 text-navy-900 text-sm font-semibold
+           uppercase tracking-[0.15em] rounded-full transition-all duration-300
+           hover:bg-navy-900 hover:text-white hover:scale-105;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-white text-navy-900 text-sm font-semibold
+           uppercase tracking-[0.15em] rounded-full transition-all duration-300
+           hover:bg-silver-100 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .card-dark {
+    @apply bg-navy-800/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8;
+  }
+
+  .card-light {
+    @apply bg-white border border-silver-200 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-silver-200 to-transparent;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-navy-900 to-navy-600;
+  }
+}
+
+/* Scroll-driven reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Hero parallax overlay */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 10, 24, 0.3) 0%,
+    rgba(5, 10, 24, 0.5) 40%,
+    rgba(5, 10, 24, 0.85) 100%
+  );
+}
+
+/* Subtle noise texture */
+.noise-bg {
+  position: relative;
+}
+.noise-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F5F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #C0C0C8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9898A0;
+}
+
+/* Smooth nav transition */
+.nav-scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* YouTube responsive embed */
+.youtube-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.youtube-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
