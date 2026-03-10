@@ -104,7 +104,7 @@ export default function Home() {
               <br />
               to glorify God.
             </h2>
-            <div className="reveal reveal-delay-1 w-16 h-0.5 bg-navy-900/20 mb-8" />
+            <div className="reveal reveal-delay-1 w-16 h-0.5 bg-accent-500 mb-8" />
             <p className="reveal reveal-delay-2 body-lg">
               Aenon Church is a Christ-centered community in the heart of
               Hyderabad. We gather to worship, learn, and grow together
@@ -125,7 +125,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="mt-8">
-                <Link href="/about" className="inline-flex items-center gap-2 text-white/50 text-sm font-semibold uppercase tracking-[0.15em] hover:text-white transition-colors group">
+                <Link href="/about" className="inline-flex items-center gap-2 text-accent-400 text-sm font-semibold uppercase tracking-[0.15em] hover:text-accent-300 transition-colors group">
                   Our Story
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -150,18 +150,22 @@ export default function Home() {
                 <p className="text-silver-400 text-sm mt-2">AM &middot; AM &middot; PM — In-person & YouTube Live</p>
               </div>
 
-              {/* Midweek */}
+              {/* Wednesday */}
               <div className="bg-silver-100 rounded-2xl p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Midweek</p>
-                <p className="text-lg font-bold text-navy-900">Wed &middot; Fri</p>
-                <p className="text-silver-400 text-sm mt-1">7:00 PM</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Wednesday</p>
+                <p className="text-lg font-bold text-navy-900">7:00 PM</p>
               </div>
 
-              {/* Youth */}
+              {/* Friday */}
               <div className="bg-silver-100 rounded-2xl p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Youth</p>
-                <p className="text-lg font-bold text-navy-900">Saturday</p>
-                <p className="text-silver-400 text-sm mt-1">6:00 PM</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Friday</p>
+                <p className="text-lg font-bold text-navy-900">11:00 AM</p>
+              </div>
+
+              {/* Saturday */}
+              <div className="bg-silver-100 rounded-2xl p-6 sm:col-span-2">
+                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Saturday</p>
+                <p className="text-lg font-bold text-navy-900">7:00 PM</p>
               </div>
             </div>
           </div>
@@ -182,7 +186,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto section-padding py-20 md:py-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { number: '15+', label: 'Years of Ministry' },
+              { number: '37+', label: 'Years of Ministry' },
               { number: '3', label: 'Sunday Services' },
               { number: '4', label: 'Weekly Gatherings' },
               { number: '6', label: 'Active Ministries' },
@@ -191,7 +195,7 @@ export default function Home() {
                 <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
                   {stat.number}
                 </p>
-                <div className="w-8 h-0.5 bg-white/20 mb-3 mx-auto md:mx-0" />
+                <div className="w-8 h-0.5 bg-accent-500 mb-3 mx-auto md:mx-0" />
                 <p className="text-white/40 text-sm">{stat.label}</p>
               </div>
             ))}
@@ -213,7 +217,7 @@ export default function Home() {
                 <br />
                 the Word.
               </h2>
-              <div className="reveal reveal-delay-1 w-16 h-0.5 bg-navy-900/20 mb-6" />
+              <div className="reveal reveal-delay-1 w-16 h-0.5 bg-accent-500 mb-6" />
               <p className="reveal reveal-delay-2 body-lg mb-4">
                 Missed a Sunday? No worries. Watch our latest messages
                 and let the Word of God speak into your life, wherever you
@@ -251,7 +255,7 @@ export default function Home() {
                 />
               </div>
               <div className="mt-4 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-accent-500 animate-pulse" />
                 <span className="text-sm text-silver-400">
                   Live every Sunday on YouTube
                 </span>
@@ -334,9 +338,9 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-navy-600 transition-colors flex items-center gap-2">
+                <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-accent-500 transition-colors flex items-center gap-2">
                   {ministry.title}
-                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-accent-500" />
                 </h3>
               </Link>
             ))}
@@ -436,17 +440,17 @@ export default function Home() {
                   </span>
                   <div>
                     <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-lg font-bold text-navy-900 group-hover:text-navy-600 transition-colors">
+                      <h3 className="text-lg font-bold text-navy-900 group-hover:text-accent-500 transition-colors">
                         {item.title}
                       </h3>
-                      <span className="px-2 py-0.5 bg-navy-900/5 text-navy-900/60 text-[10px] font-semibold uppercase tracking-wider rounded-full">
+                      <span className="px-2 py-0.5 bg-accent-500/10 text-accent-500 text-[10px] font-semibold uppercase tracking-wider rounded-full">
                         {item.tag}
                       </span>
                     </div>
                     <p className="text-silver-400 text-sm">{item.desc}</p>
                   </div>
                 </div>
-                <ArrowRight className="w-5 h-5 text-silver-300 group-hover:text-navy-900 group-hover:translate-x-1 transition-all mt-4 md:mt-0" />
+                <ArrowRight className="w-5 h-5 text-silver-300 group-hover:text-accent-500 group-hover:translate-x-1 transition-all mt-4 md:mt-0" />
               </div>
             ))}
           </div>
@@ -485,8 +489,8 @@ export default function Home() {
               </h2>
               <div className="reveal reveal-delay-1 space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-navy-900" />
+                  <div className="w-10 h-10 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
                     <p className="font-semibold text-navy-900 mb-1">Our Location</p>
@@ -498,8 +502,8 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-navy-900" />
+                  <div className="w-10 h-10 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
                     <p className="font-semibold text-navy-900 mb-1">Sunday Services</p>
@@ -510,13 +514,13 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-5 h-5 text-navy-900" />
+                  <div className="w-10 h-10 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
-                    <p className="font-semibold text-navy-900 mb-1">Midweek</p>
+                    <p className="font-semibold text-navy-900 mb-1">Midweek &amp; More</p>
                     <p className="text-silver-400 text-sm">
-                      Wed 7PM &middot; Fri 7PM &middot; Sat 6PM
+                      Wed 7PM &middot; Fri 11AM &middot; Sat 7PM
                     </p>
                   </div>
                 </div>

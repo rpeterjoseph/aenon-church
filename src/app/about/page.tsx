@@ -67,8 +67,8 @@ export default function AboutPage() {
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/[0.03] rounded-full -translate-y-1/3 translate-x-1/3" />
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/[0.02] rounded-full translate-y-1/3 -translate-x-1/3" />
                 <div className="relative z-10 text-center px-8">
-                  <p className="text-6xl md:text-8xl font-bold text-white/10 mb-4">15+</p>
-                  <div className="w-12 h-0.5 bg-white/20 mx-auto mb-4" />
+                  <p className="text-6xl md:text-8xl font-bold text-white/10 mb-4">37+</p>
+                  <div className="w-12 h-0.5 bg-accent-500 mx-auto mb-4" />
                   <p className="text-white/40 text-sm uppercase tracking-[0.2em] font-nav">Years of faithful ministry</p>
                 </div>
               </div>
@@ -89,8 +89,8 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="reveal card-light !p-10">
-              <div className="w-14 h-14 rounded-full bg-navy-900/5 flex items-center justify-center mb-6">
-                <Globe className="w-6 h-6 text-navy-900" />
+              <div className="w-14 h-14 rounded-full bg-accent-500/10 flex items-center justify-center mb-6">
+                <Globe className="w-6 h-6 text-accent-500" />
               </div>
               <h3 className="text-2xl font-bold text-navy-900 mb-4">Our Vision</h3>
               <p className="body-md">
@@ -101,8 +101,8 @@ export default function AboutPage() {
             </div>
 
             <div className="reveal reveal-delay-1 card-light !p-10">
-              <div className="w-14 h-14 rounded-full bg-navy-900/5 flex items-center justify-center mb-6">
-                <Heart className="w-6 h-6 text-navy-900" />
+              <div className="w-14 h-14 rounded-full bg-accent-500/10 flex items-center justify-center mb-6">
+                <Heart className="w-6 h-6 text-accent-500" />
               </div>
               <h3 className="text-2xl font-bold text-navy-900 mb-4">Our Mission</h3>
               <p className="body-md">
@@ -131,7 +131,7 @@ export default function AboutPage() {
               { icon: Globe, title: 'Mission', desc: 'We are called to go — sharing the Gospel locally and globally, making disciples of all nations.' },
             ].map((val, i) => (
               <div key={val.title} className={`reveal reveal-delay-${i}`}>
-                <div className="w-12 h-12 rounded-full bg-navy-900 flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-accent-500 flex items-center justify-center mb-6">
                   <val.icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-navy-900 mb-3">{val.title}</h3>

@@ -74,9 +74,8 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/give" className="btn-primary !py-2.5 !px-5 !text-[10px] xl:!text-xs font-nav">
+            <Link href="/give" className="btn-primary !py-2.5 !px-5 !text-[10px] xl:!text-xs font-nav !gap-0">
               GIVE
-              <ChevronRight className="w-3 h-3 xl:w-3.5 xl:h-3.5" />
             </Link>
           </div>
 
@@ -116,7 +115,7 @@ export default function Navbar() {
           <Link
             href="/give"
             onClick={() => setMobileOpen(false)}
-            className="btn-white mt-8 sm:mt-10 justify-center !text-sm font-nav tracking-wider"
+            className="btn-primary mt-8 sm:mt-10 justify-center !text-sm font-nav tracking-wider"
           >
             GIVE ONLINE
             <ChevronRight className="w-4 h-4" />

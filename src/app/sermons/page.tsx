@@ -77,8 +77,8 @@ export default function SermonsPage() {
                 key={i}
                 className={`reveal reveal-delay-${i % 3} card-light group cursor-pointer hover:-translate-y-1 transition-all duration-300`}
               >
-                <div className="relative aspect-video bg-navy-900/5 rounded-xl mb-5 flex items-center justify-center group-hover:bg-navy-900/10 transition-colors">
-                  <div className="w-14 h-14 rounded-full bg-navy-900 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="relative aspect-video bg-accent-500/5 rounded-xl mb-5 flex items-center justify-center group-hover:bg-accent-500/10 transition-colors">
+                  <div className="w-14 h-14 rounded-full bg-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
                   </div>
                 </div>

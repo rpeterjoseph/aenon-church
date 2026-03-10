@@ -65,8 +65,8 @@ export default function GivePage() {
                 { icon: Shield, title: 'Next Generation', desc: 'Investing in youth, children, and young adult programs.' },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-4 p-5 rounded-xl bg-silver-100">
-                  <div className="w-10 h-10 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-navy-900" />
+                  <div className="w-10 h-10 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">{item.title}</h3>
@@ -94,7 +94,7 @@ export default function GivePage() {
           {/* Placeholder Give Button */}
           <div className="reveal reveal-delay-2 max-w-md mx-auto">
             <div className="card-light !p-10 text-center">
-              <div className="w-16 h-16 rounded-full bg-navy-900 flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 rounded-full bg-accent-500 flex items-center justify-center mx-auto mb-6">
                 <Heart className="w-7 h-7 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-navy-900 mb-4">

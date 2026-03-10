@@ -74,8 +74,8 @@ export default function BelievePage() {
       {/* The Gospel */}
       <section className="section-gap bg-white">
         <div className="max-w-3xl mx-auto section-padding text-center">
-          <div className="reveal w-16 h-16 rounded-full bg-navy-900/5 flex items-center justify-center mx-auto mb-8">
-            <BookOpen className="w-7 h-7 text-navy-900" />
+          <div className="reveal w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-8">
+            <BookOpen className="w-7 h-7 text-accent-500" />
           </div>
           <h2 className="reveal heading-md text-navy-900 mb-8">
             The Gospel

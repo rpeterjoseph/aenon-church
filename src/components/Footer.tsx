@@ -63,7 +63,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-white hover:border-white/40 transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-accent-500 hover:border-accent-500 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -149,10 +149,13 @@ export default function Footer() {
             {/* Service Times */}
             <div className="mt-8 pt-6 border-t border-white/10">
               <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-3">
-                Sundays
+                Service Times
               </p>
               <p className="text-white/70 text-sm font-medium">
-                8:00 AM &middot; 11:00 AM &middot; 7:00 PM
+                Sun 8AM &middot; 11AM &middot; 7PM
+              </p>
+              <p className="text-white/50 text-sm mt-1">
+                Wed 7PM &middot; Fri 11AM &middot; Sat 7PM
               </p>
             </div>
           </div>

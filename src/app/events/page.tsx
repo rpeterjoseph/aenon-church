@@ -89,7 +89,7 @@ export default function EventsPage() {
               >
                 <div className="flex items-start justify-between gap-6 mb-4">
                   <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 bg-navy-900/5 text-navy-900/70 text-[10px] font-semibold uppercase tracking-wider rounded-full">
+                    <span className="px-3 py-1 bg-accent-500/10 text-accent-500 text-[10px] font-semibold uppercase tracking-wider rounded-full">
                       {event.tag}
                     </span>
                   </div>

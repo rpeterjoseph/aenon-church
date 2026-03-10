@@ -151,8 +151,8 @@ export default function ContactPage() {
 
               <div className="reveal reveal-delay-1 space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-navy-900" />
+                  <div className="w-12 h-12 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">Address</h3>
@@ -164,8 +164,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-navy-900" />
+                  <div className="w-12 h-12 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">Phone</h3>
@@ -176,8 +176,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-navy-900" />
+                  <div className="w-12 h-12 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">Email</h3>
@@ -188,8 +188,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-navy-900/5 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-navy-900" />
+                  <div className="w-12 h-12 rounded-full bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-accent-500" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">Service Times</h3>
@@ -217,7 +217,7 @@ export default function ContactPage() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-silver-200 flex items-center justify-center text-silver-400 hover:text-navy-900 hover:border-navy-900 transition-all"
+                      className="w-10 h-10 rounded-full border border-silver-200 flex items-center justify-center text-silver-400 hover:text-accent-500 hover:border-accent-500 transition-all"
                       aria-label={s.label}
                     >
                       <s.icon className="w-4 h-4" />
