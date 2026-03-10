@@ -134,37 +134,37 @@ export default function Home() {
 
             {/* Right Card - Service times */}
             <div className="reveal reveal-delay-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Sunday main */}
+              {/* Sunday Services */}
               <div className="sm:col-span-2 bg-silver-100 rounded-2xl p-8 md:p-10">
                 <div className="flex items-center gap-3 mb-4">
                   <Sun className="w-5 h-5 text-navy-900/40" />
-                  <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav">Sundays</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav">Sunday Services</p>
                 </div>
                 <p className="text-3xl md:text-4xl font-bold text-navy-900">
                   8<span className="text-navy-900/30 mx-1">:</span>00
                   <span className="text-navy-900/20 mx-2">&middot;</span>
-                  11<span className="text-navy-900/30 mx-1">:</span>00
+                  10<span className="text-navy-900/30 mx-1">:</span>00
                   <span className="text-navy-900/20 mx-2">&middot;</span>
                   7<span className="text-navy-900/30 mx-1">:</span>00
                 </p>
                 <p className="text-silver-400 text-sm mt-2">AM &middot; AM &middot; PM — In-person & YouTube Live</p>
               </div>
 
-              {/* Wednesday */}
+              {/* Wednesday Bible Study */}
               <div className="bg-silver-100 rounded-2xl p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Wednesday</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Wednesday Bible Study</p>
                 <p className="text-lg font-bold text-navy-900">7:00 PM</p>
               </div>
 
-              {/* Friday */}
+              {/* Friday Prayer */}
               <div className="bg-silver-100 rounded-2xl p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Friday</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Friday Prayer</p>
                 <p className="text-lg font-bold text-navy-900">11:00 AM</p>
               </div>
 
-              {/* Saturday */}
+              {/* Saturday Youth Meeting */}
               <div className="bg-silver-100 rounded-2xl p-6 sm:col-span-2">
-                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Saturday</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-nav mb-3">Saturday Youth Meeting</p>
                 <p className="text-lg font-bold text-navy-900">7:00 PM</p>
               </div>
             </div>
@@ -508,7 +508,7 @@ export default function Home() {
                   <div>
                     <p className="font-semibold text-navy-900 mb-1">Sunday Services</p>
                     <p className="text-silver-400 text-sm">
-                      8:00 AM &middot; 11:00 AM &middot; 7:00 PM
+                      8:00 AM &middot; 10:00 AM &middot; 7:00 PM
                     </p>
                   </div>
                 </div>
@@ -520,7 +520,7 @@ export default function Home() {
                   <div>
                     <p className="font-semibold text-navy-900 mb-1">Midweek &amp; More</p>
                     <p className="text-silver-400 text-sm">
-                      Wed 7PM &middot; Fri 11AM &middot; Sat 7PM
+                      Bible Study Wed 7PM &middot; Prayer Fri 11AM &middot; Youth Sat 7PM
                     </p>
                   </div>
                 </div>

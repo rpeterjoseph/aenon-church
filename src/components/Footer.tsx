@@ -152,10 +152,10 @@ export default function Footer() {
                 Service Times
               </p>
               <p className="text-white/70 text-sm font-medium">
-                Sun 8AM &middot; 11AM &middot; 7PM
+                Sun 8AM &middot; 10AM &middot; 7PM
               </p>
               <p className="text-white/50 text-sm mt-1">
-                Wed 7PM &middot; Fri 11AM &middot; Sat 7PM
+                Bible Study Wed 7PM &middot; Prayer Fri 11AM &middot; Youth Sat 7PM
               </p>
             </div>
           </div>
