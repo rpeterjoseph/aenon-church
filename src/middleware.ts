@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const MAINTENANCE_ENABLED =
-  process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
+// ✅ Toggle maintenance mode: set to true/false and push
+const MAINTENANCE_ENABLED = true;
 const COOKIE_NAME = 'aenon-maintenance-bypass';
 
 const EXCLUDED_PATHS = [

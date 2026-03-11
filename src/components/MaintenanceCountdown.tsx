@@ -35,9 +35,8 @@ export default function MaintenanceCountdown() {
     return () => clearInterval(interval);
   }, []);
 
-  // Don't render if no active bypass, dismissed, or maintenance off
+  // Don't render if no active bypass or dismissed
   if (remainingSeconds === null || dismissed) return null;
-  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'true') return null;
 
   const minutes = Math.floor(remainingSeconds / 60);
   const seconds = remainingSeconds % 60;
