@@ -11,6 +11,7 @@ const ministries = [
     schedule: 'Meets monthly',
     icon: Users,
     gradient: 'from-navy-800 to-navy-950',
+    href: '/ministries/mens',
   },
   {
     title: "Women's Ministry",
@@ -18,6 +19,7 @@ const ministries = [
     schedule: 'Meets monthly',
     icon: Heart,
     gradient: 'from-navy-700 to-navy-900',
+    href: '/ministries/womens',
   },
   {
     title: 'Young Adults',
@@ -25,6 +27,7 @@ const ministries = [
     schedule: 'Saturdays at 6:00 PM',
     icon: Music,
     gradient: 'from-navy-600 to-navy-800',
+    href: '/ministries/youth',
   },
   {
     title: "Children's Ministry",
@@ -32,6 +35,7 @@ const ministries = [
     schedule: 'Every Sunday',
     icon: BookOpen,
     gradient: 'from-navy-700 to-navy-950',
+    href: '/ministries/kids',
   },
 ];
 
@@ -97,14 +101,43 @@ export default function MinistriesPage() {
                   {ministry.schedule}
                 </p>
                 <div className="reveal reveal-delay-3">
-                  <Link href="/contact" className="btn-outline !py-3 !px-6 !text-xs">
-                    Get Connected
+                  <Link href={ministry.href} className="btn-outline !py-3 !px-6 !text-xs">
+                    Learn More
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Explore Ministries */}
+      <section className="section-gap bg-silver-100">
+        <div className="max-w-7xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">Explore</p>
+          <h2 className="reveal heading-sm text-navy-900 mb-12">
+            Discover each ministry.
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {ministries.map((ministry, i) => (
+              <Link
+                key={ministry.title}
+                href={ministry.href}
+                className={`reveal reveal-delay-${Math.min(i, 3)} group card-light !p-0 overflow-hidden`}
+              >
+                <div className={`aspect-[16/9] bg-gradient-to-br ${ministry.gradient} flex items-center justify-center`}>
+                  <ministry.icon className="w-10 h-10 text-white/15" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-base font-bold text-navy-900 mb-1 group-hover:text-accent-500 transition-colors">
+                    {ministry.title}
+                  </h3>
+                  <p className="text-sm text-silver-400">{ministry.schedule}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

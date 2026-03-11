@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 const beliefs = [
   {
@@ -39,7 +39,7 @@ const beliefs = [
   },
 ];
 
-export default function BelievePage() {
+export default function StatementOfFaithPage() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -56,57 +56,38 @@ export default function BelievePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-24 bg-navy-950 noise-bg">
-        <div className="max-w-7xl mx-auto section-padding">
-          <p className="label-text text-white/40 mb-6">What We Believe</p>
-          <h1 className="heading-xl text-white max-w-4xl">
-            Built on the
+      <section className="relative pt-40 pb-24 bg-navy-950 noise-bg overflow-hidden">
+        <div className="max-w-7xl mx-auto section-padding relative z-10">
+          <Link href="/believe" className="inline-flex items-center gap-2 text-white/40 text-sm font-medium uppercase tracking-[0.15em] hover:text-white/60 transition-colors mb-8">
+            <ArrowLeft className="w-4 h-4" />
+            What We Believe
+          </Link>
+          <p className="label-text text-white/40 mb-6">Statement of Faith</p>
+          <h1 className="heading-xl text-white max-w-3xl">
+            What we
             <br />
-            Rock.
+            hold true.
           </h1>
           <p className="text-xl text-white/50 max-w-xl mt-8">
-            Our faith is rooted in Scripture and centered on the Gospel
-            of Jesus Christ. Here is what we believe.
+            These are the core doctrines and convictions that define our
+            faith and guide our church.
           </p>
         </div>
       </section>
 
-      {/* The Gospel */}
+      {/* Beliefs */}
       <section className="section-gap bg-white">
-        <div className="max-w-3xl mx-auto section-padding text-center">
-          <div className="reveal w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-8">
-            <BookOpen className="w-7 h-7 text-accent-500" />
-          </div>
-          <h2 className="reveal heading-md text-navy-900 mb-8">
-            The Gospel
-          </h2>
-          <p className="reveal reveal-delay-1 body-lg mb-6">
-            The Gospel — the &ldquo;good news&rdquo; — is the message that God
-            loves the world and sent His only Son, Jesus Christ, to save us.
-            Through His death and resurrection, we are offered forgiveness,
-            new life, and an eternal relationship with God.
-          </p>
-          <p className="reveal reveal-delay-2 body-md">
-            This isn&apos;t just a belief we hold — it&apos;s the reality that
-            transforms everything we do, how we live, and how we love one
-            another.
-          </p>
-        </div>
-      </section>
-
-      {/* Statement of Faith */}
-      <section className="section-gap bg-silver-100">
         <div className="max-w-4xl mx-auto section-padding">
-          <p className="reveal label-text text-navy-900/40 mb-4">Statement of Faith</p>
+          <p className="reveal label-text text-navy-900/40 mb-4">Our Doctrinal Beliefs</p>
           <h2 className="reveal heading-md text-navy-900 mb-16">
-            What we hold true.
+            Rooted in Scripture.
           </h2>
 
           <div className="space-y-0">
             {beliefs.map((belief, i) => (
               <div
                 key={belief.title}
-                className={`reveal py-8 border-b border-silver-200 last:border-0`}
+                className="reveal py-8 border-b border-silver-200 last:border-0"
               >
                 <div className="flex items-start gap-6">
                   <span className="text-sm font-bold text-navy-900/20 min-w-[32px] pt-1">
@@ -127,48 +108,24 @@ export default function BelievePage() {
         </div>
       </section>
 
-      {/* Explore More */}
-      <section className="section-gap bg-white">
-        <div className="max-w-7xl mx-auto section-padding">
-          <p className="reveal label-text text-navy-900/40 mb-4">Dive Deeper</p>
-          <h2 className="reveal heading-md text-navy-900 mb-12">
-            Explore what we believe.
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'What is the Gospel?', desc: 'The most important message the world has ever heard — and it changes everything.', href: '/believe/gospel' },
-              { title: 'Statement of Faith', desc: 'The core doctrines and convictions that define our faith and guide our church.', href: '/believe/statement' },
-            ].map((item, i) => (
-              <Link key={item.href} href={item.href} className={`reveal reveal-delay-${i} group card-light !p-10 flex flex-col justify-between`}>
-                <div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-3 group-hover:text-accent-500 transition-colors">{item.title}</h3>
-                  <p className="text-silver-400 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-                <div className="mt-6 flex items-center gap-2 text-accent-500 text-sm font-medium uppercase tracking-wider">
-                  Read More
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="section-gap bg-silver-100">
         <div className="max-w-3xl mx-auto section-padding text-center">
           <h2 className="reveal heading-md text-navy-900 mb-6">
-            Have questions?
+            Have questions about our beliefs?
           </h2>
           <p className="reveal reveal-delay-1 body-lg mb-10">
-            Faith is a journey, and we&apos;re here to walk with you.
-            If you have questions about what we believe or about your own
-            faith, we&apos;d love to talk.
+            Faith is a journey. If you have questions about what we believe
+            or want to discuss any of these doctrines, our pastoral team
+            would love to connect with you.
           </p>
-          <div className="reveal reveal-delay-2">
+          <div className="reveal reveal-delay-2 flex flex-wrap justify-center gap-4">
             <Link href="/contact" className="btn-primary">
               Reach Out
               <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link href="/believe" className="btn-outline">
+              What We Believe
             </Link>
           </div>
         </div>

@@ -172,8 +172,36 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Explore More */}
       <section className="section-gap bg-white">
+        <div className="max-w-7xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">Explore</p>
+          <h2 className="reveal heading-md text-navy-900 mb-12">
+            Learn more about us.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'Vision & Mission', desc: 'Discover what drives everything we do and where we\'re heading.', href: '/about/vision' },
+              { title: 'What to Expect', desc: 'Planning your first visit? Here\'s what you need to know.', href: '/about/expect' },
+              { title: 'Leadership', desc: 'Meet the team God has placed to shepherd our church family.', href: '/about/leadership' },
+            ].map((item, i) => (
+              <Link key={item.href} href={item.href} className={`reveal reveal-delay-${i} group card-light !p-8 flex flex-col justify-between`}>
+                <div>
+                  <h3 className="text-lg font-bold text-navy-900 mb-3 group-hover:text-accent-500 transition-colors">{item.title}</h3>
+                  <p className="text-silver-400 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+                <div className="mt-6 flex items-center gap-2 text-accent-500 text-sm font-medium uppercase tracking-wider">
+                  Learn More
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-gap bg-silver-100">
         <div className="max-w-3xl mx-auto section-padding text-center">
           <h2 className="reveal heading-md text-navy-900 mb-6">
             Ready to connect?
