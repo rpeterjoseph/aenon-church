@@ -39,9 +39,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Redirect to maintenance page
+  // Show maintenance page at whatever URL was visited (no redirect)
   const maintenanceUrl = new URL('/maintenance', request.url);
-  return NextResponse.redirect(maintenanceUrl);
+  return NextResponse.rewrite(maintenanceUrl);
 }
 
 export const config = {
