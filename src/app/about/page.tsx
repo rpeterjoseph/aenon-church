@@ -4,6 +4,24 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Heart, BookOpen, Users, Globe } from 'lucide-react';
 
+const historyItems = [
+  { year: '1989', img: '/images/history/history-1989.jpg', title: 'The Beginning', desc: 'Aenon Church was founded with a small group of believers with a vision to glorify God and reach Hyderabad with the Gospel.' },
+  { year: '1996', img: '/images/history/history-1996.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '1999', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2003', img: '/images/history/history-2003.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2004', img: '/images/history/history-2004.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2005', img: '/images/history/history-2005.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2006', img: '/images/history/history-2006.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2007', img: '/images/history/history-2007.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2009', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2012', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2015', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2017', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2020', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2024', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2026', img: null, title: 'Today', desc: 'With three Sunday services and a thriving weekly program, Aenon continues to grow and glorify God in Tarnaka.' },
+];
+
 export default function AboutPage() {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,6 +91,78 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Church History Timeline */}
+      <section className="section-gap bg-silver-100">
+        {/* Heading */}
+        <div className="max-w-6xl mx-auto section-padding mb-16">
+          <p className="reveal label-text text-navy-900/40 mb-4">Our History</p>
+          <h2 className="reveal heading-md text-navy-900">
+            Faithful through
+            <br />
+            the years.
+          </h2>
+        </div>
+
+        {/* Mobile timeline */}
+        <div className="md:hidden max-w-6xl mx-auto section-padding">
+          <div className="relative">
+            <div className="absolute left-4 top-0 bottom-0 w-px bg-silver-200" />
+            <div className="space-y-16">
+              {historyItems.map((item, i) => (
+                <div key={item.year} className={`reveal reveal-delay-${i % 3} relative pl-12`}>
+                  <div className="absolute left-[13px] top-2 w-3 h-3 rounded-full bg-accent-500 border-2 border-white z-10" />
+                  <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-navy-800 to-navy-950 mb-5 overflow-hidden flex items-center justify-center border border-white/5">
+                    {item.img ? (
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <p className="text-white/20 text-xs uppercase tracking-widest">Image coming soon</p>
+                    )}
+                  </div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-accent-500 font-semibold mb-2">{item.year}</p>
+                  <h3 className="text-xl font-bold text-navy-900 mb-2">{item.title}</h3>
+                  <p className="text-silver-400 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop timeline — full bleed alternating */}
+        <div className="hidden md:block relative">
+          {/* Center line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-silver-200 -translate-x-px z-10" />
+
+          <div className="space-y-6 px-[2.5%]">
+            {historyItems.map((item, i) => {
+              const isEven = i % 2 === 0;
+              const ImageBlock = (
+                <div className="w-1/2 overflow-hidden bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center min-h-[460px]">
+                  {item.img ? (
+                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <p className="text-white/20 text-xs uppercase tracking-widest">Image coming soon</p>
+                  )}
+                </div>
+              );
+              const TextBlock = (
+                <div className={`w-1/2 flex flex-col justify-center py-16 bg-white ${isEven ? 'pr-20 pl-14 items-end text-right' : 'pl-20 pr-14'}`}>
+                  <p className="text-xs uppercase tracking-[0.2em] text-accent-500 font-semibold mb-3">{item.year}</p>
+                  <h3 className="text-3xl font-bold text-navy-900 mb-4">{item.title}</h3>
+                  <p className="text-silver-400 text-sm leading-relaxed max-w-xs">{item.desc}</p>
+                </div>
+              );
+              return (
+                <div key={item.year} className={`reveal reveal-delay-${i % 3} relative flex items-stretch rounded-2xl overflow-hidden shadow-sm`}>
+                  {/* Center dot */}
+                  <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-accent-500 border-2 border-white -translate-x-2 -translate-y-2 z-20" />
+                  {isEven ? <>{TextBlock}{ImageBlock}</> : <>{ImageBlock}{TextBlock}</>}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

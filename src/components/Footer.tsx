@@ -22,15 +22,15 @@ const quickLinks = [
 
 const connectLinks = [
   { label: 'Give Online', href: '/give' },
-  { label: 'Volunteer', href: '/contact' },
-  { label: 'Prayer Request', href: '/contact' },
+  { label: 'Volunteer', href: '/volunteer' },
+  { label: 'Prayer Request', href: '/prayer-request' },
   { label: 'Watch Online', href: 'https://www.youtube.com/aenonchurch' },
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Facebook, href: 'https://www.facebook.com/AenonMinistries/', label: 'Facebook' },
+  { icon: Instagram, href: 'https://www.instagram.com/aenonchurch', label: 'Instagram' },
+  { icon: Twitter, href: 'https://x.com/aenonchurch', label: 'Twitter' },
   { icon: Youtube, href: 'https://www.youtube.com/aenonchurch', label: 'YouTube' },
 ];
 

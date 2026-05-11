@@ -209,8 +209,8 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   {[
                     { icon: Youtube, href: 'https://www.youtube.com/aenonchurch', label: 'YouTube' },
-                    { icon: Facebook, href: '#', label: 'Facebook' },
-                    { icon: Instagram, href: '#', label: 'Instagram' },
+                    { icon: Facebook, href: 'https://www.facebook.com/AenonMinistries/', label: 'Facebook' },
+                    { icon: Instagram, href: 'https://www.instagram.com/aenonchurch', label: 'Instagram' },
                   ].map((s) => (
                     <a
                       key={s.label}

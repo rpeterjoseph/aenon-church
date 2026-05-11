@@ -41,70 +41,49 @@ export default function Home() {
       {/* HERO SECTION - Full Screen Cinematic */}
       {/* ============================================= */}
       <section className="relative h-[100svh] min-h-[600px] md:min-h-[700px] flex items-end overflow-hidden">
-        {/* Background - Deep navy with gradient */}
-        <div className="absolute inset-0 bg-navy-950" />
-        {/* Radial glow accent */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(30,48,104,0.5)_0%,transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(15,27,61,0.6)_0%,transparent_50%)]" />
-        {/* Subtle cross pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        {/* Background photo - grayscale */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/hero-bg2.jpg"
+            alt=""
+            className="w-full h-full object-cover object-center"
+            style={{  }}
+          />
+        </div>
+        {/* Navy blue overlay */}
+        <div className="absolute inset-0 bg-navy-950/40" />
         {/* Bottom gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto w-full section-padding pb-16 sm:pb-20 md:pb-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-end">
-            {/* Left - Text */}
-            <div>
-              <p className="label-text text-white/50 mb-4 sm:mb-6 animate-fade-in text-[10px] sm:text-xs md:text-sm">
-                Aenon Church &mdash; Tarnaka, Hyderabad
-              </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] text-white mb-6 sm:mb-8 animate-slide-up">
-                Welcome
-                <br />
-                Home.
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg mb-8 sm:mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                A place to belong. A place to grow. A community rooted in
-                Christ and committed to His purpose.
-              </p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-                <Link href="/about" className="btn-white justify-center sm:justify-start text-xs sm:text-sm">
-                  Plan Your Visit
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-                <a
-                  href="https://www.youtube.com/aenonchurch"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-3 sm:py-4 text-white/80 text-xs sm:text-sm font-medium uppercase tracking-[0.15em] rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
-                >
-                  <Play className="w-4 h-4" fill="currentColor" />
-                  Watch Online
-                </a>
-              </div>
-            </div>
-
-            {/* Right - Image Collage */}
-            <div className="hidden lg:block animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="grid grid-cols-12 grid-rows-6 gap-3 h-[480px] xl:h-[540px]">
-                {/* Top-left large image */}
-                <div className="col-span-7 row-span-4 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-700 to-navy-900 border border-white/10">
-                  <img src="/images/hero1.jpeg" alt="Church worship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
-                </div>
-                {/* Top-right tall image */}
-                <div className="col-span-5 row-span-3 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-800 to-navy-950 border border-white/10">
-                  <img src="/images/hero-2.jpg" alt="Church community" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
-                </div>
-                {/* Bottom-right image */}
-                <div className="col-span-5 row-span-3 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-600 to-navy-800 border border-white/10">
-                  <img src="/images/hero-3.jpg" alt="Church fellowship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
-                </div>
-                {/* Bottom-left small image */}
-                <div className="col-span-7 row-span-2 rounded-2xl overflow-hidden bg-gradient-to-br from-navy-700 to-navy-950 border border-white/10">
-                  <img src="/images/hero-4.jpg" alt="Church events" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
-                </div>
-              </div>
+          <div className="max-w-3xl">
+            <p className="label-text text-white/50 mb-4 sm:mb-6 animate-fade-in text-[10px] sm:text-xs md:text-sm">
+              Aenon Church &mdash; Tarnaka, Hyderabad
+            </p>
+            <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] text-white mb-6 sm:mb-8 animate-slide-up">
+              Welcome
+              <br />
+              Home.
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-lg mb-8 sm:mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              A place to belong. A place to grow. A community rooted in
+              Christ and committed to His purpose.
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <Link href="/about" className="btn-white justify-center sm:justify-start text-xs sm:text-sm">
+                Plan Your Visit
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="https://www.youtube.com/aenonchurch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-3 sm:py-4 text-white/80 text-xs sm:text-sm font-medium uppercase tracking-[0.15em] rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
+              >
+                <Play className="w-4 h-4" fill="currentColor" />
+                Watch Online
+              </a>
             </div>
           </div>
         </div>
