@@ -25,7 +25,11 @@ export default function PrayerRequestPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error();
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(result.error || 'Something went wrong sending your request. Please try again, or email us directly.');
+        return;
+      }
       setSubmitted(true);
     } catch {
       setError('Something went wrong sending your request. Please try again, or email us directly.');

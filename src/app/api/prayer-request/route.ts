@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendTeamEmail, escapeHtml } from '@/lib/mail';
+import { validateEmail } from '@/lib/validateEmail';
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -10,6 +11,14 @@ export async function POST(req: NextRequest) {
 
   if (!firstName || !request) {
     return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
+  }
+
+  // Email is optional here, but if they gave one, make sure it's real.
+  if (email) {
+    const emailCheck = await validateEmail(email);
+    if (!emailCheck.valid) {
+      return NextResponse.json({ error: emailCheck.reason }, { status: 400 });
+    }
   }
 
   try {
