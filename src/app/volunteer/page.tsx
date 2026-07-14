@@ -14,10 +14,29 @@ const areas = [
 
 export default function VolunteerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+
+    try {
+      const res = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong sending your interest form. Please try again, or email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -73,11 +92,15 @@ export default function VolunteerPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot — hidden from real visitors, bots tend to fill every field */}
+              <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-navy-900 mb-2">First Name</label>
                   <input
                     type="text"
+                    name="firstName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                     placeholder="John"
@@ -87,6 +110,7 @@ export default function VolunteerPage() {
                   <label className="block text-sm font-medium text-navy-900 mb-2">Last Name</label>
                   <input
                     type="text"
+                    name="lastName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                     placeholder="Doe"
@@ -98,6 +122,7 @@ export default function VolunteerPage() {
                 <label className="block text-sm font-medium text-navy-900 mb-2">Email Address</label>
                 <input
                   type="email"
+                  name="email"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                   placeholder="john@example.com"
@@ -108,6 +133,7 @@ export default function VolunteerPage() {
                 <label className="block text-sm font-medium text-navy-900 mb-2">Phone Number</label>
                 <input
                   type="tel"
+                  name="phone"
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                   placeholder="+91 98000 00000"
                 />
@@ -116,6 +142,7 @@ export default function VolunteerPage() {
               <div>
                 <label className="block text-sm font-medium text-navy-900 mb-2">Area of Interest</label>
                 <select
+                  name="area"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                 >
@@ -130,14 +157,17 @@ export default function VolunteerPage() {
               <div>
                 <label className="block text-sm font-medium text-navy-900 mb-2">Tell Us About Yourself</label>
                 <textarea
+                  name="about"
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all resize-none"
                   placeholder="Share any skills, experience, or availability that might help us place you well."
                 />
               </div>
 
-              <button type="submit" className="btn-primary">
-                Submit Interest
+              {error && <p className="text-sm text-accent-600">{error}</p>}
+
+              <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed">
+                {submitting ? 'Submitting…' : 'Submit Interest'}
                 <Send className="w-4 h-4" />
               </button>
             </form>
