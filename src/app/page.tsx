@@ -283,6 +283,7 @@ export default function Home() {
                 logo: '',
                 tag: 'Men',
                 gradient: 'from-navy-800 to-navy-950',
+                href: '/ministries/mens',
               },
               {
                 title: 'Aenon Lovely Women',
@@ -291,6 +292,7 @@ export default function Home() {
                 logo: '',
                 tag: 'Women',
                 gradient: 'from-navy-700 to-navy-900',
+                href: '/ministries/womens',
               },
               {
                 title: 'Aenon Young Adults',
@@ -299,6 +301,7 @@ export default function Home() {
                 logo: '',
                 tag: 'Young Adults',
                 gradient: 'from-navy-600 to-navy-800',
+                href: '/ministries/young-adults',
               },
               {
                 title: 'Aenon Kids',
@@ -307,19 +310,21 @@ export default function Home() {
                 logo: '',
                 tag: 'Kids',
                 gradient: 'from-navy-700 to-navy-950',
+                href: '/ministries/kids',
               },
               {
                 title: 'Aenon Youth',
                 desc: 'Helping teens grow in faith, build lasting friendships, and live boldly for Christ.',
                 icon: Flame,
                 logo: '',
+                href: '/ministries/youth',
                 tag: 'Youth',
                 gradient: 'from-navy-900 to-navy-950',
               },
             ].map((ministry, i) => (
               <Link
                 key={ministry.title}
-                href="/ministries"
+                href={ministry.href}
                 className={`reveal reveal-delay-${i} group`}
               >
                 <div className={`relative overflow-hidden rounded-2xl mb-5 bg-gradient-to-br ${ministry.gradient} noise-bg aspect-[4/5] flex flex-col justify-between p-7 md:p-10`}>

@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ArrowLeft, Users, BookOpen, Shield, Handshake } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Music, Flame, Users, BookOpen } from 'lucide-react';
 
-export default function MensMinistryPage() {
+export default function YoungAdultsMinistryPage() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -27,15 +27,15 @@ export default function MensMinistryPage() {
             <ArrowLeft className="w-4 h-4" />
             Ministries
           </Link>
-          <p className="label-text text-white/40 mb-6">Aenon Beloved Men</p>
+          <p className="label-text text-white/40 mb-6">Aenon Young Adults</p>
           <h1 className="heading-xl text-white max-w-3xl">
-            Iron sharpens
+            Faith for
             <br />
-            iron.
+            every season.
           </h1>
           <p className="text-xl text-white/50 max-w-xl mt-8">
-            Building men of faith through accountability, discipleship,
-            and brotherhood.
+            A vibrant community for young adults navigating faith,
+            career, and purpose.
           </p>
         </div>
       </section>
@@ -43,8 +43,8 @@ export default function MensMinistryPage() {
       {/* Hero Image */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto section-padding pt-16">
-          <div className="reveal rounded-2xl overflow-hidden aspect-[21/9] bg-gradient-to-br from-navy-800 to-navy-950 border border-silver-200">
-            <img src="/images/mens-ministry.jpg" alt="Men's Ministry gathering" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+          <div className="reveal rounded-2xl overflow-hidden aspect-[21/9] bg-gradient-to-br from-navy-600 to-navy-800 border border-silver-200">
+            <img src="/images/young-adults-ministry.jpg" alt="Aenon Young Adults gathering" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
           </div>
         </div>
       </section>
@@ -56,22 +56,23 @@ export default function MensMinistryPage() {
             <div>
               <p className="reveal label-text text-navy-900/40 mb-4">About This Ministry</p>
               <h2 className="reveal heading-md text-navy-900 mb-8">
-                Men leading with
-                purpose and integrity.
+                Discovering purpose
+                and passion.
               </h2>
               <p className="reveal reveal-delay-1 body-lg mb-6">
-                Aenon Beloved Men exists to equip men to lead with integrity in
-                their families, workplaces, and communities. We believe that strong
-                men of faith are the backbone of a strong church and a strong society.
+                Aenon Young Adults is for those in their twenties and thirties —
+                navigating college, careers, and the unique challenges of
+                adulthood while growing deeper in faith.
               </p>
               <p className="reveal reveal-delay-2 body-md">
-                Through regular Bible study, prayer, fellowship meals, and
-                accountability groups, we help men grow deeper in their walk with
-                Christ and step into the calling God has placed on their lives.
+                We gather for worship, deep conversations, and community. Whether
+                you&apos;re a student, working professional, or somewhere in between,
+                this is a place where you can ask questions, build friendships,
+                and discover what it means to follow Jesus in every season.
               </p>
             </div>
-            <div className="reveal reveal-delay-1 rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-navy-700 to-navy-900 border border-silver-200">
-              <img src="/images/mens-fellowship.jpg" alt="Men's fellowship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+            <div className="reveal reveal-delay-1 rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-navy-600 to-navy-800 border border-silver-200">
+              <img src="/images/young-adults-fellowship.jpg" alt="Aenon Young Adults fellowship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
             </div>
           </div>
         </div>
@@ -86,10 +87,10 @@ export default function MensMinistryPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: BookOpen, title: 'Bible Study', desc: 'Weekly study of God\'s Word, diving deep into Scripture and applying it to everyday life.' },
-              { icon: Shield, title: 'Accountability', desc: 'Small groups where men encourage one another and hold each other accountable in faith.' },
-              { icon: Handshake, title: 'Fellowship', desc: 'Regular gatherings, meals, and events that build authentic brotherhood and lasting friendships.' },
-              { icon: Users, title: 'Service', desc: 'Opportunities to serve the church and community together, putting our faith into action.' },
+              { icon: Music, title: 'Worship Nights', desc: 'Evenings of worship, prayer, and encountering God together in a relaxed and authentic atmosphere.' },
+              { icon: BookOpen, title: 'Bible Study', desc: 'Diving into Scripture together, tackling the real questions young adults face in today\'s world.' },
+              { icon: Flame, title: 'Outreach', desc: 'Serving our community and beyond, putting our faith into action through local and global missions.' },
+              { icon: Users, title: 'Hangouts', desc: 'Fun, casual gatherings — game nights, outings, and meals that build genuine friendships and community.' },
             ].map((item, i) => (
               <div key={item.title} className={`reveal reveal-delay-${Math.min(i, 3)} card-light !p-8`}>
                 <item.icon className="w-8 h-8 text-accent-500 mb-6" />
@@ -101,15 +102,14 @@ export default function MensMinistryPage() {
         </div>
       </section>
 
-      {/* Schedule + CTA */}
+      {/* CTA */}
       <section className="section-gap bg-white">
         <div className="max-w-3xl mx-auto section-padding text-center">
           <p className="reveal label-text text-navy-900/40 mb-4">Schedule</p>
-          <h2 className="reveal heading-md text-navy-900 mb-4">Monthly gatherings</h2>
+          <h2 className="reveal heading-md text-navy-900 mb-4">Gatherings coming soon</h2>
           <p className="reveal reveal-delay-1 body-lg mb-10">
-            We meet monthly for fellowship, prayer, and study.
-            All men are welcome — whether you&apos;ve been walking with Christ
-            for decades or are just beginning.
+            We&apos;re building out our regular meeting schedule — reach out and
+            we&apos;ll let you know about the next gathering.
           </p>
           <div className="reveal reveal-delay-2 flex flex-wrap justify-center gap-4">
             <Link href="/contact" className="btn-primary">
