@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Mail, X, Eye } from 'lucide-react';
 
 // ✅ Toggle maintenance mode: set to true/false and push
-const MAINTENANCE_ENABLED = true;
+const MAINTENANCE_ENABLED = false;
 const BYPASS_SECRET = 'aenon-preview-2026';
 const BYPASS_DURATION = 5 * 60 * 1000; // 5 minutes in ms
 const COOKIE_NAME = 'aenon-bypass-expires';
