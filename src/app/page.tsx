@@ -121,11 +121,12 @@ export default function Home() {
           {/* Service Times */}
           <div className="reveal reveal-delay-1 bg-silver-100 rounded-2xl p-8 md:p-14">
             <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-10">Service Times</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
               {[
                 { day: 'Sunday', service: 'Worship Services', time: '8am · 11am · 7pm' },
                 { day: 'Wednesday', service: 'Bible Study', time: '7pm' },
                 { day: 'Friday', service: 'Prayer Meeting', time: '11am' },
+                { day: 'Saturday', service: 'Youth Meeting', time: '7pm' },
               ].map((item) => (
                 <div key={item.day}>
                   <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-4">
@@ -139,45 +140,11 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="mt-12 pt-6 border-t border-silver-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="mt-12 pt-6 border-t border-silver-200">
               <p className="text-silver-400 text-xs leading-relaxed">
                 In-person &amp; YouTube Live &middot; All are welcome
               </p>
-              <p className="text-silver-400 text-xs leading-relaxed">
-                Youth Meeting &middot; Saturdays at 7pm
-              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================= */}
-      {/* DIVIDER LINE */}
-      {/* ============================================= */}
-      <div className="max-w-7xl mx-auto section-padding">
-        <div className="divider" />
-      </div>
-
-      {/* ============================================= */}
-      {/* STATS SECTION - Inspired by digital guild */}
-      {/* ============================================= */}
-      <section className="bg-navy-950 noise-bg">
-        <div className="max-w-7xl mx-auto section-padding py-20 md:py-24">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {[
-              { number: '37+', label: 'Years of Ministry' },
-              { number: '3', label: 'Sunday Services' },
-              { number: '4', label: 'Weekly Gatherings' },
-              { number: '6', label: 'Active Ministries' },
-            ].map((stat, i) => (
-              <div key={stat.label} className={`reveal reveal-delay-${i} text-center md:text-left`}>
-                <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
-                  {stat.number}
-                </p>
-                <div className="w-8 h-0.5 bg-accent-500 mb-3 mx-auto md:mx-0" />
-                <p className="text-white/40 text-sm">{stat.label}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
