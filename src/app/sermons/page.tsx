@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { Play, ArrowUpRight } from 'lucide-react';
+import LatestSermonEmbed from '@/components/LatestSermonEmbed';
 
 export default function SermonsPage() {
   useEffect(() => {
@@ -44,14 +45,7 @@ export default function SermonsPage() {
           </h2>
 
           <div className="reveal">
-            <div className="youtube-container shadow-2xl max-w-4xl mx-auto">
-              <iframe
-                src="https://www.youtube.com/embed?listType=user_uploads&list=aenonchurch"
-                title="Latest Sermon - Aenon Church"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            <LatestSermonEmbed className="max-w-4xl mx-auto" />
           </div>
         </div>
       </section>

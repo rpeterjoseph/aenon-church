@@ -1,7 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import LatestSermonEmbed from '@/components/LatestSermonEmbed';
+import { getUpcomingEvents } from '@/lib/events';
 import {
   ChevronRight,
   Play,
@@ -19,6 +22,8 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
+  const upcomingEvents = useMemo(() => getUpcomingEvents(3), []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -43,11 +48,13 @@ export default function Home() {
       <section className="relative h-[100svh] min-h-[600px] md:min-h-[700px] flex items-end overflow-hidden">
         {/* Background photo - grayscale */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/hero-bg2.jpg"
             alt=""
-            className="w-full h-full object-cover object-center"
-            style={{  }}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
           />
         </div>
         {/* Navy blue overlay */}
@@ -233,14 +240,7 @@ export default function Home() {
 
             {/* YouTube Embed */}
             <div className="reveal reveal-delay-1">
-              <div className="youtube-container shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed?listType=user_uploads&list=aenonchurch"
-                  title="Latest Sermon - Aenon Church"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              <LatestSermonEmbed />
               <div className="mt-4 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent-500 animate-pulse" />
                 <span className="text-sm text-silver-400">
@@ -397,48 +397,30 @@ export default function Home() {
 
           {/* Announcement Items - Editorial style like Clova */}
           <div className="space-y-0">
-            {[
-              {
-                date: 'Mar 2026',
-                title: 'Easter Sunday Celebration',
-                desc: 'Join us for a special Easter worship service with the whole church family.',
-                tag: 'Upcoming',
-              },
-              {
-                date: 'Weekly',
-                title: 'Wednesday Bible Study Series',
-                desc: 'New series starting — dive deeper into the Book of Acts with us.',
-                tag: 'Recurring',
-              },
-              {
-                date: 'Open',
-                title: 'Volunteer Sign-Ups',
-                desc: 'Serve in worship, kids ministry, hospitality, and more. Apply today.',
-                tag: 'Now Open',
-              },
-            ].map((item, i) => (
-              <div
-                key={item.title}
+            {upcomingEvents.map((event, i) => (
+              <Link
+                key={event.id}
+                href="/events"
                 className={`reveal reveal-delay-${i} flex flex-col md:flex-row md:items-center justify-between py-8 border-b border-silver-200 group cursor-pointer hover:bg-silver-100/50 px-4 -mx-4 rounded-xl transition-colors`}
               >
                 <div className="flex items-start md:items-center gap-6 flex-1">
                   <span className="text-sm text-silver-400 font-medium min-w-[80px]">
-                    {item.date}
+                    {event.shortDateLabel}
                   </span>
                   <div>
                     <div className="flex items-center gap-3 mb-1">
                       <h3 className="text-lg font-bold text-navy-900 group-hover:text-accent-500 transition-colors">
-                        {item.title}
+                        {event.title}
                       </h3>
                       <span className="px-2 py-0.5 bg-accent-500/10 text-accent-500 text-[10px] font-medium uppercase tracking-wider rounded-full">
-                        {item.tag}
+                        {event.tag}
                       </span>
                     </div>
-                    <p className="text-silver-400 text-sm">{item.desc}</p>
+                    <p className="text-silver-400 text-sm">{event.desc}</p>
                   </div>
                 </div>
                 <ArrowRight className="w-5 h-5 text-silver-300 group-hover:text-accent-500 group-hover:translate-x-1 transition-all mt-4 md:mt-0" />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -472,12 +454,13 @@ export default function Home() {
 
             {/* Right - Image */}
             <div className="reveal reveal-delay-1">
-              <div className="rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-silver-200 to-silver-100">
-                <img
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-silver-200 to-silver-100">
+                <Image
                   src="/images/volunteer.jpeg"
                   alt="Volunteer serving at Aenon Church"
-                  className="w-full h-full object-cover"
-                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -495,7 +478,7 @@ export default function Home() {
             <div className="reveal order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2!2d78.5412!3d17.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTarnaka%2C%20Secunderabad%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1"
+                  src="https://www.google.com/maps?q=Aenon+Church%2C+Tarnaka%2C+Secunderabad%2C+Hyderabad%2C+Telangana%2C+India&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
