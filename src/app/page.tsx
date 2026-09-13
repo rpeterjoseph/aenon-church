@@ -121,18 +121,17 @@ export default function Home() {
           {/* Service Times */}
           <div className="reveal reveal-delay-1 bg-silver-100 rounded-2xl p-8 md:p-14">
             <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-10">Service Times</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-12">
               {[
-                { day: 'Sunday', service: 'Worship Services', time: '8 · 11 · 7' },
-                { day: 'Wednesday', service: 'Bible Study', time: '7 PM' },
-                { day: 'Friday', service: 'Prayer Meeting', time: '11 AM' },
-                { day: 'Saturday', service: 'Youth Meeting', time: '7 PM' },
+                { day: 'Sunday', service: 'Worship Services', time: '8am · 11am · 7pm' },
+                { day: 'Wednesday', service: 'Bible Study', time: '7pm' },
+                { day: 'Friday', service: 'Prayer Meeting', time: '11am' },
               ].map((item) => (
                 <div key={item.day}>
                   <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-4">
                     {item.day}
                   </p>
-                  <p className="text-navy-900 font-bold text-4xl md:text-5xl tabular-nums leading-none mb-4">
+                  <p className="text-navy-900 font-bold text-3xl md:text-4xl tabular-nums leading-none mb-4">
                     {item.time}
                   </p>
                   <div className="w-8 h-0.5 bg-accent-500 mb-3" />
@@ -140,9 +139,12 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="mt-12 pt-6 border-t border-silver-200">
+            <div className="mt-12 pt-6 border-t border-silver-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <p className="text-silver-400 text-xs leading-relaxed">
                 In-person &amp; YouTube Live &middot; All are welcome
+              </p>
+              <p className="text-silver-400 text-xs leading-relaxed">
+                Youth Meeting &middot; Saturdays at 7pm
               </p>
             </div>
           </div>
