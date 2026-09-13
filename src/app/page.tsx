@@ -121,11 +121,12 @@ export default function Home() {
           {/* Service Times */}
           <div className="reveal reveal-delay-1 bg-silver-100 rounded-2xl p-8 md:p-14">
             <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-10">Service Times</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
               {[
                 { day: 'Sunday', service: 'Worship Services', time: '8am · 11am · 7pm' },
                 { day: 'Wednesday', service: 'Bible Study', time: '7pm' },
                 { day: 'Friday', service: 'Prayer Meeting', time: '11am' },
+                { day: 'Saturday', service: 'Youth Meeting', time: '7pm' },
               ].map((item) => (
                 <div key={item.day}>
                   <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-4">
@@ -139,12 +140,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="mt-12 pt-6 border-t border-silver-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="mt-12 pt-6 border-t border-silver-200">
               <p className="text-silver-400 text-xs leading-relaxed">
                 In-person &amp; YouTube Live &middot; All are welcome
-              </p>
-              <p className="text-silver-400 text-xs leading-relaxed">
-                Youth Meeting &middot; Saturdays at 7pm
               </p>
             </div>
           </div>
