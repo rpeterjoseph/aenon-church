@@ -60,7 +60,7 @@ export default function WhatToExpectPage() {
               {
                 icon: Clock,
                 title: 'Service Times',
-                desc: 'Sunday services run at 8 AM, 10 AM, and 7 PM. Each service is approximately 90 minutes. We also have midweek gatherings throughout the week.',
+                desc: 'Sunday services run at 8 AM, 11 AM, and 7 PM. Each service is approximately 90 minutes. We also have midweek gatherings throughout the week.',
               },
               {
                 icon: Music,

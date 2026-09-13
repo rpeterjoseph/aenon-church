@@ -214,7 +214,7 @@ export default function MaintenanceGate({ children }: { children: React.ReactNod
         <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-sm">
           <Clock className="w-4 h-4 text-accent-400" />
           <span className="text-white/50 text-sm font-nav">
-            Sunday Services: 8 AM &middot; 10 AM &middot; 7 PM
+            Sunday Services: 8 AM &middot; 11 AM &middot; 7 PM
           </span>
         </div>
 

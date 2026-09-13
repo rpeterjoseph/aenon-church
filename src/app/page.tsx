@@ -142,7 +142,7 @@ export default function Home() {
               <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-8">Service Times</p>
               <div className="space-y-0 divide-y divide-silver-200">
                 {[
-                  { day: 'Sunday', service: 'Worship Services', time: '8 AM  ·  10 AM  ·  7 PM' },
+                  { day: 'Sunday', service: 'Worship Services', time: '8 AM  ·  11 AM  ·  7 PM' },
                   { day: 'Wednesday', service: 'Bible Study', time: '7:00 PM' },
                   { day: 'Friday', service: 'Prayer Meeting', time: '11:00 AM' },
                   { day: 'Saturday', service: 'Youth Meeting', time: '7:00 PM' },
@@ -519,7 +519,7 @@ export default function Home() {
                   <div>
                     <p className="font-medium text-navy-900 mb-1">Sunday Services</p>
                     <p className="text-silver-400 text-sm">
-                      8:00 AM &middot; 10:00 AM &middot; 7:00 PM
+                      8:00 AM &middot; 11:00 AM &middot; 7:00 PM
                     </p>
                   </div>
                 </div>

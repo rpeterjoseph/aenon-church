@@ -43,7 +43,7 @@ export function generateRecurringEvents(): EventItem[] {
         date: new Date(cur),
         dateLabel,
         shortDateLabel,
-        time: '8:00 AM · 10:00 AM · 7:00 PM',
+        time: '8:00 AM · 11:00 AM · 7:00 PM',
         location: 'Aenon Church, Tarnaka',
         desc: 'Join us for worship, the Word, and fellowship. Three services to choose from — morning and evening.',
         tag: 'Weekly',
