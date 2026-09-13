@@ -19,6 +19,7 @@ import {
   Sun,
   Moon,
   Sunrise,
+  Flame,
 } from 'lucide-react';
 
 export default function Home() {
@@ -273,35 +274,47 @@ export default function Home() {
           </div>
 
           {/* Ministry Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Men's Ministry",
+                title: 'Aenon Beloved Men',
                 desc: 'Building men of faith through accountability, study, and brotherhood.',
                 icon: Users,
+                logo: '',
                 tag: 'Men',
                 gradient: 'from-navy-800 to-navy-950',
               },
               {
-                title: "Women's Ministry",
+                title: 'Aenon Lovely Women',
                 desc: 'Empowering women to grow in faith, friendship, and spiritual depth.',
                 icon: Heart,
+                logo: '',
                 tag: 'Women',
                 gradient: 'from-navy-700 to-navy-900',
               },
               {
-                title: 'Young Adults',
+                title: 'Aenon Young Adults',
                 desc: 'A vibrant community for young adults to discover purpose and passion.',
                 icon: Sun,
-                tag: 'Youth',
+                logo: '',
+                tag: 'Young Adults',
                 gradient: 'from-navy-600 to-navy-800',
               },
               {
-                title: 'Kids Ministry',
+                title: 'Aenon Kids',
                 desc: 'A safe, fun, and engaging environment for children to learn about Jesus.',
                 icon: BookOpen,
+                logo: '',
                 tag: 'Kids',
                 gradient: 'from-navy-700 to-navy-950',
+              },
+              {
+                title: 'Aenon Youth',
+                desc: 'Helping teens grow in faith, build lasting friendships, and live boldly for Christ.',
+                icon: Flame,
+                logo: '',
+                tag: 'Youth',
+                gradient: 'from-navy-900 to-navy-950',
               },
             ].map((ministry, i) => (
               <Link
@@ -309,7 +322,7 @@ export default function Home() {
                 href="/ministries"
                 className={`reveal reveal-delay-${i} group`}
               >
-                <div className={`relative overflow-hidden rounded-2xl mb-5 bg-gradient-to-br ${ministry.gradient} noise-bg aspect-[4/5] flex flex-col justify-between p-6 md:p-8`}>
+                <div className={`relative overflow-hidden rounded-2xl mb-5 bg-gradient-to-br ${ministry.gradient} noise-bg aspect-[4/5] flex flex-col justify-between p-7 md:p-10`}>
                   {/* Decorative glow */}
                   <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/[0.03] rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -319,13 +332,25 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="relative z-10">
-                    <ministry.icon className="w-8 h-8 text-white/30 mb-4 group-hover:text-white/50 transition-colors" />
+                    {ministry.logo ? (
+                      <div className="relative w-14 h-14 md:w-16 md:h-16 mb-4">
+                        <Image
+                          src={ministry.logo}
+                          alt={`${ministry.title} logo`}
+                          fill
+                          sizes="64px"
+                          className="object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <ministry.icon className="w-9 h-9 md:w-10 md:h-10 text-white/30 mb-4 group-hover:text-white/50 transition-colors" />
+                    )}
                     <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors">
                       {ministry.desc}
                     </p>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-accent-500 transition-colors flex items-center gap-2">
+                <h3 className="text-xl font-bold text-navy-900 mb-1 group-hover:text-accent-500 transition-colors flex items-center gap-2">
                   {ministry.title}
                   <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-accent-500" />
                 </h3>
