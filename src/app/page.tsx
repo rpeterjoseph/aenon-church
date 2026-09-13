@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
-  const upcomingEvents = useMemo(() => getUpcomingEvents(1), []);
+  const upcomingEvents = useMemo(() => getUpcomingEvents(3), []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
