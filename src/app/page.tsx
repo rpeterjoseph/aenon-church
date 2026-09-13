@@ -118,50 +118,32 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Bottom: Two column cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Left Card - Mission statement */}
-            <div className="reveal reveal-delay-1 bg-navy-950 text-white rounded-2xl p-8 md:p-12 flex flex-col justify-between noise-bg min-h-[280px]">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-6 font-medium">Our Heart</p>
-                <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-                  Whether you are taking your first step of faith or have been walking
-                  with Christ for years, there is a place for you here. Come as you
-                  are and experience the transforming power of God&apos;s grace.
-                </p>
-              </div>
-              <div className="mt-8">
-                <Link href="/about" className="inline-flex items-center gap-2 text-accent-400 text-sm font-medium uppercase tracking-[0.15em] hover:text-accent-300 transition-colors group">
-                  Our Story
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+          {/* Service Times */}
+          <div className="reveal reveal-delay-1 bg-silver-100 rounded-2xl p-8 md:p-14">
+            <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-10">Service Times</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+              {[
+                { day: 'Sunday', service: 'Worship Services', time: '8 · 11 · 7' },
+                { day: 'Wednesday', service: 'Bible Study', time: '7 PM' },
+                { day: 'Friday', service: 'Prayer Meeting', time: '11 AM' },
+                { day: 'Saturday', service: 'Youth Meeting', time: '7 PM' },
+              ].map((item) => (
+                <div key={item.day}>
+                  <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-4">
+                    {item.day}
+                  </p>
+                  <p className="text-navy-900 font-bold text-4xl md:text-5xl tabular-nums leading-none mb-4">
+                    {item.time}
+                  </p>
+                  <div className="w-8 h-0.5 bg-accent-500 mb-3" />
+                  <p className="text-silver-400 text-sm">{item.service}</p>
+                </div>
+              ))}
             </div>
-
-            {/* Right Card - Service times */}
-            <div className="reveal reveal-delay-2 bg-silver-100 rounded-2xl p-8 md:p-10">
-              <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-8">Service Times</p>
-              <div className="space-y-0 divide-y divide-silver-200">
-                {[
-                  { day: 'Sunday', service: 'Worship Services', time: '8 AM  ·  11 AM  ·  7 PM' },
-                  { day: 'Wednesday', service: 'Bible Study', time: '7:00 PM' },
-                  { day: 'Friday', service: 'Prayer Meeting', time: '11:00 AM' },
-                  { day: 'Saturday', service: 'Youth Meeting', time: '7:00 PM' },
-                ].map((item) => (
-                  <div key={item.day} className="flex items-baseline justify-between py-4 first:pt-0 last:pb-0">
-                    <div>
-                      <p className="text-navy-900 font-bold text-sm md:text-base">{item.day}</p>
-                      <p className="text-silver-400 text-xs mt-0.5">{item.service}</p>
-                    </div>
-                    <p className="text-navy-900 font-medium text-sm md:text-base tabular-nums">{item.time}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-8 pt-6 border-t border-silver-200">
-                <p className="text-silver-400 text-xs leading-relaxed">
-                  In-person & YouTube Live &middot; All are welcome
-                </p>
-              </div>
+            <div className="mt-12 pt-6 border-t border-silver-200">
+              <p className="text-silver-400 text-xs leading-relaxed">
+                In-person &amp; YouTube Live &middot; All are welcome
+              </p>
             </div>
           </div>
         </div>
