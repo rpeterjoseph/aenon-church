@@ -478,13 +478,13 @@ export default function Home() {
             <div className="reveal order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                 <iframe
-                  src="https://www.google.com/maps?q=Aenon+Church%2C+Tarnaka%2C+Secunderabad%2C+Hyderabad%2C+Telangana%2C+India&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5115.09529953072!2d78.53534907627811!3d17.43180478346308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9960ffffffff%3A0xaf094faf3bce4d9e!2sAenon%20Church!5e1!3m2!1sen!2sin!4v1789336008690!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   title="Aenon Church Location"
                 />
               </div>

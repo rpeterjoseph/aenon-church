@@ -1,5 +1,5 @@
 import { Play } from 'lucide-react';
-import { LATEST_SERMON_VIDEO_ID } from '@/lib/config';
+import { LATEST_SERMON_VIDEO_ID, LATEST_SERMON_PLAYLIST_ID } from '@/lib/config';
 
 export default function LatestSermonEmbed({ className = '' }: { className?: string }) {
   if (!LATEST_SERMON_VIDEO_ID) {
@@ -20,10 +20,14 @@ export default function LatestSermonEmbed({ className = '' }: { className?: stri
     );
   }
 
+  const src = LATEST_SERMON_PLAYLIST_ID
+    ? `https://www.youtube.com/embed/${LATEST_SERMON_VIDEO_ID}?list=${LATEST_SERMON_PLAYLIST_ID}`
+    : `https://www.youtube.com/embed/${LATEST_SERMON_VIDEO_ID}`;
+
   return (
     <div className={`youtube-container shadow-2xl ${className}`}>
       <iframe
-        src={`https://www.youtube.com/embed/${LATEST_SERMON_VIDEO_ID}`}
+        src={src}
         title="Latest Sermon - Aenon Church"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
