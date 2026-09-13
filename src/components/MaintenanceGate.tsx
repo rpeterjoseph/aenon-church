@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Mail, X, Eye } from 'lucide-react';
 
 // ✅ Toggle maintenance mode: set to true/false and push
-const MAINTENANCE_ENABLED = true;
+const MAINTENANCE_ENABLED = false;
 const BYPASS_SECRET = 'aenon-preview-2026';
 const BYPASS_DURATION = 5 * 60 * 1000; // 5 minutes in ms
 const COOKIE_NAME = 'aenon-bypass-expires';
@@ -214,7 +214,7 @@ export default function MaintenanceGate({ children }: { children: React.ReactNod
         <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-sm">
           <Clock className="w-4 h-4 text-accent-400" />
           <span className="text-white/50 text-sm font-nav">
-            Sunday Services: 8 AM &middot; 10 AM &middot; 7 PM
+            Sunday Services: 8 AM &middot; 11 AM &middot; 7 PM
           </span>
         </div>
 
