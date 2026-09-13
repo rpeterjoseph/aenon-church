@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ArrowLeft, Music, Flame, Users, BookOpen } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Flame, Music, Users, Gamepad2 } from 'lucide-react';
 
 export default function YouthMinistryPage() {
   useEffect(() => {
@@ -27,15 +27,15 @@ export default function YouthMinistryPage() {
             <ArrowLeft className="w-4 h-4" />
             Ministries
           </Link>
-          <p className="label-text text-white/40 mb-6">Young Adults</p>
+          <p className="label-text text-white/40 mb-6">Aenon Youth</p>
           <h1 className="heading-xl text-white max-w-3xl">
-            Faith for
+            Bold faith,
             <br />
-            every season.
+            starting young.
           </h1>
           <p className="text-xl text-white/50 max-w-xl mt-8">
-            A vibrant community for young adults navigating faith,
-            career, and purpose.
+            Helping teens grow in faith, build lasting friendships, and
+            live boldly for Christ.
           </p>
         </div>
       </section>
@@ -43,8 +43,8 @@ export default function YouthMinistryPage() {
       {/* Hero Image */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto section-padding pt-16">
-          <div className="reveal rounded-2xl overflow-hidden aspect-[21/9] bg-gradient-to-br from-navy-600 to-navy-800 border border-silver-200">
-            <img src="/images/youth-ministry.jpg" alt="Young Adults gathering" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+          <div className="reveal rounded-2xl overflow-hidden aspect-[21/9] bg-gradient-to-br from-navy-900 to-navy-950 border border-silver-200">
+            <img src="/images/youth-ministry.jpg" alt="Aenon Youth gathering" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
           </div>
         </div>
       </section>
@@ -56,23 +56,22 @@ export default function YouthMinistryPage() {
             <div>
               <p className="reveal label-text text-navy-900/40 mb-4">About This Ministry</p>
               <h2 className="reveal heading-md text-navy-900 mb-8">
-                Discovering purpose
-                and passion.
+                A place for teens
+                to belong.
               </h2>
               <p className="reveal reveal-delay-1 body-lg mb-6">
-                Our Young Adults ministry is for those in their late teens through
-                their twenties and thirties — navigating the unique challenges of
-                adulthood while growing deeper in faith.
+                Aenon Youth is for middle and high schoolers who want a fun,
+                honest place to figure out what it means to follow Jesus —
+                surrounded by friends who get it.
               </p>
               <p className="reveal reveal-delay-2 body-md">
-                We gather for worship, deep conversations, and community. Whether
-                you&apos;re a student, working professional, or somewhere in between,
-                this is a place where you can ask questions, build friendships,
-                and discover what it means to follow Jesus in every season.
+                Through games, worship, small groups, and real conversations,
+                we help students build a genuine faith of their own — one that
+                holds up at school, at home, and everywhere in between.
               </p>
             </div>
-            <div className="reveal reveal-delay-1 rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-navy-600 to-navy-800 border border-silver-200">
-              <img src="/images/youth-fellowship.jpg" alt="Young adults fellowship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+            <div className="reveal reveal-delay-1 rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-navy-900 to-navy-950 border border-silver-200">
+              <img src="/images/youth-fellowship.jpg" alt="Aenon Youth fellowship" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
             </div>
           </div>
         </div>
@@ -87,10 +86,10 @@ export default function YouthMinistryPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Music, title: 'Worship Nights', desc: 'Evenings of worship, prayer, and encountering God together in a relaxed and authentic atmosphere.' },
-              { icon: BookOpen, title: 'Bible Study', desc: 'Diving into Scripture together, tackling the real questions that young adults face in today\'s world.' },
-              { icon: Flame, title: 'Outreach', desc: 'Serving our community and beyond, putting our faith into action through local and global missions.' },
-              { icon: Users, title: 'Hangouts', desc: 'Fun, casual gatherings — game nights, outings, and meals that build genuine friendships and community.' },
+              { icon: Music, title: 'Worship', desc: 'High-energy worship nights where students encounter God together in an authentic, welcoming space.' },
+              { icon: Gamepad2, title: 'Games & Hangouts', desc: 'Game nights, outings, and events that make Aenon Youth a place teens genuinely want to be.' },
+              { icon: Flame, title: 'Small Groups', desc: 'Age and gender-grouped discipleship groups where students dig into Scripture and real-life questions.' },
+              { icon: Users, title: 'Mentorship', desc: 'Caring leaders who invest in students one-on-one, walking alongside them through the teenage years.' },
             ].map((item, i) => (
               <div key={item.title} className={`reveal reveal-delay-${Math.min(i, 3)} card-light !p-8`}>
                 <item.icon className="w-8 h-8 text-accent-500 mb-6" />

@@ -27,7 +27,7 @@ export default function WomensMinistryPage() {
             <ArrowLeft className="w-4 h-4" />
             Ministries
           </Link>
-          <p className="label-text text-white/40 mb-6">Women&apos;s Ministry</p>
+          <p className="label-text text-white/40 mb-6">Aenon Lovely Women</p>
           <h1 className="heading-xl text-white max-w-3xl">
             Rooted in
             <br />
@@ -60,7 +60,7 @@ export default function WomensMinistryPage() {
                 in Christ.
               </h2>
               <p className="reveal reveal-delay-1 body-lg mb-6">
-                Our Women&apos;s Ministry is a place where women of all ages and
+                Aenon Lovely Women is a place where women of all ages and
                 backgrounds can come together to be encouraged, strengthened, and
                 equipped in their faith journey.
               </p>

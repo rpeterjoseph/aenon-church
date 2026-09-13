@@ -2,11 +2,11 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Users, Heart, BookOpen, Music } from 'lucide-react';
+import { ArrowRight, Users, Heart, Sun, Flame, BookOpen } from 'lucide-react';
 
 const ministries = [
   {
-    title: "Men's Ministry",
+    title: 'Aenon Beloved Men',
     desc: "Building men of faith through accountability, discipleship, and brotherhood. We meet regularly for Bible study, prayer, and fellowship — equipping men to lead with integrity in their families, workplaces, and communities.",
     schedule: 'Meets monthly',
     icon: Users,
@@ -14,7 +14,7 @@ const ministries = [
     href: '/ministries/mens',
   },
   {
-    title: "Women's Ministry",
+    title: 'Aenon Lovely Women',
     desc: "Empowering women to grow in faith, friendship, and spiritual depth. Through Bible studies, retreats, and community gatherings, we create a space where women can be vulnerable, supported, and strengthened in Christ.",
     schedule: 'Meets monthly',
     icon: Heart,
@@ -22,15 +22,23 @@ const ministries = [
     href: '/ministries/womens',
   },
   {
-    title: 'Young Adults',
+    title: 'Aenon Young Adults',
     desc: "A vibrant community for young adults navigating faith, career, and purpose. We gather for worship, deep conversations, and fun — discovering what it means to follow Jesus in every season of life.",
-    schedule: 'Saturdays at 6:00 PM',
-    icon: Music,
+    schedule: 'Gatherings coming soon',
+    icon: Sun,
     gradient: 'from-navy-600 to-navy-800',
+    href: '/ministries/young-adults',
+  },
+  {
+    title: 'Aenon Youth',
+    desc: "Helping teens grow in faith, build lasting friendships, and live boldly for Christ through worship, small groups, and mentorship.",
+    schedule: 'Saturdays at 7:00 PM',
+    icon: Flame,
+    gradient: 'from-navy-900 to-navy-950',
     href: '/ministries/youth',
   },
   {
-    title: "Children's Ministry",
+    title: 'Aenon Kids',
     desc: "A safe, fun, and engaging environment where kids learn about Jesus through age-appropriate teaching, worship, and activities. We partner with parents to build strong spiritual foundations in the next generation.",
     schedule: 'Every Sunday',
     icon: BookOpen,
@@ -119,7 +127,7 @@ export default function MinistriesPage() {
           <h2 className="reveal heading-sm text-navy-900 mb-12">
             Discover each ministry.
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {ministries.map((ministry, i) => (
               <Link
                 key={ministry.title}

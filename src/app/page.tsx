@@ -19,6 +19,7 @@ import {
   Sun,
   Moon,
   Sunrise,
+  Flame,
 } from 'lucide-react';
 
 export default function Home() {
@@ -117,50 +118,34 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Bottom: Two column cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Left Card - Mission statement */}
-            <div className="reveal reveal-delay-1 bg-navy-950 text-white rounded-2xl p-8 md:p-12 flex flex-col justify-between noise-bg min-h-[280px]">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-6 font-medium">Our Heart</p>
-                <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-                  Whether you are taking your first step of faith or have been walking
-                  with Christ for years, there is a place for you here. Come as you
-                  are and experience the transforming power of God&apos;s grace.
-                </p>
-              </div>
-              <div className="mt-8">
-                <Link href="/about" className="inline-flex items-center gap-2 text-accent-400 text-sm font-medium uppercase tracking-[0.15em] hover:text-accent-300 transition-colors group">
-                  Our Story
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+          {/* Service Times */}
+          <div className="reveal reveal-delay-1 bg-silver-100 rounded-2xl p-8 md:p-14">
+            <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-10">Service Times</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-12">
+              {[
+                { day: 'Sunday', service: 'Worship Services', time: '8am · 11am · 7pm' },
+                { day: 'Wednesday', service: 'Bible Study', time: '7pm' },
+                { day: 'Friday', service: 'Prayer Meeting', time: '11am' },
+              ].map((item) => (
+                <div key={item.day}>
+                  <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-4">
+                    {item.day}
+                  </p>
+                  <p className="text-navy-900 font-bold text-3xl md:text-4xl tabular-nums leading-none mb-4">
+                    {item.time}
+                  </p>
+                  <div className="w-8 h-0.5 bg-accent-500 mb-3" />
+                  <p className="text-silver-400 text-sm">{item.service}</p>
+                </div>
+              ))}
             </div>
-
-            {/* Right Card - Service times */}
-            <div className="reveal reveal-delay-2 bg-silver-100 rounded-2xl p-8 md:p-10">
-              <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-8">Service Times</p>
-              <div className="space-y-0 divide-y divide-silver-200">
-                {[
-                  { day: 'Sunday', service: 'Worship Services', time: '8 AM  ·  11 AM  ·  7 PM' },
-                  { day: 'Wednesday', service: 'Bible Study', time: '7:00 PM' },
-                  { day: 'Friday', service: 'Prayer Meeting', time: '11:00 AM' },
-                  { day: 'Saturday', service: 'Youth Meeting', time: '7:00 PM' },
-                ].map((item) => (
-                  <div key={item.day} className="flex items-baseline justify-between py-4 first:pt-0 last:pb-0">
-                    <div>
-                      <p className="text-navy-900 font-bold text-sm md:text-base">{item.day}</p>
-                      <p className="text-silver-400 text-xs mt-0.5">{item.service}</p>
-                    </div>
-                    <p className="text-navy-900 font-medium text-sm md:text-base tabular-nums">{item.time}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-8 pt-6 border-t border-silver-200">
-                <p className="text-silver-400 text-xs leading-relaxed">
-                  In-person & YouTube Live &middot; All are welcome
-                </p>
-              </div>
+            <div className="mt-12 pt-6 border-t border-silver-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <p className="text-silver-400 text-xs leading-relaxed">
+                In-person &amp; YouTube Live &middot; All are welcome
+              </p>
+              <p className="text-silver-400 text-xs leading-relaxed">
+                Youth Meeting &middot; Saturdays at 7pm
+              </p>
             </div>
           </div>
         </div>
@@ -273,43 +258,60 @@ export default function Home() {
           </div>
 
           {/* Ministry Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Men's Ministry",
+                title: 'Aenon Beloved Men',
                 desc: 'Building men of faith through accountability, study, and brotherhood.',
                 icon: Users,
+                logo: '',
                 tag: 'Men',
                 gradient: 'from-navy-800 to-navy-950',
+                href: '/ministries/mens',
               },
               {
-                title: "Women's Ministry",
+                title: 'Aenon Lovely Women',
                 desc: 'Empowering women to grow in faith, friendship, and spiritual depth.',
                 icon: Heart,
+                logo: '',
                 tag: 'Women',
                 gradient: 'from-navy-700 to-navy-900',
+                href: '/ministries/womens',
               },
               {
-                title: 'Young Adults',
+                title: 'Aenon Young Adults',
                 desc: 'A vibrant community for young adults to discover purpose and passion.',
                 icon: Sun,
-                tag: 'Youth',
+                logo: '',
+                tag: 'Young Adults',
                 gradient: 'from-navy-600 to-navy-800',
+                href: '/ministries/young-adults',
               },
               {
-                title: 'Kids Ministry',
+                title: 'Aenon Kids',
                 desc: 'A safe, fun, and engaging environment for children to learn about Jesus.',
                 icon: BookOpen,
+                logo: '',
                 tag: 'Kids',
                 gradient: 'from-navy-700 to-navy-950',
+                href: '/ministries/kids',
+              },
+              {
+                title: 'Aenon Youth',
+                desc: 'Helping teens grow in faith, build lasting friendships, and live boldly for Christ.',
+                icon: Flame,
+                logo: '',
+                href: '/ministries/youth',
+                tag: 'Youth',
+                gradient: 'from-navy-900 to-navy-950',
               },
             ].map((ministry, i) => (
               <Link
                 key={ministry.title}
-                href="/ministries"
+                href={ministry.href}
                 className={`reveal reveal-delay-${i} group`}
               >
-                <div className={`relative overflow-hidden rounded-2xl mb-5 bg-gradient-to-br ${ministry.gradient} noise-bg aspect-[4/5] flex flex-col justify-between p-6 md:p-8`}>
+                <div className={`relative overflow-hidden rounded-2xl mb-5 bg-gradient-to-br ${ministry.gradient} noise-bg aspect-[4/5] flex flex-col justify-between p-7 md:p-10`}>
                   {/* Decorative glow */}
                   <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/[0.03] rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -319,13 +321,25 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="relative z-10">
-                    <ministry.icon className="w-8 h-8 text-white/30 mb-4 group-hover:text-white/50 transition-colors" />
+                    {ministry.logo ? (
+                      <div className="relative w-14 h-14 md:w-16 md:h-16 mb-4">
+                        <Image
+                          src={ministry.logo}
+                          alt={`${ministry.title} logo`}
+                          fill
+                          sizes="64px"
+                          className="object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <ministry.icon className="w-9 h-9 md:w-10 md:h-10 text-white/30 mb-4 group-hover:text-white/50 transition-colors" />
+                    )}
                     <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors">
                       {ministry.desc}
                     </p>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-accent-500 transition-colors flex items-center gap-2">
+                <h3 className="text-xl font-bold text-navy-900 mb-1 group-hover:text-accent-500 transition-colors flex items-center gap-2">
                   {ministry.title}
                   <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-accent-500" />
                 </h3>

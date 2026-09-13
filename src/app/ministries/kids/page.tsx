@@ -27,7 +27,7 @@ export default function KidsMinistryPage() {
             <ArrowLeft className="w-4 h-4" />
             Ministries
           </Link>
-          <p className="label-text text-white/40 mb-6">Children&apos;s Ministry</p>
+          <p className="label-text text-white/40 mb-6">Aenon Kids</p>
           <h1 className="heading-xl text-white max-w-3xl">
             Growing little
             <br />
@@ -61,8 +61,8 @@ export default function KidsMinistryPage() {
               </h2>
               <p className="reveal reveal-delay-1 body-lg mb-6">
                 We believe that children are a gift from God and that the early
-                years are crucial for building a foundation of faith. Our
-                Children&apos;s Ministry is designed to teach kids about Jesus in
+                years are crucial for building a foundation of faith. Aenon
+                Kids is designed to teach kids about Jesus in
                 a way that is fun, engaging, and age-appropriate.
               </p>
               <p className="reveal reveal-delay-2 body-md">
