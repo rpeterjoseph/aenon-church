@@ -150,37 +150,6 @@ export default function Home() {
       </section>
 
       {/* ============================================= */}
-      {/* DIVIDER LINE */}
-      {/* ============================================= */}
-      <div className="max-w-7xl mx-auto section-padding">
-        <div className="divider" />
-      </div>
-
-      {/* ============================================= */}
-      {/* STATS SECTION - Inspired by digital guild */}
-      {/* ============================================= */}
-      <section className="bg-navy-950 noise-bg">
-        <div className="max-w-7xl mx-auto section-padding py-20 md:py-24">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {[
-              { number: '37+', label: 'Years of Ministry' },
-              { number: '3', label: 'Sunday Services' },
-              { number: '4', label: 'Weekly Gatherings' },
-              { number: '6', label: 'Active Ministries' },
-            ].map((stat, i) => (
-              <div key={stat.label} className={`reveal reveal-delay-${i} text-center md:text-left`}>
-                <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
-                  {stat.number}
-                </p>
-                <div className="w-8 h-0.5 bg-accent-500 mb-3 mx-auto md:mx-0" />
-                <p className="text-white/40 text-sm">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================= */}
       {/* LATEST SERMON - YouTube Integration */}
       {/* ============================================= */}
       <section className="section-gap bg-silver-100">
