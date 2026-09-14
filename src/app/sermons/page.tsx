@@ -6,12 +6,12 @@ import { Play, ArrowUpRight } from 'lucide-react';
 import LatestSermonEmbed from '@/components/LatestSermonEmbed';
 
 const recentSermons = [
-  { id: '_agFfQPeRD8', title: 'Title coming soon' },
-  { id: 'mBmmbpz1Wis', title: 'Title coming soon' },
-  { id: 'eEICprqD-RA', title: 'Title coming soon' },
-  { id: 'X594juRoIDc', title: 'Title coming soon' },
-  { id: 'I-UMeoJX8kQ', title: 'Title coming soon' },
-  { id: 'aKNKoDgZjNw', title: 'Title coming soon' },
+  { id: '_agFfQPeRD8', title: "Dimensions of God's Love" },
+  { id: 'mBmmbpz1Wis', title: 'Comfort in Chaos' },
+  { id: 'eEICprqD-RA', title: 'Rest in God' },
+  { id: 'X594juRoIDc', title: 'Jesus is Enough' },
+  { id: 'I-UMeoJX8kQ', title: "Christ's Blood and Abel's Blood" },
+  { id: 'aKNKoDgZjNw', title: 'Gospel changes Greedy to Generous' },
 ];
 
 export default function SermonsPage() {
