@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Play, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import LatestSermonEmbed from '@/components/LatestSermonEmbed';
 
 export default function SermonsPage() {
@@ -50,50 +50,25 @@ export default function SermonsPage() {
         </div>
       </section>
 
-      {/* Sermon Grid */}
+      {/* More Sermons */}
       <section className="section-gap bg-silver-100">
-        <div className="max-w-7xl mx-auto section-padding">
-          <p className="reveal label-text text-navy-900/40 mb-4">Recent Sermons</p>
-          <h2 className="reveal heading-md text-navy-900 mb-12">
+        <div className="max-w-3xl mx-auto section-padding text-center">
+          <p className="reveal label-text text-navy-900/40 mb-4">More Sermons</p>
+          <h2 className="reveal heading-md text-navy-900 mb-6">
             Catch up on what you missed.
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: 'Walking in Faith', speaker: 'Senior Pastor', date: 'Mar 2, 2026' },
-              { title: 'The Power of Prayer', speaker: 'Senior Pastor', date: 'Feb 23, 2026' },
-              { title: 'Grace That Transforms', speaker: 'Associate Pastor', date: 'Feb 16, 2026' },
-              { title: 'Living in the Spirit', speaker: 'Senior Pastor', date: 'Feb 9, 2026' },
-              { title: 'Unshakeable Hope', speaker: 'Guest Speaker', date: 'Feb 2, 2026' },
-              { title: 'The Heart of Worship', speaker: 'Senior Pastor', date: 'Jan 26, 2026' },
-            ].map((sermon, i) => (
-              <div
-                key={i}
-                className={`reveal reveal-delay-${i % 3} card-light group cursor-pointer hover:-translate-y-1 transition-all duration-300`}
-              >
-                <div className="relative aspect-video bg-accent-500/5 rounded-xl mb-5 flex items-center justify-center group-hover:bg-accent-500/10 transition-colors">
-                  <div className="w-14 h-14 rounded-full bg-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
-                  </div>
-                </div>
-                <p className="text-xs text-silver-400 mb-2">{sermon.date}</p>
-                <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-navy-600 transition-colors">
-                  {sermon.title}
-                </h3>
-                <p className="text-sm text-silver-400">{sermon.speaker}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* YouTube CTA */}
-          <div className="reveal mt-16 text-center">
+          <p className="reveal reveal-delay-1 body-lg mb-10">
+            Browse our full library of past messages and sermon series
+            on our YouTube channel.
+          </p>
+          <div className="reveal reveal-delay-2">
             <a
               href="https://www.youtube.com/aenonchurch"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              View All on YouTube
+              View All Sermons on YouTube
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
