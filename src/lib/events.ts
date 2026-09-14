@@ -101,12 +101,12 @@ const specialEvents: EventItem[] = [
   {
     id: 'grace-festival-2026',
     title: 'Grace Festival 2026',
-    date: new Date('2026-11-01'),
-    dateLabel: 'November 2026',
-    shortDateLabel: 'Nov 2026',
-    time: 'Details coming soon',
-    location: 'Aenon Church, Tarnaka',
-    desc: 'A special season of worship, the Word, and community. Save the date — more details coming soon.',
+    date: new Date('2026-11-12'),
+    dateLabel: 'November 12–15, 2026',
+    shortDateLabel: 'Nov 12–15',
+    time: '6:00 PM daily',
+    location: 'A.N.R. Gardens, Nacharam, Hyderabad',
+    desc: 'Four nights of worship and the Word with Rev. R. William Cary and other anointed guest speakers. All are welcome.',
     tag: 'Festival',
   },
 ];

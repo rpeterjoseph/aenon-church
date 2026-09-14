@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, ArrowRight } from 'lucide-react';
+import { X, ArrowRight } from 'lucide-react';
 
 const DISMISS_KEY = 'gf2026-popup-dismissed';
 
@@ -45,44 +46,33 @@ export default function GraceFestivalPopup() {
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg rounded-2xl overflow-hidden bg-navy-950 noise-bg border border-white/10 shadow-2xl"
+            className="relative w-full max-w-sm rounded-2xl overflow-hidden bg-navy-950 noise-bg border border-white/10 shadow-2xl"
           >
             <button
               onClick={close}
               aria-label="Close"
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
 
-            {/* Poster image — hides gracefully until a real one is added */}
-            <div className="aspect-[16/9] bg-gradient-to-br from-navy-800 to-navy-950">
-              <img
+            <div className="relative aspect-[1035/1600] bg-gradient-to-br from-navy-800 to-navy-950">
+              <Image
                 src="/images/grace-festival-2026.jpg"
-                alt="Grace Festival 2026"
-                className="w-full h-full object-cover"
-                onError={(e) => { e.currentTarget.style.display = 'none' }}
+                alt="Grace Festival 2026 — November 12-15, A.N.R. Gardens, Nacharam, Hyderabad"
+                fill
+                sizes="(min-width: 640px) 384px, 90vw"
+                className="object-cover"
+                priority
               />
             </div>
 
-            <div className="p-8 text-center">
-              <p className="text-xs uppercase tracking-[0.2em] text-accent-400 font-medium mb-4">
-                Save the Date
-              </p>
-              <h2 className="text-3xl font-bold text-white mb-3">
-                Grace Festival 2026
-              </h2>
-              <div className="flex items-center justify-center gap-2 text-white/50 text-sm mb-6">
-                <Calendar className="w-4 h-4" />
-                <span>November 2026 &middot; Aenon Church</span>
-              </div>
-              <p className="text-white/60 text-sm leading-relaxed mb-8">
-                Join us for a special season of worship, the Word, and community
-                as we come together for Grace Festival 2026. More details
-                coming soon.
+            <div className="p-6 text-center">
+              <p className="text-white/60 text-sm leading-relaxed mb-6">
+                Nov 12&ndash;15 &middot; 6 PM daily &middot; A.N.R. Gardens, Nacharam
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link href="/events" onClick={close} className="btn-white !text-xs">
+                <Link href="/grace-festival" onClick={close} className="btn-white !text-xs">
                   Learn More
                   <ArrowRight className="w-4 h-4" />
                 </Link>
