@@ -6,12 +6,12 @@ import { Play, ArrowUpRight } from 'lucide-react';
 import LatestSermonEmbed from '@/components/LatestSermonEmbed';
 
 const recentSermons = [
-  { id: '_agFfQPeRD8', title: "Dimensions of God's Love" },
-  { id: 'mBmmbpz1Wis', title: 'Comfort in Chaos' },
-  { id: 'eEICprqD-RA', title: 'Rest in God' },
-  { id: 'X594juRoIDc', title: 'Jesus is Enough' },
-  { id: 'I-UMeoJX8kQ', title: "Christ's Blood and Abel's Blood" },
-  { id: 'aKNKoDgZjNw', title: 'Gospel changes Greedy to Generous' },
+  { id: '_agFfQPeRD8', title: "Dimensions of God's Love", date: 'Sep 1, 2026' },
+  { id: 'eEICprqD-RA', title: 'Rest in God', date: 'Aug 21, 2026' },
+  { id: 'mBmmbpz1Wis', title: 'Comfort in Chaos', date: 'Mar 19, 2026' },
+  { id: 'X594juRoIDc', title: 'Jesus is Enough', date: 'Jan 5, 2026' },
+  { id: 'I-UMeoJX8kQ', title: "Christ's Blood and Abel's Blood", date: 'Aug 30, 2025' },
+  { id: 'aKNKoDgZjNw', title: 'Gospel changes Greedy to Generous', date: 'Feb 5, 2025' },
 ];
 
 export default function SermonsPage() {
@@ -91,6 +91,7 @@ export default function SermonsPage() {
                     </div>
                   </div>
                 </div>
+                <p className="text-xs text-silver-400 mb-2">{sermon.date}</p>
                 <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-navy-600 transition-colors">
                   {sermon.title}
                 </h3>
