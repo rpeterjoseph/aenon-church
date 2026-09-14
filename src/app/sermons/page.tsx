@@ -1,8 +1,18 @@
 'use client';
 
 import { useEffect } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import { Play, ArrowUpRight } from 'lucide-react';
 import LatestSermonEmbed from '@/components/LatestSermonEmbed';
+
+const recentSermons = [
+  { id: '_agFfQPeRD8', title: 'Title coming soon' },
+  { id: 'mBmmbpz1Wis', title: 'Title coming soon' },
+  { id: 'eEICprqD-RA', title: 'Title coming soon' },
+  { id: 'X594juRoIDc', title: 'Title coming soon' },
+  { id: 'I-UMeoJX8kQ', title: 'Title coming soon' },
+  { id: 'aKNKoDgZjNw', title: 'Title coming soon' },
+];
 
 export default function SermonsPage() {
   useEffect(() => {
@@ -50,25 +60,54 @@ export default function SermonsPage() {
         </div>
       </section>
 
-      {/* More Sermons */}
+      {/* Recent Sermons */}
       <section className="section-gap bg-silver-100">
-        <div className="max-w-3xl mx-auto section-padding text-center">
-          <p className="reveal label-text text-navy-900/40 mb-4">More Sermons</p>
-          <h2 className="reveal heading-md text-navy-900 mb-6">
+        <div className="max-w-7xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">Recent Sermons</p>
+          <h2 className="reveal heading-md text-navy-900 mb-12">
             Catch up on what you missed.
           </h2>
-          <p className="reveal reveal-delay-1 body-lg mb-10">
-            Browse our full library of past messages and sermon series
-            on our YouTube channel.
-          </p>
-          <div className="reveal reveal-delay-2">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recentSermons.map((sermon, i) => (
+              <a
+                key={sermon.id}
+                href={`https://youtu.be/${sermon.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`reveal reveal-delay-${i % 3} card-light group block hover:-translate-y-1 transition-all duration-300`}
+              >
+                <div className="relative aspect-video rounded-xl mb-5 overflow-hidden bg-navy-950">
+                  <Image
+                    src={`https://img.youtube.com/vi/${sermon.id}/hqdefault.jpg`}
+                    alt={sermon.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-navy-600 transition-colors">
+                  {sermon.title}
+                </h3>
+                <p className="text-sm text-silver-400">Ps. William Cary</p>
+              </a>
+            ))}
+          </div>
+
+          {/* YouTube CTA */}
+          <div className="reveal mt-16 text-center">
             <a
               href="https://www.youtube.com/aenonchurch"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              View All Sermons on YouTube
+              View All on YouTube
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
