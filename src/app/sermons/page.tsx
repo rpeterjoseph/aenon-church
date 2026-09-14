@@ -1,8 +1,18 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import { Play, ArrowUpRight } from 'lucide-react';
 import LatestSermonEmbed from '@/components/LatestSermonEmbed';
+
+const recentSermons = [
+  { id: '_agFfQPeRD8', title: "Dimensions of God's Love", date: 'Sep 1, 2026' },
+  { id: 'eEICprqD-RA', title: 'Rest in God', date: 'Aug 21, 2026' },
+  { id: 'mBmmbpz1Wis', title: 'Comfort in Chaos', date: 'Mar 19, 2026' },
+  { id: 'X594juRoIDc', title: 'Jesus is Enough', date: 'Jan 5, 2026' },
+  { id: 'I-UMeoJX8kQ', title: "Christ's Blood and Abel's Blood", date: 'Aug 30, 2025' },
+  { id: 'aKNKoDgZjNw', title: 'Gospel changes Greedy to Generous', date: 'Feb 5, 2025' },
+];
 
 export default function SermonsPage() {
   useEffect(() => {
@@ -50,7 +60,7 @@ export default function SermonsPage() {
         </div>
       </section>
 
-      {/* Sermon Grid */}
+      {/* Recent Sermons */}
       <section className="section-gap bg-silver-100">
         <div className="max-w-7xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Recent Sermons</p>
@@ -59,29 +69,34 @@ export default function SermonsPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: 'Walking in Faith', speaker: 'Senior Pastor', date: 'Mar 2, 2026' },
-              { title: 'The Power of Prayer', speaker: 'Senior Pastor', date: 'Feb 23, 2026' },
-              { title: 'Grace That Transforms', speaker: 'Associate Pastor', date: 'Feb 16, 2026' },
-              { title: 'Living in the Spirit', speaker: 'Senior Pastor', date: 'Feb 9, 2026' },
-              { title: 'Unshakeable Hope', speaker: 'Guest Speaker', date: 'Feb 2, 2026' },
-              { title: 'The Heart of Worship', speaker: 'Senior Pastor', date: 'Jan 26, 2026' },
-            ].map((sermon, i) => (
-              <div
-                key={i}
-                className={`reveal reveal-delay-${i % 3} card-light group cursor-pointer hover:-translate-y-1 transition-all duration-300`}
+            {recentSermons.map((sermon, i) => (
+              <a
+                key={sermon.id}
+                href={`https://youtu.be/${sermon.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`reveal reveal-delay-${i % 3} card-light group block hover:-translate-y-1 transition-all duration-300`}
               >
-                <div className="relative aspect-video bg-accent-500/5 rounded-xl mb-5 flex items-center justify-center group-hover:bg-accent-500/10 transition-colors">
-                  <div className="w-14 h-14 rounded-full bg-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
+                <div className="relative aspect-video rounded-xl mb-5 overflow-hidden bg-navy-950">
+                  <Image
+                    src={`https://img.youtube.com/vi/${sermon.id}/hqdefault.jpg`}
+                    alt={sermon.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
+                    </div>
                   </div>
                 </div>
                 <p className="text-xs text-silver-400 mb-2">{sermon.date}</p>
                 <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-navy-600 transition-colors">
                   {sermon.title}
                 </h3>
-                <p className="text-sm text-silver-400">{sermon.speaker}</p>
-              </div>
+                <p className="text-sm text-silver-400">Ps. William Cary</p>
+              </a>
             ))}
           </div>
 
