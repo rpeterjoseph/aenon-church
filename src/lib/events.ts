@@ -89,8 +89,27 @@ export function generateRecurringEvents(): EventItem[] {
     cur.setDate(cur.getDate() + 1);
   }
 
-  return events;
+  const upcomingSpecialEvents = specialEvents.filter((event) => event.date >= today);
+
+  return [...events, ...upcomingSpecialEvents].sort(
+    (a, b) => a.date.getTime() - b.date.getTime()
+  );
 }
+
+// One-off events that don't fit the weekly recurring pattern above.
+const specialEvents: EventItem[] = [
+  {
+    id: 'grace-festival-2026',
+    title: 'Grace Festival 2026',
+    date: new Date('2026-11-01'),
+    dateLabel: 'November 2026',
+    shortDateLabel: 'Nov 2026',
+    time: 'Details coming soon',
+    location: 'Aenon Church, Tarnaka',
+    desc: 'A special season of worship, the Word, and community. Save the date — more details coming soon.',
+    tag: 'Festival',
+  },
+];
 
 export function getUpcomingEvents(count: number): EventItem[] {
   return generateRecurringEvents().slice(0, count);
