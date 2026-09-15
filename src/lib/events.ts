@@ -89,8 +89,27 @@ export function generateRecurringEvents(): EventItem[] {
     cur.setDate(cur.getDate() + 1);
   }
 
-  return events;
+  const upcomingSpecialEvents = specialEvents.filter((event) => event.date >= today);
+
+  return [...events, ...upcomingSpecialEvents].sort(
+    (a, b) => a.date.getTime() - b.date.getTime()
+  );
 }
+
+// One-off events that don't fit the weekly recurring pattern above.
+const specialEvents: EventItem[] = [
+  {
+    id: 'grace-festival-2026',
+    title: 'Grace Festival 2026',
+    date: new Date('2026-11-12'),
+    dateLabel: 'November 12–15, 2026',
+    shortDateLabel: 'Nov 12–15',
+    time: '6:00 PM daily',
+    location: 'A.N.R. Gardens, Nacharam, Hyderabad',
+    desc: 'Four nights of worship and the Word with Rev. R. William Cary and other anointed guest speakers. All are welcome.',
+    tag: 'Festival',
+  },
+];
 
 export function getUpcomingEvents(count: number): EventItem[] {
   return generateRecurringEvents().slice(0, count);

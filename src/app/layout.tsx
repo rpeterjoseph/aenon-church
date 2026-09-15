@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MaintenanceGate from '@/components/MaintenanceGate';
+import GraceFestivalPopup from '@/components/GraceFestivalPopup';
 
 export const metadata: Metadata = {
   title: 'Aenon Church | Welcome Home',
@@ -60,6 +61,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <GraceFestivalPopup />
         </MaintenanceGate>
       </body>
     </html>
