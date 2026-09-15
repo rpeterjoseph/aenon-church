@@ -76,12 +76,6 @@ export default function GraceFestivalPopup() {
                   Learn More
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <button
-                  onClick={close}
-                  className="inline-flex items-center justify-center px-6 py-3 text-white/60 text-xs font-medium uppercase tracking-[0.15em] rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
-                >
-                  Maybe Later
-                </button>
               </div>
             </div>
           </motion.div>
