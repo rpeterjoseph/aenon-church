@@ -1,19 +1,30 @@
 'use client';
 
 import { useEffect, type ReactNode } from 'react';
-import Image from 'next/image';
-import { Play, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import type { SermonSummary } from '@/lib/youtube';
+import SermonCarousel from './SermonCarousel';
 
-const recentSermons = [
-  { id: '_agFfQPeRD8', title: "Dimensions of God's Love", date: 'Sep 1, 2026' },
-  { id: 'eEICprqD-RA', title: 'Rest in God', date: 'Aug 21, 2026' },
-  { id: 'mBmmbpz1Wis', title: 'Comfort in Chaos', date: 'Mar 19, 2026' },
-  { id: 'X594juRoIDc', title: 'Jesus is Enough', date: 'Jan 5, 2026' },
-  { id: 'I-UMeoJX8kQ', title: "Christ's Blood and Abel's Blood", date: 'Aug 30, 2025' },
-  { id: 'aKNKoDgZjNw', title: 'Gospel changes Greedy to Generous', date: 'Feb 5, 2025' },
+// Used only if YOUTUBE_API_KEY isn't set or the API call fails — keeps the
+// carousel populated instead of showing nothing.
+const FALLBACK_SERMONS: SermonSummary[] = [
+  { videoId: '_agFfQPeRD8', title: "Dimensions of God's Love", dateLabel: 'Sep 1, 2026' },
+  { videoId: 'eEICprqD-RA', title: 'Rest in God', dateLabel: 'Aug 21, 2026' },
+  { videoId: 'mBmmbpz1Wis', title: 'Comfort in Chaos', dateLabel: 'Mar 19, 2026' },
+  { videoId: 'X594juRoIDc', title: 'Jesus is Enough', dateLabel: 'Jan 5, 2026' },
+  { videoId: 'I-UMeoJX8kQ', title: "Christ's Blood and Abel's Blood", dateLabel: 'Aug 30, 2025' },
+  { videoId: 'aKNKoDgZjNw', title: 'Gospel changes Greedy to Generous', dateLabel: 'Feb 5, 2025' },
 ];
 
-export default function SermonsContent({ latestSermonEmbed }: { latestSermonEmbed: ReactNode }) {
+export default function SermonsContent({
+  latestSermonEmbed,
+  recentSermons,
+}: {
+  latestSermonEmbed: ReactNode;
+  recentSermons: SermonSummary[] | null;
+}) {
+  const sermonsToShow = recentSermons && recentSermons.length > 0 ? recentSermons : FALLBACK_SERMONS;
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -65,36 +76,8 @@ export default function SermonsContent({ latestSermonEmbed }: { latestSermonEmbe
             Catch up on what you missed.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentSermons.map((sermon, i) => (
-              <a
-                key={sermon.id}
-                href={`https://youtu.be/${sermon.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`reveal reveal-delay-${i % 3} card-light group block hover:-translate-y-1 transition-all duration-300`}
-              >
-                <div className="relative aspect-video rounded-xl mb-5 overflow-hidden bg-navy-950">
-                  <Image
-                    src={`https://img.youtube.com/vi/${sermon.id}/hqdefault.jpg`}
-                    alt={sermon.title}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
-                    </div>
-                  </div>
-                </div>
-                <p className="text-xs text-silver-400 mb-2">{sermon.date}</p>
-                <h3 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-navy-600 transition-colors">
-                  {sermon.title}
-                </h3>
-                <p className="text-sm text-silver-400">Ps. William Cary</p>
-              </a>
-            ))}
+          <div className="reveal">
+            <SermonCarousel sermons={sermonsToShow} />
           </div>
 
           {/* YouTube CTA */}

@@ -216,6 +216,16 @@
   background: #B71226;
 }
 
+/* Hides the scrollbar on horizontally-scrolling carousels while keeping
+   native scroll/touch/swipe behavior. */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Smooth nav transition */
 .nav-scrolled {
   background-color: rgba(255, 255, 255, 0.95) !important;
