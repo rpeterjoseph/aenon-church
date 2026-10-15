@@ -1,9 +1,35 @@
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
 const REVALIDATE_SECONDS = 3600;
 
+// How many of the most recent uploads to check for a non-Short. The uploads
+// playlist mixes Shorts and full videos, so the single newest upload is
+// often a Short rather than a sermon.
+const CANDIDATE_COUNT = 10;
+
+// YouTube Shorts are capped at 3 minutes; there's no explicit "is this a
+// Short" field in the API, so duration is the reliable way to tell them
+// apart from a full-length sermon.
+const SHORT_MAX_SECONDS = 180;
+
 export interface LatestVideo {
   videoId: string;
   title: string;
+}
+
+interface PlaylistCandidate {
+  videoId: string;
+  title: string;
+}
+
+function parseISO8601DurationSeconds(duration: string): number {
+  const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(duration);
+  if (!match) return 0;
+  const [, hours, minutes, seconds] = match;
+  return (
+    parseInt(hours ?? '0', 10) * 3600 +
+    parseInt(minutes ?? '0', 10) * 60 +
+    parseInt(seconds ?? '0', 10)
+  );
 }
 
 async function resolveChannelId(apiKey: string): Promise<string | null> {
@@ -21,11 +47,48 @@ async function resolveChannelId(apiKey: string): Promise<string | null> {
   return data?.items?.[0]?.id ?? null;
 }
 
-// Fetches the most recent upload from the Aenon Church YouTube channel
-// (youtube.com/aenonchurch) for the Latest Sermon embed. Requires
+async function fetchRecentUploads(uploadsPlaylistId: string, apiKey: string): Promise<PlaylistCandidate[]> {
+  const res = await fetch(
+    `${YOUTUBE_API_BASE}/playlistItems?part=snippet&maxResults=${CANDIDATE_COUNT}&playlistId=${uploadsPlaylistId}&key=${apiKey}`,
+    { next: { revalidate: REVALIDATE_SECONDS } }
+  );
+  if (!res.ok) return [];
+
+  const data = await res.json();
+  const items: unknown[] = data?.items ?? [];
+
+  return items
+    .map((item) => {
+      const snippet = (item as { snippet?: { resourceId?: { videoId?: string }; title?: string } }).snippet;
+      return { videoId: snippet?.resourceId?.videoId ?? '', title: snippet?.title ?? 'Latest Sermon' };
+    })
+    .filter((candidate): candidate is PlaylistCandidate => candidate.videoId !== '');
+}
+
+async function fetchDurationsSeconds(videoIds: string[], apiKey: string): Promise<Map<string, number>> {
+  const res = await fetch(
+    `${YOUTUBE_API_BASE}/videos?part=contentDetails&id=${videoIds.join(',')}&key=${apiKey}`,
+    { next: { revalidate: REVALIDATE_SECONDS } }
+  );
+  if (!res.ok) return new Map();
+
+  const data = await res.json();
+  const items: unknown[] = data?.items ?? [];
+
+  return new Map(
+    items.map((item) => {
+      const typed = item as { id: string; contentDetails?: { duration?: string } };
+      return [typed.id, parseISO8601DurationSeconds(typed.contentDetails?.duration ?? 'PT0S')];
+    })
+  );
+}
+
+// Fetches the most recent non-Short upload from the Aenon Church YouTube
+// channel (youtube.com/aenonchurch) for the Latest Sermon embed. Requires
 // YOUTUBE_API_KEY to be set; returns null (caller falls back to the
-// manual video ID in src/lib/config.ts) if the key is missing or any
-// call fails, so a quota error or API outage never breaks the page.
+// manual video ID in src/lib/config.ts) if the key is missing, no call
+// qualifies, or any call fails, so a quota error or API outage never
+// breaks the page.
 export async function getLatestSermonVideo(): Promise<LatestVideo | null> {
   const apiKey = process.env.YOUTUBE_API_KEY;
   if (!apiKey) return null;
@@ -38,18 +101,20 @@ export async function getLatestSermonVideo(): Promise<LatestVideo | null> {
     // prefix replaced by UU — avoids a second API call just to look it up.
     const uploadsPlaylistId = `UU${channelId.slice(2)}`;
 
-    const res = await fetch(
-      `${YOUTUBE_API_BASE}/playlistItems?part=snippet&maxResults=1&playlistId=${uploadsPlaylistId}&key=${apiKey}`,
-      { next: { revalidate: REVALIDATE_SECONDS } }
+    const candidates = await fetchRecentUploads(uploadsPlaylistId, apiKey);
+    if (candidates.length === 0) return null;
+
+    const durations = await fetchDurationsSeconds(
+      candidates.map((c) => c.videoId),
+      apiKey
     );
-    if (!res.ok) return null;
 
-    const data = await res.json();
-    const item = data?.items?.[0];
-    const videoId = item?.snippet?.resourceId?.videoId;
-    if (!videoId) return null;
+    const latestFullLength = candidates.find(
+      (c) => (durations.get(c.videoId) ?? 0) > SHORT_MAX_SECONDS
+    );
+    if (!latestFullLength) return null;
 
-    return { videoId, title: item?.snippet?.title ?? 'Latest Sermon' };
+    return latestFullLength;
   } catch {
     return null;
   }
