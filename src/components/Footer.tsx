@@ -27,6 +27,12 @@ const connectLinks = [
   { label: 'Watch Online', href: 'https://www.youtube.com/aenonchurch' },
 ];
 
+const legalLinks = [
+  { label: 'Terms & Conditions', href: '/terms' },
+  { label: 'Refund & Cancellation Policy', href: '/refund-policy' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+];
+
 const socialLinks = [
   { icon: Facebook, href: 'https://www.facebook.com/AenonMinistries/', label: 'Facebook' },
   { icon: Instagram, href: 'https://www.instagram.com/aenonchurch', label: 'Instagram' },
@@ -168,6 +174,17 @@ export default function Footer() {
           <p className="text-white/30 text-xs">
             &copy; {new Date().getFullYear()} Aenon Church. All rights reserved.
           </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-white/40 hover:text-white/70 text-xs transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
           <p className="text-white/20 text-xs">
             For the glory of God alone.
           </p>
