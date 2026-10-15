@@ -23,11 +23,14 @@ const shortFmt = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
 });
 
+const WINDOW_DAYS = 90;
+
 export function generateRecurringEvents(): EventItem[] {
   const events: EventItem[] = [];
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const end = new Date('2026-12-31');
+  const end = new Date(today);
+  end.setDate(end.getDate() + WINDOW_DAYS);
 
   const cur = new Date(today);
   while (cur <= end) {

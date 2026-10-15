@@ -7,18 +7,12 @@ import { Clock, Mail, X, Eye } from 'lucide-react';
 
 // ✅ Toggle maintenance mode: set to true/false and push
 const MAINTENANCE_ENABLED = true;
-const BYPASS_SECRET = 'aenon-preview-2026';
-const BYPASS_DURATION = 5 * 60 * 1000; // 5 minutes in ms
 const COOKIE_NAME = 'aenon-bypass-expires';
 
 function getCookie(name: string): string | null {
   if (typeof document === 'undefined') return null;
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
   return match ? match[2] : null;
-}
-
-function setCookie(name: string, value: string, maxAgeSeconds: number) {
-  document.cookie = `${name}=${value}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax`;
 }
 
 function deleteCookie(name: string) {
@@ -90,14 +84,23 @@ export default function MaintenanceGate({ children }: { children: React.ReactNod
   }, [clickCount]);
 
   // Bypass activation
-  const handleBypass = useCallback(() => {
+  const handleBypass = useCallback(async () => {
     const secret = prompt('Enter admin access code:');
-    if (secret === BYPASS_SECRET) {
-      const expiresAt = Date.now() + BYPASS_DURATION;
-      setCookie(COOKIE_NAME, String(expiresAt), 300);
-      setBypassed(true);
-    } else if (secret !== null) {
-      alert('Invalid code.');
+    if (secret === null) return;
+
+    try {
+      const res = await fetch('/api/maintenance-bypass', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ secret }),
+      });
+      if (res.ok) {
+        setBypassed(true);
+      } else {
+        alert('Invalid code.');
+      }
+    } catch {
+      alert('Something went wrong. Please try again.');
     }
   }, []);
 
