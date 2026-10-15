@@ -1,21 +1,14 @@
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
 const REVALIDATE_SECONDS = 3600;
 
-// How many of the most recent uploads to check when looking for a single
-// non-Short (the uploads playlist mixes Shorts and full videos, so the
-// single newest upload is often a Short rather than a sermon).
-const LATEST_CANDIDATE_COUNT = 10;
+// How many of the most recent uploads to scan for qualifying sermons.
+// The uploads playlist mixes Shorts, livestreams, and clips in with real
+// sermons, so both the single "latest" lookup and the carousel need a
+// decent buffer to find enough that qualify. 50 is the API's max per call,
+// and costs the same 1 quota unit as asking for fewer.
+const CANDIDATE_COUNT = 50;
 
-// How many of the most recent uploads to check when building the recent
-// sermons carousel. 50 is the API's max per call.
-const RECENT_CANDIDATE_COUNT = 50;
-
-// YouTube Shorts are capped at 3 minutes; there's no explicit "is this a
-// Short" field in the API, so duration is the reliable way to tell them
-// apart from a full-length sermon.
-const SHORT_MAX_SECONDS = 180;
-
-// Full sermons run well over this; filtering by it also excludes any
+// Full sermons run well over this; filtering by it excludes Shorts and
 // shorter clips/announcements mixed into the uploads playlist.
 const SERMON_MIN_SECONDS = 50 * 60;
 
@@ -44,6 +37,11 @@ interface UploadCandidate {
   publishedAt: string;
 }
 
+interface VideoMeta {
+  durationSeconds: number;
+  isLiveStream: boolean;
+}
+
 function parseISO8601DurationSeconds(duration: string): number {
   const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(duration);
   if (!match) return 0;
@@ -53,6 +51,13 @@ function parseISO8601DurationSeconds(duration: string): number {
     parseInt(minutes ?? '0', 10) * 60 +
     parseInt(seconds ?? '0', 10)
   );
+}
+
+// Over 50 minutes and not a livestream (live, upcoming, or an archived
+// past broadcast — the API marks all three with a liveStreamingDetails
+// block that a plain upload never has).
+function qualifiesAsSermon(meta: VideoMeta | undefined): boolean {
+  return !!meta && meta.durationSeconds > SERMON_MIN_SECONDS && !meta.isLiveStream;
 }
 
 async function resolveChannelId(apiKey: string): Promise<string | null> {
@@ -109,9 +114,9 @@ async function fetchRecentUploads(
     .filter((candidate): candidate is UploadCandidate => candidate.videoId !== '');
 }
 
-async function fetchDurationsSeconds(videoIds: string[], apiKey: string): Promise<Map<string, number>> {
+async function fetchVideoMeta(videoIds: string[], apiKey: string): Promise<Map<string, VideoMeta>> {
   const res = await fetch(
-    `${YOUTUBE_API_BASE}/videos?part=contentDetails&id=${videoIds.join(',')}&key=${apiKey}`,
+    `${YOUTUBE_API_BASE}/videos?part=contentDetails,liveStreamingDetails&id=${videoIds.join(',')}&key=${apiKey}`,
     { next: { revalidate: REVALIDATE_SECONDS } }
   );
   if (!res.ok) return new Map();
@@ -121,16 +126,26 @@ async function fetchDurationsSeconds(videoIds: string[], apiKey: string): Promis
 
   return new Map(
     items.map((item) => {
-      const typed = item as { id: string; contentDetails?: { duration?: string } };
-      return [typed.id, parseISO8601DurationSeconds(typed.contentDetails?.duration ?? 'PT0S')];
+      const typed = item as {
+        id: string;
+        contentDetails?: { duration?: string };
+        liveStreamingDetails?: unknown;
+      };
+      return [
+        typed.id,
+        {
+          durationSeconds: parseISO8601DurationSeconds(typed.contentDetails?.duration ?? 'PT0S'),
+          isLiveStream: typed.liveStreamingDetails !== undefined,
+        },
+      ];
     })
   );
 }
 
-// Fetches the most recent non-Short upload from the Aenon Church YouTube
+// Fetches the most recent qualifying sermon from the Aenon Church YouTube
 // channel (youtube.com/aenonchurch) for the Latest Sermon embed. Requires
 // YOUTUBE_API_KEY to be set; returns null (caller falls back to the
-// manual video ID in src/lib/config.ts) if the key is missing, no call
+// manual video ID in src/lib/config.ts) if the key is missing, nothing
 // qualifies, or any call fails, so a quota error or API outage never
 // breaks the page.
 export async function getLatestSermonVideo(): Promise<LatestVideo | null> {
@@ -141,30 +156,28 @@ export async function getLatestSermonVideo(): Promise<LatestVideo | null> {
     const uploadsPlaylistId = await getUploadsPlaylistId(apiKey);
     if (!uploadsPlaylistId) return null;
 
-    const candidates = await fetchRecentUploads(uploadsPlaylistId, apiKey, LATEST_CANDIDATE_COUNT);
+    const candidates = await fetchRecentUploads(uploadsPlaylistId, apiKey, CANDIDATE_COUNT);
     if (candidates.length === 0) return null;
 
-    const durations = await fetchDurationsSeconds(
+    const meta = await fetchVideoMeta(
       candidates.map((c) => c.videoId),
       apiKey
     );
 
-    const latestFullLength = candidates.find(
-      (c) => (durations.get(c.videoId) ?? 0) > SHORT_MAX_SECONDS
-    );
-    if (!latestFullLength) return null;
+    const latestSermon = candidates.find((c) => qualifiesAsSermon(meta.get(c.videoId)));
+    if (!latestSermon) return null;
 
-    return { videoId: latestFullLength.videoId, title: latestFullLength.title };
+    return { videoId: latestSermon.videoId, title: latestSermon.title };
   } catch {
     return null;
   }
 }
 
-// Fetches the 10 most recent full-length sermons (over 50 minutes, so
-// Shorts and shorter clips/announcements are excluded) for the Recent
-// Sermons carousel. Requires YOUTUBE_API_KEY; returns null (caller falls
-// back to its own hardcoded list) if the key is missing, nothing
-// qualifies, or any call fails.
+// Fetches the 10 most recent qualifying sermons (over 50 minutes, not a
+// livestream — so Shorts, clips, announcements, and streamed services are
+// all excluded) for the Recent Sermons carousel. Requires YOUTUBE_API_KEY;
+// returns null (caller falls back to its own hardcoded list) if the key is
+// missing, nothing qualifies, or any call fails.
 export async function getRecentSermons(): Promise<SermonSummary[] | null> {
   const apiKey = process.env.YOUTUBE_API_KEY;
   if (!apiKey) return null;
@@ -173,16 +186,16 @@ export async function getRecentSermons(): Promise<SermonSummary[] | null> {
     const uploadsPlaylistId = await getUploadsPlaylistId(apiKey);
     if (!uploadsPlaylistId) return null;
 
-    const candidates = await fetchRecentUploads(uploadsPlaylistId, apiKey, RECENT_CANDIDATE_COUNT);
+    const candidates = await fetchRecentUploads(uploadsPlaylistId, apiKey, CANDIDATE_COUNT);
     if (candidates.length === 0) return null;
 
-    const durations = await fetchDurationsSeconds(
+    const meta = await fetchVideoMeta(
       candidates.map((c) => c.videoId),
       apiKey
     );
 
     const sermons = candidates
-      .filter((c) => (durations.get(c.videoId) ?? 0) > SERMON_MIN_SECONDS)
+      .filter((c) => qualifiesAsSermon(meta.get(c.videoId)))
       .slice(0, RECENT_SERMONS_COUNT)
       .map((c) => ({
         videoId: c.videoId,
