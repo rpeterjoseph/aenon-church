@@ -4,21 +4,21 @@ import type { SermonSummary } from '@/lib/youtube';
 
 export default function SermonGrid({ sermons }: { sermons: SermonSummary[] }) {
   return (
-    <div className="flex flex-wrap gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-items-center max-w-[1128px] mx-auto">
       {sermons.map((sermon) => (
         <a
           key={sermon.videoId}
           href={`https://youtu.be/${sermon.videoId}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative w-[300px] sm:w-[360px]"
+          className="group relative w-full max-w-[360px]"
         >
           <div className="relative aspect-video rounded-lg overflow-hidden bg-navy-950 shadow-md transition-all duration-300 origin-center group-hover:scale-105 group-hover:shadow-2xl">
             <Image
               src={`https://img.youtube.com/vi/${sermon.videoId}/hqdefault.jpg`}
               alt={sermon.title}
               fill
-              sizes="(min-width: 640px) 360px, 300px"
+              sizes="(min-width: 640px) 360px, 100vw"
               className="object-cover"
             />
 
