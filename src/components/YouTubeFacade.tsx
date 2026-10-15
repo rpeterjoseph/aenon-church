@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { Play } from 'lucide-react';
 
 export default function YouTubeFacade({
@@ -38,19 +37,21 @@ export default function YouTubeFacade({
   }
 
   return (
-    <div className={`youtube-container shadow-2xl bg-black ${className}`}>
+    <div className={`relative overflow-hidden rounded-2xl shadow-2xl bg-black ${className}`}>
       <button
         type="button"
         onClick={() => setPlaying(true)}
-        className="absolute inset-0 w-full h-full group"
+        className="relative block w-full group"
         aria-label={`Play: ${title}`}
       >
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element -- sized by its
+            own natural dimensions so the box always matches the real
+            thumbnail with no letterboxing or cropping */}
+        <img
           src={thumbnailSrc}
           alt={title}
-          fill
-          sizes="(min-width: 1024px) 60vw, 100vw"
-          className="object-contain"
+          className="w-full h-auto block"
+          loading="lazy"
           // maxresdefault.jpg doesn't exist for every video; fall back to
           // hqdefault.jpg (always available) rather than show a broken image.
           onError={() => setThumbnailSrc(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)}
