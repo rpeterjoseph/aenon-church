@@ -1,6 +1,7 @@
 import { Play } from 'lucide-react';
 import { LATEST_SERMON_VIDEO_ID, LATEST_SERMON_PLAYLIST_ID } from '@/lib/config';
 import { getLatestSermonVideo } from '@/lib/youtube';
+import YouTubeFacade from './YouTubeFacade';
 
 export default async function LatestSermonEmbed({ className = '' }: { className?: string }) {
   const latest = await getLatestSermonVideo();
@@ -28,19 +29,9 @@ export default async function LatestSermonEmbed({ className = '' }: { className?
 
   // Only the manual fallback video has a configured playlist to attach;
   // a live-fetched video is already confirmed as the latest upload.
-  const src =
-    !latest && LATEST_SERMON_PLAYLIST_ID
-      ? `https://www.youtube.com/embed/${videoId}?list=${LATEST_SERMON_PLAYLIST_ID}`
-      : `https://www.youtube.com/embed/${videoId}`;
+  const playlistId = !latest ? LATEST_SERMON_PLAYLIST_ID || undefined : undefined;
 
   return (
-    <div className={`youtube-container shadow-2xl ${className}`}>
-      <iframe
-        src={src}
-        title={title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
-    </div>
+    <YouTubeFacade videoId={videoId} title={title} playlistId={playlistId} className={className} />
   );
 }
