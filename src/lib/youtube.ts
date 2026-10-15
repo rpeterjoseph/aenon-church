@@ -12,7 +12,7 @@ const CANDIDATE_COUNT = 50;
 // shorter clips/announcements mixed into the uploads playlist.
 const SERMON_MIN_SECONDS = 50 * 60;
 
-const RECENT_SERMONS_COUNT = 10;
+const RECENT_SERMONS_COUNT = 12;
 
 const dateLabelFmt = new Intl.DateTimeFormat('en-US', {
   month: 'short',

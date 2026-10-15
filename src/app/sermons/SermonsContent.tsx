@@ -3,10 +3,10 @@
 import { useEffect, type ReactNode } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import type { SermonSummary } from '@/lib/youtube';
-import SermonCarousel from './SermonCarousel';
+import SermonGrid from './SermonGrid';
 
 // Used only if YOUTUBE_API_KEY isn't set or the API call fails — keeps the
-// carousel populated instead of showing nothing.
+// section populated instead of showing nothing.
 const FALLBACK_SERMONS: SermonSummary[] = [
   { videoId: '_agFfQPeRD8', title: "Dimensions of God's Love", dateLabel: 'Sep 1, 2026' },
   { videoId: 'eEICprqD-RA', title: 'Rest in God', dateLabel: 'Aug 21, 2026' },
@@ -77,7 +77,7 @@ export default function SermonsContent({
           </h2>
 
           <div className="reveal">
-            <SermonCarousel sermons={sermonsToShow} />
+            <SermonGrid sermons={sermonsToShow} />
           </div>
 
           {/* YouTube CTA */}
