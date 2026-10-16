@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, MapPin, Users, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, Heart, ArrowRight } from 'lucide-react';
 
 export default function Conference2026Content() {
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Conference2026Content() {
         />
       </section>
 
-      {/* Intro + Event Details */}
+      {/* Intro */}
       <section className="section-gap bg-white">
         <div className="max-w-5xl mx-auto section-padding">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -49,51 +49,69 @@ export default function Conference2026Content() {
             </p>
           </div>
 
-          <div className="reveal reveal-delay-2 bg-silver-100 rounded-2xl p-8 md:p-14">
-            <p className="text-xs uppercase tracking-[0.2em] text-navy-900/40 font-medium mb-10">
-              Event Details
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
-              <div>
-                <Calendar className="w-6 h-6 text-accent-500 mb-4" />
-                <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3">
-                  Dates
-                </p>
-                <p className="text-navy-900 font-bold text-xl leading-snug">
-                  November 12&ndash;15, 2026
-                </p>
+          {/* Event Details — open stat row, no card */}
+          <div className="reveal reveal-delay-2 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-silver-200 border-y border-silver-200">
+            <div className="py-8 sm:py-10 sm:px-8 sm:first:pl-0 sm:last:pr-0">
+              <Calendar className="w-6 h-6 text-accent-500 mb-4" />
+              <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3">
+                Dates
+              </p>
+              <p className="text-navy-900 font-bold text-xl leading-snug">
+                November 12&ndash;15, 2026
+              </p>
+            </div>
+            <div className="py-8 sm:py-10 sm:px-8">
+              <Clock className="w-6 h-6 text-accent-500 mb-4" />
+              <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3">
+                Time
+              </p>
+              <p className="text-navy-900 font-bold text-xl leading-snug">
+                9:00 AM &ndash; 2:00 PM
+              </p>
+            </div>
+            <div className="py-8 sm:py-10 sm:px-8 sm:first:pl-0 sm:last:pr-0">
+              <MapPin className="w-6 h-6 text-accent-500 mb-4" />
+              <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3">
+                Venue
+              </p>
+              <p className="text-navy-900 font-bold text-lg leading-snug">
+                ANR Gardens, HMT Nagar,
+                <br />
+                Secunderabad, Telangana
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Speakers */}
+      <section className="section-gap bg-white">
+        <div className="max-w-5xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">Speakers</p>
+          <h2 className="reveal heading-md text-navy-900 mb-12">
+            Hear from voices devoted to Christ-centered ministry.
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="reveal reveal-delay-1">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-navy-950 mb-5">
+                <Image
+                  src="/images/pastor-hero.jpg"
+                  alt="Pastor William Cary"
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
               </div>
-              <div>
-                <Clock className="w-6 h-6 text-accent-500 mb-4" />
-                <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3">
-                  Time
-                </p>
-                <p className="text-navy-900 font-bold text-xl leading-snug">
-                  9:00 AM &ndash; 2:00 PM
-                </p>
-              </div>
-              <div>
-                <MapPin className="w-6 h-6 text-accent-500 mb-4" />
-                <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3">
-                  Venue
-                </p>
-                <p className="text-navy-900 font-bold text-lg leading-snug">
-                  ANR Gardens, HMT Nagar,
-                  <br />
-                  Secunderabad, Telangana
-                </p>
-              </div>
-              <div>
-                <Users className="w-6 h-6 text-accent-500 mb-4" />
-                <p className="text-navy-900/60 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3">
-                  Speakers
-                </p>
-                <p className="text-navy-900 font-bold text-lg leading-snug">
-                  Pastor William Cary
-                  <br />
-                  &amp; other speakers
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-navy-900 mb-1">Pastor William Cary</h3>
+              <p className="text-silver-400 text-sm uppercase tracking-wider">
+                Senior Pastor, Aenon Church
+              </p>
+            </div>
+
+            <div className="reveal reveal-delay-2 aspect-[4/5] rounded-2xl border-2 border-dashed border-silver-200 flex flex-col items-center justify-center text-center p-8">
+              <Users className="w-8 h-8 text-silver-300 mb-4" />
+              <p className="text-navy-900 font-semibold mb-1">More Speakers</p>
+              <p className="text-silver-400 text-sm">To be announced</p>
             </div>
           </div>
         </div>
@@ -125,13 +143,21 @@ export default function Conference2026Content() {
       <section className="section-gap bg-navy-950 noise-bg">
         <div className="max-w-3xl mx-auto section-padding text-center">
           <h2 className="reveal heading-md text-white mb-6">
-            Questions about the conference?
+            Partner with us.
           </h2>
           <p className="reveal reveal-delay-1 text-white/50 text-lg mb-10">
-            Reach out to our team and we&apos;ll be glad to help.
+            Support this conference through your generosity, or reach out
+            with any questions.
           </p>
           <div className="reveal reveal-delay-2 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="btn-primary">
+            <Link href="/give" className="btn-white">
+              Give Online
+              <Heart className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/30 text-white text-sm font-medium uppercase tracking-[0.15em] rounded-full hover:bg-white/10 transition-all duration-300"
+            >
               Contact Us
               <ArrowRight className="w-4 h-4" />
             </Link>
