@@ -18,7 +18,7 @@ const historyItems = [
   { year: '2012', img: null, title: 'Praying for a Place of Our Own', desc: 'Rising rents and limited space forced the church to move between rented halls once more — and from that struggle grew a fervent prayer for a permanent home.' },
   { year: '2015', img: null, title: 'Still Walking in Faith', desc: 'The search for a permanent home continued, moving from hall to hall — yet through every move, the church held fast to God\'s faithfulness.' },
   { year: '2017', img: null, title: 'Sustained by His Provision', desc: 'Even as the congregation kept shifting between rented halls, God\'s provision never failed, carrying the church\'s prayer for a home of its own year after year.' },
-  { year: '2020', img: null, title: 'Church Without Walls', desc: 'When COVID-19 scattered the congregation and disrupted every gathering, Aenon Church began livestreaming Sunday services — a shift born out of crisis that still connects the church family today.' },
+  { year: '2020', img: null, title: 'Church Without Walls', desc: 'When national regulations classified churches as non-essential during COVID-19 lockdowns, Aenon Church began livestreaming Sunday services — proof that the church is far more essential than any authority could measure, in a shift that still connects the congregation today.' },
   { year: '2024', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2026', img: null, title: 'Today', desc: 'With three Sunday services and a thriving weekly program, Aenon continues to grow and glorify God in Tarnaka.' },
 ];
