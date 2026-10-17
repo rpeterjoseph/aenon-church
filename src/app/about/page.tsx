@@ -15,7 +15,7 @@ const historyItems = [
   { year: '2006', img: '/images/history/history-2007.jpg', title: 'Outgrowing Our Walls', desc: 'As the congregation grew, Aenon Church moved its services to a rented function hall to make room for the growing community.' },
   { year: '2007', img: '/images/history/history-2006.jpg', title: 'Growing in Number and Faith', desc: 'Attendance continued to rise, with more believers each week gathering to be blessed by the Word.' },
   { year: '2009', img: null, title: 'National Pastors & Leaders Conference', desc: 'Aenon Church hosted its first National Pastors and Leaders Conference, welcoming pastors and ministry leaders from across India to learn, grow, and worship together.' },
-  { year: '2012', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2012', img: null, title: 'Praying for a Place of Our Own', desc: 'Rising rents and limited space forced the church to move between rented halls once more — and from that struggle grew a fervent prayer for a permanent home.' },
   { year: '2015', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2017', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2020', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
