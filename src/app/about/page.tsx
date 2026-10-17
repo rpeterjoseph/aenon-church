@@ -11,7 +11,7 @@ const historyItems = [
   { year: '1999', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2003', img: '/images/history/history-2003.jpg', title: 'The Ministry Continues', desc: 'Aenon Church hosted its annual Gospel Healing Festival together with its branch churches, continuing the ministry\'s work of prayer and healing.' },
   { year: '2004', img: '/images/history/history-2004.jpg', title: 'Church Services', desc: 'Believers gathered every Sunday for worship, prayer, and the Word — a rhythm of weekly services that has anchored Aenon\'s community ever since.' },
-  { year: '2005', img: '/images/history/history-2005.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2005', img: '/images/history/history-2005.jpg', title: 'Medical Camp Ministries', desc: 'Aenon Church hosted a medical camp, providing free medication and care to the local community.' },
   { year: '2006', img: '/images/history/history-2006.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2007', img: '/images/history/history-2007.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2009', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
