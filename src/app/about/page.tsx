@@ -7,9 +7,9 @@ import { ArrowRight, Heart, BookOpen, Users, Globe } from 'lucide-react';
 
 const historyItems = [
   { year: '1989', img: '/images/history/history-1989.jpg', title: 'The Beginning', desc: 'Aenon Church was founded with a small group of believers with a vision to glorify God and reach Hyderabad with the Gospel.' },
-  { year: '1996', img: '/images/history/history-1996.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '1996', img: '/images/history/history-1996.jpg', title: 'United in Marriage and Ministry', desc: 'Pastor William Cary married Hepsibha William, and together they carried forward the ministry that began in 1989 — a partnership in marriage and mission that continues to lead Aenon Church today.' },
   { year: '1999', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
-  { year: '2003', img: '/images/history/history-2003.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2003', img: '/images/history/history-2003.jpg', title: 'The Ministry Continues', desc: 'Aenon Church hosted its annual Gospel Healing Festival together with its branch churches, continuing the ministry\'s work of prayer and healing.' },
   { year: '2004', img: '/images/history/history-2004.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2005', img: '/images/history/history-2005.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2006', img: '/images/history/history-2006.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
