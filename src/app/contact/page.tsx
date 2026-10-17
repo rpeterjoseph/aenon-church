@@ -157,8 +157,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">Address</h3>
                     <p className="text-silver-400 text-sm leading-relaxed">
+                      12-13-829/87, Near Vijaya Dairy,<br />
                       Tarnaka, Secunderabad,<br />
-                      Hyderabad, Telangana, India
+                      Hyderabad, Telangana 500017, India
                     </p>
                   </div>
                 </div>
@@ -229,7 +230,7 @@ export default function ContactPage() {
               {/* Map */}
               <div className="reveal mt-10 rounded-2xl overflow-hidden aspect-[4/3]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2!2d78.5412!3d17.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTarnaka%2C%20Secunderabad%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1"
+                  src="https://www.google.com/maps?q=12-13-829%2F87%2C%20Near%20Vijaya%20Dairy%2C%20Tarnaka%2C%20Secunderabad%2C%20Hyderabad%2C%20Telangana%20500017&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

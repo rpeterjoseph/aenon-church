@@ -146,8 +146,8 @@ export default function RefundPolicyContent() {
               Contact
             </h2>
             <p className="text-silver-400 leading-relaxed">
-              Aenon Ministries &amp; Trust, Tarnaka, Secunderabad, Hyderabad,
-              Telangana, India
+              Aenon Ministries &amp; Trust, 12-13-829/87, Near Vijaya Dairy,
+              Tarnaka, Secunderabad, Hyderabad, Telangana 500017, India
               <br />
               Email:{' '}
               <a

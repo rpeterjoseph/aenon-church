@@ -486,8 +486,9 @@ export default function HomeContent({ latestSermonEmbed }: { latestSermonEmbed: 
                   <div>
                     <p className="font-medium text-navy-900 mb-1">Our Location</p>
                     <p className="text-silver-400 text-sm">
+                      12-13-829/87, Near Vijaya Dairy,<br />
                       Tarnaka, Secunderabad,<br />
-                      Hyderabad, Telangana, India
+                      Hyderabad, Telangana 500017, India
                     </p>
                   </div>
                 </div>

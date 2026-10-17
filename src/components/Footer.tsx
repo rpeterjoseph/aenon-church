@@ -127,9 +127,11 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-white/40 mt-1 flex-shrink-0" />
                 <p className="text-white/60 text-sm leading-relaxed">
+                  12-13-829/87, Near Vijaya Dairy,
+                  <br />
                   Tarnaka, Secunderabad,
                   <br />
-                  Hyderabad, Telangana, India
+                  Hyderabad, Telangana 500017, India
                 </p>
               </div>
               <div className="flex items-center gap-3">
