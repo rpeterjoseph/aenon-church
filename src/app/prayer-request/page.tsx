@@ -5,10 +5,34 @@ import { Send, Heart } from 'lucide-react';
 
 export default function PrayerRequestPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(false);
+    setSubmitting(true);
+
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/prayer-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.get('firstName'),
+          lastName: form.get('lastName'),
+          email: form.get('email'),
+          message: form.get('message'),
+          keepPrivate: form.get('keepPrivate') === 'on',
+        }),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -51,6 +75,7 @@ export default function PrayerRequestPage() {
                   <label className="block text-sm font-medium text-navy-900 mb-2">First Name</label>
                   <input
                     type="text"
+                    name="firstName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                     placeholder="John"
@@ -60,6 +85,7 @@ export default function PrayerRequestPage() {
                   <label className="block text-sm font-medium text-navy-900 mb-2">Last Name <span className="text-silver-300 font-normal">(optional)</span></label>
                   <input
                     type="text"
+                    name="lastName"
                     className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                     placeholder="Doe"
                   />
@@ -70,6 +96,7 @@ export default function PrayerRequestPage() {
                 <label className="block text-sm font-medium text-navy-900 mb-2">Email Address <span className="text-silver-300 font-normal">(optional)</span></label>
                 <input
                   type="email"
+                  name="email"
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                   placeholder="john@example.com"
                 />
@@ -78,6 +105,7 @@ export default function PrayerRequestPage() {
               <div>
                 <label className="block text-sm font-medium text-navy-900 mb-2">Prayer Request</label>
                 <textarea
+                  name="message"
                   required
                   rows={6}
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all resize-none"
@@ -91,6 +119,7 @@ export default function PrayerRequestPage() {
                   <input
                     type="checkbox"
                     id="private"
+                    name="keepPrivate"
                     className="mt-1 w-4 h-4 rounded border-silver-200 text-navy-900 focus:ring-navy-900/20"
                   />
                   <label htmlFor="private" className="text-sm text-silver-400 leading-relaxed">
@@ -99,8 +128,15 @@ export default function PrayerRequestPage() {
                 </div>
               </div>
 
-              <button type="submit" className="btn-primary">
-                Submit Prayer Request
+              {error && (
+                <p className="text-sm text-red-600">
+                  Something went wrong sending your request. Please try again, or email us directly at{' '}
+                  <a href="mailto:aenonchurch@gmail.com" className="underline">aenonchurch@gmail.com</a>.
+                </p>
+              )}
+
+              <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                {submitting ? 'Sending…' : 'Submit Prayer Request'}
                 <Send className="w-4 h-4" />
               </button>
             </form>
