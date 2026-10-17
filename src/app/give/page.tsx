@@ -117,8 +117,7 @@ export default function GivePage() {
                   <p className="text-silver-400 text-sm">
                     Open any UPI app — PhonePe, Google Pay, Paytm, or your
                     bank&rsquo;s app — and scan this code to give directly
-                    and securely to Aenon Church. No fees, no middleman,
-                    instant confirmation.
+                    and securely to Aenon Church.
                   </p>
                 </div>
               </div>
