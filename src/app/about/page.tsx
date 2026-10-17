@@ -80,15 +80,30 @@ export default function AboutPage() {
                 Hyderabad, welcoming everyone who seeks to know God more deeply.
               </p>
             </div>
-            <div className="reveal reveal-delay-1">
+            <div className="reveal reveal-delay-1 space-y-6">
               <div className="aspect-video rounded-2xl bg-navy-950 relative overflow-hidden">
                 <Image
-                  src="/images/about-our-beginning.webp"
-                  alt="Aenon Church gathering in the early years"
+                  src="/images/about-then.webp"
+                  alt="Aenon Church in its early years"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-navy-950/80 backdrop-blur-sm text-white text-xs uppercase tracking-[0.2em] font-nav">
+                  Then
+                </span>
+              </div>
+              <div className="aspect-video rounded-2xl bg-navy-950 relative overflow-hidden">
+                <Image
+                  src="/images/about-now.jpg"
+                  alt="Aenon Church today"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-accent-500 text-white text-xs uppercase tracking-[0.2em] font-nav">
+                  Now
+                </span>
               </div>
             </div>
           </div>
