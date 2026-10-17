@@ -171,7 +171,7 @@ function MobileAccordion({
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -192,7 +192,9 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-8 py-3 md:py-4"
+        className={`fixed left-0 right-0 z-50 px-4 sm:px-6 md:px-8 py-3 md:py-4 transition-[top] duration-300 ${
+          offsetTop ? 'top-9 sm:top-10' : 'top-0'
+        }`}
       >
         <div
           className={`max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex items-center justify-between rounded-full border transition-all duration-500 ${
