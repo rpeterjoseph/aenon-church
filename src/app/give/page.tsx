@@ -146,7 +146,7 @@ export default function GivePage() {
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
                 <p className="text-xs text-silver-300 mt-4">
-                  PayU checkout coming soon
+                  PayU coming soon
                 </p>
               </div>
             </div>
