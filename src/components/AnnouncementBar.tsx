@@ -8,7 +8,7 @@ export default function AnnouncementBar({ onDismiss }: { onDismiss: () => void }
     <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-navy-950 via-blue-900 to-blue-500 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-9 sm:h-10 flex items-center justify-center gap-3">
         <Link
-          href="/events"
+          href="/gracefestivals2026"
           className="flex-1 flex items-center justify-center gap-2 text-center text-[11px] sm:text-xs font-medium tracking-wide hover:opacity-90 transition-opacity truncate"
         >
           <span className="truncate">

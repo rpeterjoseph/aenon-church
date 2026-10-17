@@ -105,7 +105,7 @@ export default function PromoModal() {
 
             {/* Grace Festivals 2026 — dark-to-light blue gradient */}
             <Link
-              href="/events"
+              href="/gracefestivals2026"
               onClick={close}
               className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-950 via-blue-900 to-blue-400 noise-bg p-6 flex flex-col justify-between min-h-[200px]"
             >
@@ -119,7 +119,7 @@ export default function PromoModal() {
                 </h3>
                 <div className="flex items-center gap-2 text-white/70 text-xs">
                   <Calendar className="w-3.5 h-3.5" />
-                  November 12&ndash;15, 2026 &middot; 7:00 PM
+                  November 12&ndash;15, 2026 &middot; 6:00 PM
                 </div>
               </div>
               <div className="relative z-10 flex items-center gap-2 text-white text-xs font-medium uppercase tracking-wider mt-4">
