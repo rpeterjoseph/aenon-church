@@ -112,10 +112,10 @@ export default function PromoModal() {
               <div className="absolute top-0 right-0 w-28 h-28 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
               <div className="relative z-10">
                 <span className="inline-block px-3 py-1 bg-white/15 text-sky-200 text-[10px] font-medium rounded-full uppercase tracking-wider backdrop-blur-sm mb-4">
-                  Grace Festivals 2026
+                  Aenon Events 2026
                 </span>
                 <h3 className="text-white font-bold text-lg leading-snug mb-2">
-                  You Are Invited
+                  Grace Festivals
                 </h3>
                 <div className="flex items-center gap-2 text-white/70 text-xs">
                   <Calendar className="w-3.5 h-3.5" />
