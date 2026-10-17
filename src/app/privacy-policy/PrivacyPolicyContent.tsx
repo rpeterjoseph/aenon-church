@@ -170,13 +170,11 @@ export default function PrivacyPolicyContent() {
             </p>
 
             <h2 className="text-2xl font-bold text-navy-900 mt-12 mb-4">
-              Contact (Grievance Officer)
+              Contact
             </h2>
             <p className="text-silver-400 leading-relaxed">
-              [PLACEHOLDER: name of trustee responsible]
-              <br />
-              Aenon Ministries &amp; Trust, Tarnaka, Secunderabad, Hyderabad,
-              Telangana, India
+              Aenon Ministries &amp; Trust, 12-13-829/87, Near Vijaya Dairy,
+              Tarnaka, Secunderabad, Hyderabad, Telangana 500017, India
               <br />
               Email:{' '}
               <a
