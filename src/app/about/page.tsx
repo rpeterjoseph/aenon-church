@@ -256,15 +256,17 @@ export default function AboutPage() {
             Meet our team.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex justify-center">
             {[
-              { name: 'Pastor Name', role: 'Senior Pastor', initials: 'SP' },
-              { name: 'Pastor Name', role: 'Associate Pastor', initials: 'AP' },
-              { name: 'Leader Name', role: 'Worship Director', initials: 'WD' },
+              { name: 'Pastor William Cary', role: 'Founder & Senior Pastor', initials: 'WC', img: '/images/pastor-hero.jpg' },
             ].map((leader, i) => (
               <div key={i} className={`reveal reveal-delay-${i} text-center`}>
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-navy-700 to-navy-900 mx-auto mb-6 border-2 border-white/10 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-white/30 font-nav">{leader.initials}</span>
+                <div className="w-32 h-32 rounded-full mx-auto mb-6 border-2 border-white/10 overflow-hidden bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center relative">
+                  {leader.img ? (
+                    <Image src={leader.img} alt={leader.name} fill sizes="128px" className="object-cover" />
+                  ) : (
+                    <span className="text-2xl font-bold text-white/30 font-nav">{leader.initials}</span>
+                  )}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">{leader.name}</h3>
                 <p className="text-white/40 text-sm">{leader.role}</p>
