@@ -10,7 +10,7 @@ const historyItems = [
   { year: '1996', img: '/images/history/history-1996.jpg', title: 'United in Marriage and Ministry', desc: 'Pastor William Cary married Hepsibha William, and together they carried forward the ministry that began in 1989 — a partnership in marriage and mission that continues to lead Aenon Church today.' },
   { year: '1999', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2003', img: '/images/history/history-2003.jpg', title: 'The Ministry Continues', desc: 'Aenon Church hosted its annual Gospel Healing Festival together with its branch churches, continuing the ministry\'s work of prayer and healing.' },
-  { year: '2004', img: '/images/history/history-2004.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '2004', img: '/images/history/history-2004.jpg', title: 'Church Services', desc: 'Believers gathered every Sunday for worship, prayer, and the Word — a rhythm of weekly services that has anchored Aenon\'s community ever since.' },
   { year: '2005', img: '/images/history/history-2005.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2006', img: '/images/history/history-2006.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
   { year: '2007', img: '/images/history/history-2007.jpg', title: 'Title coming soon', desc: 'Description coming soon.' },
