@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Heart, BookOpen, Users, Globe } from 'lucide-react';
 
 const historyItems = [
@@ -80,15 +81,14 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="reveal reveal-delay-1">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-navy-800 to-navy-950 noise-bg relative overflow-hidden flex items-center justify-center">
-                {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/[0.03] rounded-full -translate-y-1/3 translate-x-1/3" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/[0.02] rounded-full translate-y-1/3 -translate-x-1/3" />
-                <div className="relative z-10 text-center px-8">
-                  <p className="text-6xl md:text-8xl font-bold text-white/10 mb-4">37+</p>
-                  <div className="w-12 h-0.5 bg-accent-500 mx-auto mb-4" />
-                  <p className="text-white/40 text-sm uppercase tracking-[0.2em] font-nav">Years of faithful ministry</p>
-                </div>
+              <div className="aspect-video rounded-2xl bg-navy-950 relative overflow-hidden">
+                <Image
+                  src="/images/about-our-beginning.webp"
+                  alt="Aenon Church gathering in the early years"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
