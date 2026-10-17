@@ -256,26 +256,27 @@ export default function AboutPage() {
             Meet our team.
           </h2>
 
-          <div className="flex justify-center">
-            {[
-              { name: 'Pastor William Cary', role: 'Founder & Senior Pastor', initials: 'WC', img: '/images/pastor-hero.jpg' },
-            ].map((leader, i) => (
-              <div key={i} className={`reveal reveal-delay-${i} text-center`}>
-                <div className="w-32 h-32 rounded-full mx-auto mb-6 border-2 border-white/10 overflow-hidden bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center relative">
-                  {leader.img ? (
-                    <Image src={leader.img} alt={leader.name} fill sizes="128px" className="object-cover" />
-                  ) : (
-                    <span className="text-2xl font-bold text-white/30 font-nav">{leader.initials}</span>
-                  )}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-1">{leader.name}</h3>
-                <p className="text-white/40 text-sm">{leader.role}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
+            <div className="reveal relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
+              <Image
+                src="/images/pastor-hero.jpg"
+                alt="Pastor William Cary"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="reveal reveal-delay-1 text-center md:text-left">
+              <h3 className="text-3xl font-bold text-white mb-2">Pastor William Cary</h3>
+              <p className="text-accent-500 text-sm uppercase tracking-wider font-medium mb-6">Founder &amp; Senior Pastor</p>
+              <p className="text-white/40 text-sm">
+                Leading Aenon Church since its founding in 1989, with a heart for discipleship and a passion for seeing lives transformed by the Gospel.
+              </p>
+            </div>
           </div>
 
-          <p className="reveal text-center text-white/30 text-sm mt-12">
-            Leadership details coming soon.
+          <p className="reveal text-center text-white/30 text-sm mt-16">
+            More leadership details coming soon.
           </p>
         </div>
       </section>
