@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function LeadershipPage() {
@@ -49,17 +48,8 @@ export default function LeadershipPage() {
             Shepherds of the flock.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-            <div className="reveal relative aspect-[4/5] rounded-2xl overflow-hidden border border-silver-200">
-              <Image
-                src="/images/history/history-1996.jpg"
-                alt="Pastor William Cary and Hepsibha William"
-                fill
-                sizes="(min-width: 768px) 40vw, 90vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="reveal reveal-delay-1">
+          <div className="max-w-2xl mb-20">
+            <div className="reveal">
               <h3 className="text-2xl font-bold text-navy-900 mb-1">Pastor William Cary</h3>
               <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">Founder &amp; Senior Pastor</p>
               <p className="text-silver-400 text-sm leading-relaxed mb-6">
