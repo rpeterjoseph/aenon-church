@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function LeadershipPage() {
@@ -48,32 +49,28 @@ export default function LeadershipPage() {
             Shepherds of the flock.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-            {[
-              {
-                name: 'Pastor Name',
-                role: 'Senior Pastor',
-                initials: 'SP',
-                bio: 'Leading Aenon Church with a heart for discipleship and a passion for seeing lives transformed by the Gospel. With decades of ministry experience, Pastor leads our congregation with wisdom, love, and unwavering faith.',
-              },
-              {
-                name: 'Pastor Name',
-                role: 'Associate Pastor',
-                initials: 'AP',
-                bio: 'Serving alongside our Senior Pastor with a focus on teaching, pastoral care, and community outreach. A gifted communicator who brings depth and warmth to every message and interaction.',
-              },
-            ].map((leader, i) => (
-              <div key={i} className={`reveal reveal-delay-${i} flex flex-col sm:flex-row gap-8 items-start`}>
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-navy-800 to-navy-950 flex-shrink-0 flex items-center justify-center border border-white/10">
-                  <span className="text-3xl font-bold text-white/20 font-nav">{leader.initials}</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-1">{leader.name}</h3>
-                  <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">{leader.role}</p>
-                  <p className="text-silver-400 text-sm leading-relaxed">{leader.bio}</p>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+            <div className="reveal relative aspect-[4/5] rounded-2xl overflow-hidden border border-silver-200">
+              <Image
+                src="/images/history/history-1996.jpg"
+                alt="Pastor William Cary and Hepsibha William"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="reveal reveal-delay-1">
+              <h3 className="text-2xl font-bold text-navy-900 mb-1">Pastor William Cary</h3>
+              <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">Founder &amp; Senior Pastor</p>
+              <p className="text-silver-400 text-sm leading-relaxed mb-6">
+                Pastor William Cary has led Aenon Church since its founding in 1989, with a heart for discipleship and a passion for seeing lives transformed by the Gospel.
+              </p>
+              <h3 className="text-xl font-bold text-navy-900 mb-1">Hepsibha William</h3>
+              <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">Serving Alongside Pastor William</p>
+              <p className="text-silver-400 text-sm leading-relaxed">
+                Hepsibha William has served alongside her husband since their marriage in 1996. Together, their partnership in ministry has shepherded the church's growth for over three decades.
+              </p>
+            </div>
           </div>
 
           {/* Ministry Leaders */}
