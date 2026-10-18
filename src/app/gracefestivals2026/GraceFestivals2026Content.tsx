@@ -21,8 +21,8 @@ export default function GraceFestivals2026Content() {
 
   return (
     <>
-      {/* Official event banner */}
-      <section className="relative h-[42vh] sm:h-[55vh] md:h-[70vh] min-h-[280px] overflow-hidden bg-navy-950">
+      {/* Official event banner — matches the poster's native 16:9 aspect so it's never cropped */}
+      <section className="relative w-full max-w-[1800px] mx-auto aspect-video overflow-hidden bg-navy-950">
         <Image
           src="/images/grace-festivals-2026-hero.jpg"
           alt="Grace Festivals 2026"
