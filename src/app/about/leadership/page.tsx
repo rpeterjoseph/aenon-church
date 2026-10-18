@@ -50,15 +50,10 @@ export default function LeadershipPage() {
 
           <div className="max-w-2xl mb-20">
             <div className="reveal">
-              <h3 className="text-2xl font-bold text-navy-900 mb-1">Pastor William Cary</h3>
+              <h3 className="text-2xl font-bold text-navy-900 mb-1">Pastor William Cary and Hepsibha William</h3>
               <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">Founder &amp; Senior Pastor</p>
-              <p className="text-silver-400 text-sm leading-relaxed mb-6">
-                Pastor William Cary has led Aenon Church since its founding in 1989, with a heart for discipleship and a passion for seeing lives transformed by the Gospel.
-              </p>
-              <h3 className="text-xl font-bold text-navy-900 mb-1">Hepsibha William</h3>
-              <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">Serving Alongside Pastor William</p>
               <p className="text-silver-400 text-sm leading-relaxed">
-                Hepsibha William has served alongside her husband since their marriage in 1996. Together, their partnership in ministry has shepherded the church's growth for over three decades.
+                Pastor William Cary has led Aenon Church since its founding in 1989, with a heart for discipleship and a passion for seeing lives transformed by the Gospel. His wife, Hepsibha William, has served alongside him since their marriage in 1996 — together, their partnership in ministry has shepherded the church's growth for over three decades.
               </p>
             </div>
           </div>
