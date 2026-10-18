@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, MapPin, Users, Heart, ArrowRight } from 'lucide-react';
+import RelatedEventCard from '@/components/RelatedEventCard';
 
 export default function Conference2026Content() {
   useEffect(() => {
@@ -134,6 +135,25 @@ export default function Conference2026Content() {
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
               title="ANR Gardens, HMT Nagar, Secunderabad"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Related Event */}
+      <section className="section-gap bg-white">
+        <div className="max-w-5xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">Also This November</p>
+          <h2 className="reveal heading-md text-navy-900 mb-10">
+            More from Aenon Church.
+          </h2>
+          <div className="reveal reveal-delay-1">
+            <RelatedEventCard
+              href="/gracefestivals2026"
+              eyebrow="Aenon Events 2026"
+              title="Grace Festivals"
+              meta="November 12–15, 2026 · Starts at 6:00 PM"
+              variant="blue"
             />
           </div>
         </div>
