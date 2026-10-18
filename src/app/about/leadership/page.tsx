@@ -48,7 +48,7 @@ export default function LeadershipPage() {
             Shepherds of the flock.
           </h2>
 
-          <div className="max-w-2xl mb-20">
+          <div className="max-w-2xl">
             <div className="reveal">
               <h3 className="text-2xl font-bold text-navy-900 mb-1">Pastor William Cary and Hepsibha William</h3>
               <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">Founder &amp; Senior Pastor</p>
@@ -57,35 +57,6 @@ export default function LeadershipPage() {
               </p>
             </div>
           </div>
-
-          {/* Ministry Leaders */}
-          <p className="reveal label-text text-navy-900/40 mb-4">Ministry Leaders</p>
-          <h2 className="reveal heading-sm text-navy-900 mb-12">
-            Serving with purpose.
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: 'Leader Name', role: 'Worship Director', initials: 'WD' },
-              { name: 'Leader Name', role: 'Youth Ministry', initials: 'YM' },
-              { name: 'Leader Name', role: 'Children\'s Ministry', initials: 'CM' },
-              { name: 'Leader Name', role: 'Women\'s Ministry', initials: 'WM' },
-              { name: 'Leader Name', role: 'Men\'s Ministry', initials: 'MM' },
-              { name: 'Leader Name', role: 'Outreach & Missions', initials: 'OM' },
-            ].map((leader, i) => (
-              <div key={i} className={`reveal reveal-delay-${Math.min(i, 3)} text-center card-light !p-8`}>
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-navy-700 to-navy-900 mx-auto mb-5 border border-white/10 flex items-center justify-center">
-                  <span className="text-lg font-bold text-white/25 font-nav">{leader.initials}</span>
-                </div>
-                <h3 className="text-base font-bold text-navy-900 mb-1">{leader.name}</h3>
-                <p className="text-silver-400 text-xs uppercase tracking-wider">{leader.role}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="reveal text-center text-silver-400 text-sm mt-12">
-            Leadership photos and details are being updated.
-          </p>
         </div>
       </section>
 
