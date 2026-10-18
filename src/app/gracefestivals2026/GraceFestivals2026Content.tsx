@@ -66,7 +66,7 @@ export default function GraceFestivals2026Content() {
                 Time
               </p>
               <p className="text-navy-900 font-bold text-xl leading-snug">
-                6:00 PM Nightly
+                Starts at 6:00 PM
               </p>
             </div>
             <div className="py-8 sm:py-10 sm:px-8 sm:first:pl-0 sm:last:pr-0">
