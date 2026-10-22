@@ -60,7 +60,7 @@ export default function WhatToExpectPage() {
               {
                 icon: Clock,
                 title: 'Service Times',
-                desc: 'Sunday services run at 8 AM, 11 AM, and 7 PM. Each service is approximately 90 minutes. We also have midweek gatherings throughout the week.',
+                desc: 'Sunday services run at 8 AM, 11 AM, and 7 PM. Each service runs about 2 hours and 30 minutes. We also have midweek gatherings throughout the week.',
               },
               {
                 icon: Music,
@@ -111,10 +111,10 @@ export default function WhatToExpectPage() {
           <div className="space-y-0">
             {[
               { q: 'What should I wear?', a: 'Whatever you\'re comfortable in. There\'s no dress code — come as you are.' },
-              { q: 'How long is the service?', a: 'Services typically last around 90 minutes, including worship and the message.' },
+              { q: 'How long is the service?', a: 'Services run about 2 hours and 30 minutes, including worship and the message.' },
               { q: 'Is there parking?', a: 'Yes, there is parking available near the church. Our team can help direct you when you arrive.' },
-              { q: 'Do I need to bring anything?', a: 'Just yourself! Bibles are available if you need one, though you\'re welcome to bring your own.' },
-              { q: 'What about my children?', a: 'We have kids\' programs during the services. Our team will help check in your children when you arrive.' },
+              { q: 'Do I need to bring anything?', a: 'Bring your Bible! If you don\'t have one, Bibles are also available for you to use.' },
+              { q: 'What about my children?', a: 'We have a dedicated kids\' Sunday school. If you\'re visiting for the first time or unsure, your children are also welcome to stay with you during the regular service.' },
             ].map((item, i) => (
               <div key={i} className={`reveal py-6 border-b border-silver-200 last:border-0`}>
                 <h3 className="text-lg font-bold text-navy-900 mb-2">{item.q}</h3>
