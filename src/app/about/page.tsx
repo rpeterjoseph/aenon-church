@@ -21,7 +21,7 @@ const historyItems = [
   { year: '2017', img: '/images/history/history-2017.jpg', title: 'A Steady Place to Gather', desc: 'The search for a home finally settled into one consistent rented space — still not the church\'s own, but steady enough to host the same weekly services in the same place, year after year.' },
   { year: '2020', img: '/images/history/history-2020.jpg', imgPosition: 'left', title: 'Church Without Walls', desc: 'When national regulations classified churches as non-essential during COVID-19 lockdowns, Aenon Church began livestreaming Sunday services — proof that the church is far more essential than any authority could measure, in a shift that still connects the congregation today.' },
   { year: '2022', img: '/images/history/history-2022.jpg', title: 'A Prayer Answered', desc: 'In May 2022, years of prayer were answered as Aenon Church dedicated its newly renovated building — a permanent home where Sunday services have been held ever since.' },
-  { year: '2024', img: null, title: 'New Ground, Bigger Vision', desc: 'Building on the legacy of its yearly pastors\' gathering, Aenon Church cast a bold new vision — growing the conference into a gathering of over 1,000 pastors from across the nation.' },
+  { year: '2024', img: '/images/history/history-2024.jpg', title: 'New Ground, Bigger Vision', desc: 'Building on the legacy of its yearly pastors\' gathering, Aenon Church cast a bold new vision — growing the conference into a gathering of over 1,000 pastors from across the nation.' },
   { year: '2026', img: null, title: 'Today', desc: 'With three Sunday services and a thriving weekly program, Aenon continues to grow and glorify God in Tarnaka.' },
 ];
 
