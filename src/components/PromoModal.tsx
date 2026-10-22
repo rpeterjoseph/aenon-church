@@ -94,7 +94,7 @@ export default function PromoModal() {
                 </h3>
                 <div className="flex items-center gap-2 text-silver-400 text-xs">
                   <Calendar className="w-3.5 h-3.5 text-orange-500" />
-                  November 12&ndash;15, 2026
+                  November 12&ndash;14, 2026
                 </div>
               </div>
               <div className="relative z-10 flex items-center gap-2 text-orange-600 text-xs font-medium uppercase tracking-wider mt-4">

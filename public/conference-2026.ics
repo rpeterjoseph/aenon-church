@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Aenon Church//Conference 2026//EN
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:conference2026@aenonchurch.com
+DTSTAMP:20261022T000000Z
+DTSTART;TZID=Asia/Kolkata:20261112T090000
+DTEND;TZID=Asia/Kolkata:20261112T140000
+RRULE:FREQ=DAILY;COUNT=3
+SUMMARY:Christ-Centered Pastors & Leaders Conference 2026
+DESCRIPTION:A gathering for pastors and ministry leaders devoted to Christ-centered leadership\, renewal\, and the work of the Gospel. Hosted by Aenon Church.
+LOCATION:ANR Gardens\, HMT Nagar\, Secunderabad\, Telangana\, India
+URL:https://aenonchurch.com/conference2026
+END:VEVENT
+END:VCALENDAR
