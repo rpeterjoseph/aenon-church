@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function LeadershipPage() {
@@ -49,7 +50,16 @@ export default function LeadershipPage() {
           </h2>
 
           <div className="max-w-2xl">
-            <div className="reveal">
+            <div className="reveal relative aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+              <Image
+                src="/images/pastor-william-hepsibha.jpg"
+                alt="Pastor William Cary and Hepsibha William"
+                fill
+                sizes="(min-width: 768px) 42rem, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="reveal reveal-delay-1">
               <h3 className="text-2xl font-bold text-navy-900 mb-1">Pastor William Cary and Hepsibha William</h3>
               <p className="text-accent-500 text-sm font-medium uppercase tracking-wider mb-4">Founder &amp; Senior Pastor</p>
               <p className="text-silver-400 text-sm leading-relaxed">
