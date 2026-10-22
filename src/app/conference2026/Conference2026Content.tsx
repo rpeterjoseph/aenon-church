@@ -215,21 +215,21 @@ export default function Conference2026Content() {
             The same schedule runs each day, November 12&ndash;14.
           </p>
 
-          <div className="reveal reveal-delay-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {SCHEDULE_ITEMS.map((item) => (
-              <div
-                key={item.label}
-                className="flex items-start gap-4 bg-white rounded-xl p-5 border border-silver-200"
-              >
-                <div className="w-11 h-11 rounded-full bg-accent-500/10 flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-accent-500" />
+          <div className="reveal reveal-delay-2 relative max-w-md">
+            <div className="absolute left-[21px] top-0 bottom-0 w-px bg-silver-200" />
+            <div className="space-y-2">
+              {SCHEDULE_ITEMS.map((item) => (
+                <div key={item.label} className="relative flex items-start gap-5 py-3">
+                  <div className="relative z-10 w-11 h-11 rounded-full bg-accent-500/10 border-4 border-silver-100 flex items-center justify-center shrink-0">
+                    <item.icon className="w-5 h-5 text-accent-500" />
+                  </div>
+                  <div className="pt-2.5">
+                    <p className="font-semibold text-navy-900">{item.label}</p>
+                    {item.note && <p className="text-silver-400 text-sm mt-0.5">{item.note}</p>}
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-navy-900 text-sm">{item.label}</p>
-                  {item.note && <p className="text-silver-400 text-xs mt-0.5">{item.note}</p>}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
