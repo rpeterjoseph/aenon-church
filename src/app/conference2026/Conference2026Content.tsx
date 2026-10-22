@@ -1,12 +1,64 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, MapPin, Users, Heart, ArrowRight } from 'lucide-react';
+import {
+  Calendar,
+  CalendarPlus,
+  Clock,
+  MapPin,
+  Users,
+  Heart,
+  ArrowRight,
+  Music,
+  Mic,
+  BookOpen,
+  Coffee,
+  Users2,
+  Utensils,
+  ChevronDown,
+} from 'lucide-react';
 import RelatedEventCard from '@/components/RelatedEventCard';
 
+const SCHEDULE_ITEMS = [
+  { icon: Music, label: 'Praise & Worship' },
+  { icon: Mic, label: 'Keynote Session' },
+  { icon: BookOpen, label: 'Session 1' },
+  { icon: Coffee, label: 'Tea Break', note: '20 minutes' },
+  { icon: Users2, label: 'Session 2', note: 'Regular or breakout discussion' },
+  { icon: Utensils, label: 'Lunch' },
+];
+
+const FAQ_ITEMS = [
+  {
+    question: 'Is there a registration fee?',
+    answer:
+      "Registration is free. A voluntary contribution is encouraged, but money should never be the reason a pastor or leader doesn't attend.",
+  },
+  {
+    question: 'Is lunch provided?',
+    answer: 'Yes, lunch is provided each day of the conference.',
+  },
+  {
+    question: 'What language will the conference be in?',
+    answer: 'The conference will be conducted in both Telugu and English.',
+  },
+  {
+    question: "Can our church's team leaders attend, not just pastors?",
+    answer:
+      "Yes. While this conference is especially for pastors and leaders, it's encouraging for believers as well, and church team leaders are welcome to attend.",
+  },
+  {
+    question: 'Is accommodation provided?',
+    answer:
+      "No accommodation is provided. Travel and lodging are the registrant's own responsibility.",
+  },
+];
+
 export default function Conference2026Content() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -58,7 +110,7 @@ export default function Conference2026Content() {
                 Dates
               </p>
               <p className="text-navy-900 font-bold text-xl leading-snug">
-                November 12&ndash;15, 2026
+                November 12&ndash;14, 2026
               </p>
             </div>
             <div className="py-8 sm:py-10 sm:px-8">
@@ -80,6 +132,103 @@ export default function Conference2026Content() {
                 <br />
                 Secunderabad, Telangana
               </p>
+            </div>
+          </div>
+
+          <div className="reveal reveal-delay-3 flex justify-center mt-10">
+            <a href="/conference-2026.ics" download className="btn-outline">
+              Add to Calendar
+              <CalendarPlus className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Who Should Attend */}
+      <section className="section-gap bg-silver-100">
+        <div className="max-w-5xl mx-auto section-padding text-center">
+          <p className="reveal label-text text-navy-900/40 mb-4">Who Should Attend</p>
+          <h2 className="reveal heading-md text-navy-900 mb-8 max-w-2xl mx-auto">
+            For pastors, leaders, and everyone who serves alongside them.
+          </h2>
+          <p className="reveal reveal-delay-1 body-lg max-w-2xl mx-auto mb-8">
+            Pastors of local churches and leaders in the church are encouraged to
+            attend. Worship and youth leaders, and ministry staff, are also
+            encouraged to attend.
+          </p>
+          <div className="reveal reveal-delay-2 flex flex-wrap justify-center gap-3">
+            {['Pastors', 'Church Leaders', 'Worship & Youth Leaders', 'Ministry Staff'].map(
+              (tag) => (
+                <span
+                  key={tag}
+                  className="px-5 py-2 rounded-full border border-silver-200 bg-white text-navy-900 text-sm font-medium"
+                >
+                  {tag}
+                </span>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Theme */}
+      <section className="section-gap bg-white">
+        <div className="max-w-5xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">This Year&apos;s Theme</p>
+          <h2 className="reveal heading-md text-navy-900 mb-8 max-w-2xl">
+            Christ-centered.
+          </h2>
+          <p className="reveal reveal-delay-1 body-lg max-w-2xl mb-12">
+            At Aenon Church, there are three core values we live by as a
+            church: Christ-centered, Gospel-focused, and Bible-based. This
+            year&apos;s conference theme explores the first &mdash; the
+            centrality of Jesus Christ in our identity, beliefs, and actions
+            as believers &mdash; and that&apos;s what we&apos;ll be focusing
+            on across these three days.
+          </p>
+
+          <div className="reveal reveal-delay-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="rounded-2xl border-2 border-accent-500 bg-accent-500/5 p-6">
+              <span className="inline-block px-3 py-1 bg-accent-500 text-white text-[10px] font-medium rounded-full uppercase tracking-wider mb-4">
+                2026 Focus
+              </span>
+              <h3 className="text-navy-900 font-bold text-lg">Christ-Centered</h3>
+            </div>
+            <div className="rounded-2xl border border-silver-200 p-6 opacity-50">
+              <h3 className="text-navy-900 font-bold text-lg">Gospel-Focused</h3>
+            </div>
+            <div className="rounded-2xl border border-silver-200 p-6 opacity-50">
+              <h3 className="text-navy-900 font-bold text-lg">Bible-Based</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Daily Schedule */}
+      <section className="section-gap bg-silver-100">
+        <div className="max-w-5xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">Daily Schedule</p>
+          <h2 className="reveal heading-md text-navy-900 mb-4">
+            9:00 AM &ndash; 2:00 PM, all three days.
+          </h2>
+          <p className="reveal reveal-delay-1 body-lg mb-12">
+            The same schedule runs each day, November 12&ndash;14.
+          </p>
+
+          <div className="reveal reveal-delay-2 relative max-w-md">
+            <div className="absolute left-[21px] top-0 bottom-0 w-px bg-silver-200" />
+            <div className="space-y-2">
+              {SCHEDULE_ITEMS.map((item) => (
+                <div key={item.label} className="relative flex items-start gap-5 py-3">
+                  <div className="relative z-10 w-11 h-11 rounded-full bg-accent-500/10 border-4 border-silver-100 flex items-center justify-center shrink-0">
+                    <item.icon className="w-5 h-5 text-accent-500" />
+                  </div>
+                  <div className="pt-2.5">
+                    <p className="font-semibold text-navy-900">{item.label}</p>
+                    {item.note && <p className="text-silver-400 text-sm mt-0.5">{item.note}</p>}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -118,8 +267,44 @@ export default function Conference2026Content() {
         </div>
       </section>
 
-      {/* Venue Map */}
+      {/* FAQ */}
       <section className="section-gap bg-silver-100">
+        <div className="max-w-3xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">FAQ</p>
+          <h2 className="reveal heading-md text-navy-900 mb-12">
+            Common questions.
+          </h2>
+
+          <div className="reveal reveal-delay-1 divide-y divide-silver-200 border-y border-silver-200">
+            {FAQ_ITEMS.map((item, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={item.question}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                    className="w-full flex items-center justify-between gap-4 py-6 text-left"
+                  >
+                    <span className="font-semibold text-navy-900">{item.question}</span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-navy-900/40 shrink-0 transition-transform ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <p className="text-silver-400 leading-relaxed pb-6 -mt-2">{item.answer}</p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Venue Map */}
+      <section className="section-gap bg-white">
         <div className="max-w-5xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Venue</p>
           <h2 className="reveal heading-md text-navy-900 mb-12">
@@ -141,7 +326,7 @@ export default function Conference2026Content() {
       </section>
 
       {/* Related Event */}
-      <section className="section-gap bg-white">
+      <section className="section-gap bg-silver-100">
         <div className="max-w-5xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Also This November</p>
           <h2 className="reveal heading-md text-navy-900 mb-10">

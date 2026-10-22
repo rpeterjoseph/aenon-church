@@ -170,7 +170,7 @@ export default function GraceFestivals2026Content() {
               href="/conference2026"
               eyebrow="Conference 2026"
               title="Christ-Centered Pastors & Leaders Conference"
-              meta="November 12–15, 2026"
+              meta="November 12–14, 2026"
               variant="orange"
             />
           </div>
