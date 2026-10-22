@@ -14,10 +14,35 @@ const areas = [
 
 export default function VolunteerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(false);
+    setSubmitting(true);
+
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.get('firstName'),
+          lastName: form.get('lastName'),
+          email: form.get('email'),
+          phone: form.get('phone'),
+          areaOfInterest: form.get('areaOfInterest'),
+          message: form.get('message'),
+        }),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -78,6 +103,7 @@ export default function VolunteerPage() {
                   <label className="block text-sm font-medium text-navy-900 mb-2">First Name</label>
                   <input
                     type="text"
+                    name="firstName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                     placeholder="John"
@@ -87,6 +113,7 @@ export default function VolunteerPage() {
                   <label className="block text-sm font-medium text-navy-900 mb-2">Last Name</label>
                   <input
                     type="text"
+                    name="lastName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                     placeholder="Doe"
@@ -98,6 +125,7 @@ export default function VolunteerPage() {
                 <label className="block text-sm font-medium text-navy-900 mb-2">Email Address</label>
                 <input
                   type="email"
+                  name="email"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                   placeholder="john@example.com"
@@ -108,6 +136,7 @@ export default function VolunteerPage() {
                 <label className="block text-sm font-medium text-navy-900 mb-2">Phone Number</label>
                 <input
                   type="tel"
+                  name="phone"
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                   placeholder="+91 98000 00000"
                 />
@@ -116,6 +145,7 @@ export default function VolunteerPage() {
               <div>
                 <label className="block text-sm font-medium text-navy-900 mb-2">Area of Interest</label>
                 <select
+                  name="areaOfInterest"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                 >
@@ -130,14 +160,22 @@ export default function VolunteerPage() {
               <div>
                 <label className="block text-sm font-medium text-navy-900 mb-2">Tell Us About Yourself</label>
                 <textarea
+                  name="message"
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all resize-none"
                   placeholder="Share any skills, experience, or availability that might help us place you well."
                 />
               </div>
 
-              <button type="submit" className="btn-primary">
-                Submit Interest
+              {error && (
+                <p className="text-sm text-red-600">
+                  Something went wrong sending your sign-up. Please try again, or email us directly at{' '}
+                  <a href="mailto:aenonchurch@gmail.com" className="underline">aenonchurch@gmail.com</a>.
+                </p>
+              )}
+
+              <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                {submitting ? 'Sending…' : 'Submit Interest'}
                 <Send className="w-4 h-4" />
               </button>
             </form>

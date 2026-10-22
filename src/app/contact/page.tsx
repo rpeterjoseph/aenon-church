@@ -5,6 +5,8 @@ import { MapPin, Phone, Mail, Clock, Send, Youtube, Facebook, Instagram } from '
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -19,9 +21,31 @@ export default function ContactPage() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(false);
+    setSubmitting(true);
+
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.get('firstName'),
+          lastName: form.get('lastName'),
+          email: form.get('email'),
+          topic: form.get('topic'),
+          message: form.get('message'),
+        }),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -75,6 +99,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="firstName"
                         required
                         className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                         placeholder="John"
@@ -86,6 +111,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="lastName"
                         required
                         className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                         placeholder="Doe"
@@ -99,6 +125,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                       placeholder="john@example.com"
@@ -110,6 +137,7 @@ export default function ContactPage() {
                       I&apos;m Reaching Out About
                     </label>
                     <select
+                      name="topic"
                       className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all"
                     >
                       <option value="">Select a topic</option>
@@ -127,6 +155,7 @@ export default function ContactPage() {
                       Message
                     </label>
                     <textarea
+                      name="message"
                       required
                       rows={5}
                       className="w-full px-4 py-3 rounded-xl border border-silver-200 bg-white text-navy-900 placeholder:text-silver-300 focus:outline-none focus:ring-2 focus:ring-navy-900/20 focus:border-navy-900 transition-all resize-none"
@@ -134,8 +163,15 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary">
-                    Send Message
+                  {error && (
+                    <p className="text-sm text-red-600">
+                      Something went wrong sending your message. Please try again, or email us directly at{' '}
+                      <a href="mailto:aenonchurch@gmail.com" className="underline">aenonchurch@gmail.com</a>.
+                    </p>
+                  )}
+
+                  <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed">
+                    {submitting ? 'Sending…' : 'Send Message'}
                     <Send className="w-4 h-4" />
                   </button>
                 </form>

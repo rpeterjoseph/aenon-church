@@ -49,6 +49,17 @@ pushing/merging to `main` triggers a production deploy automatically.
 - **Workflow**: feature branch → push → open a PR → merge via PR (not a
   direct push to `main`), unless explicitly told otherwise. `main` is what
   Vercel deploys to production from.
+- **Form submissions (Resend)**: the Contact, Volunteer, and Prayer Request
+  forms (`src/app/contact`, `src/app/volunteer`, `src/app/prayer-request`)
+  each POST JSON to their own route handler
+  (`src/app/api/{contact,volunteer,prayer-request}/route.ts`), which
+  validates required fields server-side and calls `sendFormEmail()` in
+  `src/lib/email.ts` (a thin wrapper around the `resend` SDK). Unlike
+  `youtube.ts`, this **must not** fail silently — a send failure throws and
+  the route returns a non-2xx status so the page can show the visitor an
+  error instead of a false "Message Sent!". Requires `RESEND_API_KEY`,
+  `CONTACT_EMAIL_TO` (staff inbox), and `CONTACT_EMAIL_FROM` (an address on
+  a domain verified in the Resend dashboard) — see `.env.example`.
 
 ## Known open items (as of 2026-10-16)
 
@@ -69,3 +80,9 @@ pushing/merging to `main` triggers a production deploy automatically.
 - **Confirm `YOUTUBE_API_KEY` is scoped to Production in Vercel**, not just
   Preview — this was fixed for Preview but Production scope was never
   explicitly confirmed in conversation.
+- **Resend env vars (`RESEND_API_KEY`, `CONTACT_EMAIL_TO`,
+  `CONTACT_EMAIL_FROM`) still need to be set in Vercel** (Production and
+  Preview) and `CONTACT_EMAIL_FROM`'s domain verified in the Resend
+  dashboard before the Contact/Volunteer/Prayer Request forms will actually
+  deliver mail — without them the forms correctly show an error on submit
+  rather than a false success, but nothing gets sent.
