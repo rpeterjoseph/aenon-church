@@ -8,7 +8,7 @@ import { ArrowRight, Heart, BookOpen, Users, Globe } from 'lucide-react';
 const historyItems = [
   { year: '1989', img: '/images/history/history-1989.jpg', title: 'The Beginning', desc: 'Aenon Church was founded with a small group of believers with a vision to glorify God and reach Hyderabad with the Gospel.' },
   { year: '1996', img: '/images/history/history-1996.jpg', title: 'United in Marriage and Ministry', desc: 'Pastor William Cary married Hepsibha William, and together they carried forward the ministry that began in 1989 — a partnership in marriage and mission that continues to lead Aenon Church today.' },
-  { year: '1999', img: null, title: 'Title coming soon', desc: 'Description coming soon.' },
+  { year: '1999', img: '/images/history/history-1999.jpg', title: 'Small Groups', desc: 'Aenon Church began building its small group ministry, traveling to different parts of the city to gather believers for prayer, Bible study, and fellowship. Here, Hepsibha William teaches a small group in Toopran.' },
   { year: '2003', img: '/images/history/history-2003.jpg', title: 'The Ministry Continues', desc: 'Aenon Church hosted its annual Gospel Healing Festival together with its branch churches, continuing the ministry\'s work of prayer and healing.' },
   { year: '2004', img: '/images/history/history-2004.jpg', title: 'Church Services', desc: 'Believers gathered every Sunday for worship, prayer, and the Word — a rhythm of weekly services that has anchored Aenon\'s community ever since.' },
   { year: '2005', img: '/images/history/history-2005.jpg', title: 'Medical Camp Ministries', desc: 'Aenon Church hosted a medical camp, providing free medication and care to the local community.' },
@@ -16,12 +16,13 @@ const historyItems = [
   { year: '2007', img: '/images/history/history-2006.jpg', title: 'Growing in Number and Faith', desc: 'Attendance continued to rise, with more believers each week gathering to be blessed by the Word.' },
   { year: '2009', img: null, title: 'National Pastors & Leaders Conference', desc: 'Aenon Church hosted its first National Pastors and Leaders Conference, welcoming pastors and ministry leaders from across India to learn, grow, and worship together.' },
   { year: '2012', img: null, title: 'Praying for a Place of Our Own', desc: 'Rising rents and limited space forced the church to move between rented halls once more — and from that struggle grew a fervent prayer for a permanent home.' },
+  { year: '2014', img: '/images/history/history-2014.jpg', title: 'A Growing Family, A Persistent Prayer', desc: 'With every week drawing a bigger crowd, Aenon Church kept moving from hall to hall to accommodate the growing congregation — all while praying for a place to call permanently its own.' },
   { year: '2015', img: null, title: 'Still Walking in Faith', desc: 'The search for a permanent home continued, moving from hall to hall — yet through every move, the church held fast to God\'s faithfulness.' },
-  { year: '2017', img: null, title: 'Sustained by His Provision', desc: 'Even as the congregation kept shifting between rented halls, God\'s provision never failed, carrying the church\'s prayer for a home of its own year after year.' },
-  { year: '2020', img: null, title: 'Church Without Walls', desc: 'When national regulations classified churches as non-essential during COVID-19 lockdowns, Aenon Church began livestreaming Sunday services — proof that the church is far more essential than any authority could measure, in a shift that still connects the congregation today.' },
-  { year: '2022', img: null, title: 'A Prayer Answered', desc: 'In May 2022, years of prayer were answered at the Aenon Church Hall dedication service — construction was complete, and a permanent home stood ready for Sunday services at last.' },
-  { year: '2024', img: null, title: 'New Ground, Bigger Vision', desc: 'Building on the legacy of its yearly pastors\' gathering, Aenon Church cast a bold new vision — growing the conference into a gathering of over 1,000 pastors from across the nation.' },
-  { year: '2026', img: null, title: 'Today', desc: 'With three Sunday services and a thriving weekly program, Aenon continues to grow and glorify God in Tarnaka.' },
+  { year: '2017', img: '/images/history/history-2017.jpg', title: 'A Steady Place to Gather', desc: 'The search for a home finally settled into one consistent rented space — still not the church\'s own, but steady enough to host the same weekly services in the same place, year after year.' },
+  { year: '2020', img: '/images/history/history-2020.jpg', imgPosition: 'left', title: 'Church Without Walls', desc: 'When national regulations classified churches as non-essential during COVID-19 lockdowns, Aenon Church began livestreaming Sunday services — proof that the church is far more essential than any authority could measure, in a shift that still connects the congregation today.' },
+  { year: '2022', img: '/images/history/history-2022.jpg', title: 'A Prayer Answered', desc: 'In May 2022, years of prayer were answered as Aenon Church dedicated its newly renovated building — a permanent home where Sunday services have been held ever since.' },
+  { year: '2024', img: '/images/history/history-2024.jpg', title: 'New Ground, Bigger Vision', desc: 'Building on the legacy of its yearly pastors\' gathering, Aenon Church cast a bold new vision — growing the conference into a gathering of over 1,000 pastors from across the nation.' },
+  { year: '2026', img: null, title: 'Today', desc: 'Aenon Church is thriving today with three Sunday services, a midweek Bible study, a Friday fasting prayer, and a Saturday youth meeting — blessing thousands in-person and online.' },
 ];
 
 export default function AboutPage() {
@@ -133,7 +134,12 @@ export default function AboutPage() {
                   <div className="absolute left-[13px] top-2 w-3 h-3 rounded-full bg-accent-500 border-2 border-white z-10" />
                   <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-navy-800 to-navy-950 mb-5 overflow-hidden flex items-center justify-center border border-white/5">
                     {item.img ? (
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                        style={item.imgPosition ? { objectPosition: item.imgPosition } : undefined}
+                      />
                     ) : (
                       <p className="text-white/20 text-xs uppercase tracking-widest">Image coming soon</p>
                     )}
@@ -158,7 +164,12 @@ export default function AboutPage() {
               const ImageBlock = (
                 <div className="w-1/2 overflow-hidden bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center min-h-[460px]">
                   {item.img ? (
-                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      style={item.imgPosition ? { objectPosition: item.imgPosition } : undefined}
+                    />
                   ) : (
                     <p className="text-white/20 text-xs uppercase tracking-widest">Image coming soon</p>
                   )}
@@ -256,24 +267,27 @@ export default function AboutPage() {
             Meet our team.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: 'Pastor Name', role: 'Senior Pastor', initials: 'SP' },
-              { name: 'Pastor Name', role: 'Associate Pastor', initials: 'AP' },
-              { name: 'Leader Name', role: 'Worship Director', initials: 'WD' },
-            ].map((leader, i) => (
-              <div key={i} className={`reveal reveal-delay-${i} text-center`}>
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-navy-700 to-navy-900 mx-auto mb-6 border-2 border-white/10 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-white/30 font-nav">{leader.initials}</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-1">{leader.name}</h3>
-                <p className="text-white/40 text-sm">{leader.role}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
+            <div className="reveal relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
+              <Image
+                src="/images/pastor-hero.jpg"
+                alt="Pastor William Cary"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="reveal reveal-delay-1 text-center md:text-left">
+              <h3 className="text-3xl font-bold text-white mb-2">Pastor William Cary</h3>
+              <p className="text-accent-500 text-sm uppercase tracking-wider font-medium mb-6">Founder &amp; Senior Pastor</p>
+              <p className="text-white/40 text-sm">
+                Leading Aenon Church since its founding in 1989, with a heart for discipleship and a passion for seeing lives transformed by the Gospel.
+              </p>
+            </div>
           </div>
 
-          <p className="reveal text-center text-white/30 text-sm mt-12">
-            Leadership details coming soon.
+          <p className="reveal text-center text-white/30 text-sm mt-16">
+            More leadership details coming soon.
           </p>
         </div>
       </section>

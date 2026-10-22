@@ -4,6 +4,7 @@ import { useEffect, useMemo, type ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getUpcomingEvents } from '@/lib/events';
+import PromoModal from '@/components/PromoModal';
 import {
   ChevronRight,
   Play,
@@ -42,6 +43,8 @@ export default function HomeContent({ latestSermonEmbed }: { latestSermonEmbed: 
 
   return (
     <>
+      <PromoModal />
+
       {/* ============================================= */}
       {/* HERO SECTION - Full Screen Cinematic */}
       {/* ============================================= */}

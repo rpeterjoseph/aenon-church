@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Heart, Shield, Gift, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import { Heart, Shield, Gift, ArrowUpRight, ScanLine, CreditCard } from 'lucide-react';
 
 export default function GivePage() {
   useEffect(() => {
@@ -81,41 +82,78 @@ export default function GivePage() {
 
       {/* Give Options */}
       <section className="section-gap bg-silver-100">
-        <div className="max-w-4xl mx-auto section-padding text-center">
-          <p className="reveal label-text text-navy-900/40 mb-4">Give Online</p>
-          <h2 className="reveal heading-md text-navy-900 mb-6">
-            Simple, secure giving.
-          </h2>
-          <p className="reveal reveal-delay-1 body-lg max-w-xl mx-auto mb-12">
-            Give online quickly and securely. We support UPI, debit cards,
-            credit cards, and net banking.
-          </p>
+        <div className="max-w-7xl mx-auto section-padding">
+          <div className="text-center mb-12">
+            <p className="reveal label-text text-navy-900/40 mb-4">Give Online</p>
+            <h2 className="reveal heading-md text-navy-900 mb-6">
+              Simple, secure giving.
+            </h2>
+            <p className="reveal reveal-delay-1 body-lg max-w-xl mx-auto">
+              Choose the option that works best for you — scan to give
+              instantly via UPI, or give online from anywhere in the world.
+            </p>
+          </div>
 
-          {/* Placeholder Give Button */}
-          <div className="reveal reveal-delay-2 max-w-md mx-auto">
-            <div className="card-light !p-10 text-center">
-              <div className="w-16 h-16 rounded-full bg-accent-500 flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-7 h-7 text-white" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {/* Scan to Give (QR) */}
+            <div className="reveal reveal-delay-1 lg:col-span-2">
+              <div className="card-light !p-10 h-full flex flex-col sm:flex-row items-center gap-10">
+                <div className="flex-shrink-0 bg-white rounded-2xl p-4 border border-silver-200">
+                  <Image
+                    src="/images/giving-qr-code.png"
+                    alt="QR code to give to Aenon Church via UPI"
+                    width={220}
+                    height={220}
+                    className="w-48 h-48 sm:w-56 sm:h-56"
+                  />
+                </div>
+                <div className="text-center sm:text-left">
+                  <div className="w-12 h-12 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto sm:mx-0 mb-5">
+                    <ScanLine className="w-6 h-6 text-accent-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-navy-900 mb-3">
+                    Scan to give.
+                  </h3>
+                  <p className="text-silver-400 text-sm">
+                    Open any UPI app — PhonePe, Google Pay, Paytm, or your
+                    bank&rsquo;s app — and scan this code to give directly
+                    and securely to Aenon Church.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-navy-900 mb-4">
-                Give Now
-              </h3>
-              <p className="text-silver-400 text-sm mb-8">
-                Online giving portal coming soon. For now, you can give
-                during our Sunday services or contact us for bank details.
-              </p>
-              <button className="btn-primary w-full justify-center" disabled>
-                Give Online
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
-              <p className="text-xs text-silver-300 mt-4">
-                Powered by Razorpay / PayU (coming soon)
-              </p>
+            </div>
+
+            {/* Give Online */}
+            <div className="reveal reveal-delay-2">
+              <div className="card-light !p-10 h-full text-center flex flex-col">
+                <div className="w-16 h-16 rounded-full bg-accent-500 flex items-center justify-center mx-auto mb-6">
+                  <CreditCard className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-navy-900 mb-4">
+                  Give Online
+                </h3>
+                <p className="text-silver-400 text-sm mb-8 flex-grow">
+                  Give from anywhere using a debit card, credit card, or
+                  your PayPal balance.
+                </p>
+                <a
+                  href="https://paypal.me/aenonchurch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary w-full justify-center"
+                >
+                  Give via PayPal
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+                <p className="text-xs text-silver-300 mt-4">
+                  PayU coming soon
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Alternative */}
-          <div className="reveal mt-12">
+          <div className="reveal mt-12 text-center">
             <p className="text-silver-400 text-sm">
               You can also give in person during any of our Sunday services,
               <br className="hidden md:block" />

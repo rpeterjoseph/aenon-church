@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MaintenanceGate from '@/components/MaintenanceGate';
+import SiteChrome from '@/components/SiteChrome';
 
 export const metadata: Metadata = {
   title: 'Aenon Church | Welcome Home',
@@ -57,8 +57,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <MaintenanceGate>
-          <Navbar />
-          <main>{children}</main>
+          <SiteChrome>
+            <main>{children}</main>
+          </SiteChrome>
           <Footer />
         </MaintenanceGate>
       </body>
