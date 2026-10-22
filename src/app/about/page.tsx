@@ -19,7 +19,7 @@ const historyItems = [
   { year: '2014', img: '/images/history/history-2014.jpg', title: 'A Growing Family, A Persistent Prayer', desc: 'With every week drawing a bigger crowd, Aenon Church kept moving from hall to hall to accommodate the growing congregation — all while praying for a place to call permanently its own.' },
   { year: '2015', img: null, title: 'Still Walking in Faith', desc: 'The search for a permanent home continued, moving from hall to hall — yet through every move, the church held fast to God\'s faithfulness.' },
   { year: '2017', img: '/images/history/history-2017.jpg', title: 'A Steady Place to Gather', desc: 'The search for a home finally settled into one consistent rented space — still not the church\'s own, but steady enough to host the same weekly services in the same place, year after year.' },
-  { year: '2020', img: null, title: 'Church Without Walls', desc: 'When national regulations classified churches as non-essential during COVID-19 lockdowns, Aenon Church began livestreaming Sunday services — proof that the church is far more essential than any authority could measure, in a shift that still connects the congregation today.' },
+  { year: '2020', img: '/images/history/history-2020.jpg', imgPosition: 'left', title: 'Church Without Walls', desc: 'When national regulations classified churches as non-essential during COVID-19 lockdowns, Aenon Church began livestreaming Sunday services — proof that the church is far more essential than any authority could measure, in a shift that still connects the congregation today.' },
   { year: '2022', img: null, title: 'A Prayer Answered', desc: 'In May 2022, years of prayer were answered at the Aenon Church Hall dedication service — construction was complete, and a permanent home stood ready for Sunday services at last.' },
   { year: '2024', img: null, title: 'New Ground, Bigger Vision', desc: 'Building on the legacy of its yearly pastors\' gathering, Aenon Church cast a bold new vision — growing the conference into a gathering of over 1,000 pastors from across the nation.' },
   { year: '2026', img: null, title: 'Today', desc: 'With three Sunday services and a thriving weekly program, Aenon continues to grow and glorify God in Tarnaka.' },
@@ -134,7 +134,12 @@ export default function AboutPage() {
                   <div className="absolute left-[13px] top-2 w-3 h-3 rounded-full bg-accent-500 border-2 border-white z-10" />
                   <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-navy-800 to-navy-950 mb-5 overflow-hidden flex items-center justify-center border border-white/5">
                     {item.img ? (
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                        style={item.imgPosition ? { objectPosition: item.imgPosition } : undefined}
+                      />
                     ) : (
                       <p className="text-white/20 text-xs uppercase tracking-widest">Image coming soon</p>
                     )}
@@ -159,7 +164,12 @@ export default function AboutPage() {
               const ImageBlock = (
                 <div className="w-1/2 overflow-hidden bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center min-h-[460px]">
                   {item.img ? (
-                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      style={item.imgPosition ? { objectPosition: item.imgPosition } : undefined}
+                    />
                   ) : (
                     <p className="text-white/20 text-xs uppercase tracking-widest">Image coming soon</p>
                   )}
