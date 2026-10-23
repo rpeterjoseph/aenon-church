@@ -69,6 +69,54 @@ pushing/merging to `main` triggers a production deploy automatically.
   calling Resend — if filled, it returns a fake `{ ok: true }` without
   sending, so bots don't learn to adapt. This is bot-pattern detection
   only, not rate limiting — there's no per-IP throttling (see open items).
+  Each route also rejects an oversized request body up front and caps
+  individual field lengths (`src/lib/formValidation.ts`,
+  `MAX_FIELD_LENGTHS`/`isRequestBodyTooLarge`/`isValidEmail`) — client-side
+  `maxLength` is cosmetic only, so these are the limits that actually hold
+  against a direct POST to the API route.
+- **Security headers**: `next.config.js`'s `headers()` sets a
+  Content-Security-Policy plus `X-Frame-Options`, `X-Content-Type-Options`,
+  `Referrer-Policy`, `Strict-Transport-Security`, and `Permissions-Policy`
+  on every route. The CSP's `script-src`/`style-src` include
+  `'unsafe-inline'` deliberately: almost every page here is statically
+  prerendered at build time, so a per-request nonce (the usual way to drop
+  `'unsafe-inline'`) can never match what's baked into that static HTML —
+  nonce-based CSP needs dynamic rendering, which this site doesn't use.
+  Verified with a real headless-browser run (no CSP console violations,
+  mobile menu + YouTube facade still interactive) before this was committed.
+- **ESLint**: `eslint.config.mjs` (flat config) imports
+  `eslint-config-next/core-web-vitals` and is pinned to `eslint@^9` +
+  `eslint-config-next@16.4.x` (matching the installed `next` version
+  exactly — `eslint-config-next` is tightly coupled to the `next` version
+  it ships alongside, and `eslint-config-next@16.x` requires ESLint 9's
+  flat config format; it will not load under `.eslintrc.json`/ESLint 8).
+  `@typescript-eslint/no-unused-vars` is explicitly enabled (off by default
+  in `core-web-vitals`) since catching dead imports/vars was the main point
+  of setting this up — note the plugin has to be re-declared in that same
+  config object (`plugins: { '@typescript-eslint': tseslint.plugin }`) since
+  flat config scopes plugins per config object, unlike `.eslintrc`'s global
+  plugin list. **`next lint` was removed in Next.js 16** — the `lint` script
+  is `eslint .` directly now. `npm run lint` runs non-interactively and
+  exits 0.
+  - `react-hooks/set-state-in-effect` (new default-error rule in the v7
+    `eslint-plugin-react-hooks` that ships with `eslint-config-next@16`, part
+    of React Compiler readiness) is downgraded to `warn` in
+    `eslint.config.mjs`. It flags `MaintenanceGate.tsx` and `SiteChrome.tsx`,
+    which both deliberately read a browser-only API (a cookie /
+    `localStorage`) in an effect and `setState` from it — the standard
+    SSR-hydration pattern, not something computable during render. Don't
+    "fix" these by restructuring them to satisfy the rule; the pattern is
+    intentional and SSR-behavior-sensitive (see the MaintenanceGate bullet
+    above).
+  - `eslint-config-next`'s own dependency chain (`@next/eslint-plugin-next`
+    → `fast-glob` → `micromatch` → `braces`) currently pulls in a `braces`
+    ReDoS CVE that `npm audit` flags as 5 high-severity findings. This is
+    dev-tooling-only (the linter never ships to the deployed app) and exists
+    in every current `eslint-config-next@16.x` release — not something
+    fixable by version-pinning on our end; `npm audit fix --force`'s
+    "solution" is to downgrade back to `eslint-config-next@14.2.35`, which
+    would just reintroduce the ESLint 8/flat-config incompatibility. Revisit
+    when `@next/eslint-plugin-next` bumps its own `fast-glob`/`braces`.
 - **`.reveal` gotcha**: the scroll-reveal `useEffect` queries
   `document.querySelectorAll('.reveal')` once, on mount, and observes only
   those elements. Anything that mounts later — a conditionally-rendered
@@ -97,21 +145,41 @@ pushing/merging to `main` triggers a production deploy automatically.
   invocations, so real rate limiting needs either Vercel's own Firewall
   rate-limit rules (dashboard config, no code/new dependency — the better
   fit for this "no backend" site) or an external store like Upstash Redis
-  (adds a dependency). Nobody's set up the Firewall rules yet.
-- **`npm audit` reports 14 vulnerabilities (2 moderate, 11 high, 1
-  critical)** as of this date, including high-severity CVEs in `sharp`
-  (image optimization) and `source-map-js`. `npm audit fix` resolves some;
-  check whether the rest need `--force` (review for breaking changes
-  first) before using it.
-- **No security headers configured** — `next.config.js` has no `headers()`
-  block at all: no CSP, `X-Frame-Options`, `Referrer-Policy`,
-  `X-Content-Type-Options`, `Strict-Transport-Security`, etc.
-- **No ESLint config exists** — `npm run lint` / `next lint` hits an
-  interactive "how would you like to configure ESLint?" prompt instead of
-  running, so lint has not actually been run as part of any change in this
-  codebase's history. Worth setting up non-interactively (`next lint` with
-  a committed config, or migrate to ESLint 9 flat config) — would also
-  help surface unused imports/vars automatically.
+  (adds a dependency). Nobody's set up the Firewall rules yet — this is
+  dashboard configuration in Vercel's project settings, not something a
+  session working in this repo checkout can do. Steps: Vercel dashboard →
+  project → Firewall tab → add a rate-limit rule scoped to
+  `/api/contact`, `/api/volunteer`, `/api/prayer-request` (e.g. a handful
+  of requests per IP per minute) → Save, then confirm it's enabled for
+  Production (not just Preview).
+- **`npm audit`: the original 14 vulnerabilities (incl. the 1 critical) are
+  resolved** via `next` 14→16 and `tailwindcss` 3→4 (see the Next.js 16 /
+  Tailwind 4 bullet below) plus the earlier non-breaking `npm audit fix`.
+  What's left is a new, separate, dev-tooling-only finding: 5 high-severity
+  `braces` ReDoS findings via `eslint-config-next`'s own dependency chain
+  (`@next/eslint-plugin-next` → `fast-glob` → `micromatch` → `braces`) — see
+  the ESLint bullet above in "Conventions established in this codebase" for
+  why this isn't fixable on our end right now and isn't production-facing.
+- **Next.js 14→16 and Tailwind 3→4**: done. `next` is 16.4.x, `tailwindcss`
+  is 4.3.x. `postcss.config.js` uses `@tailwindcss/postcss`;
+  `globals.css` uses `@import 'tailwindcss'` plus
+  `@config '../../tailwind.config.js'` to keep the existing JS theme config
+  (custom `navy`/`accent`/`silver` colors, fonts, keyframes) working as-is
+  rather than rewriting into v4's CSS-first `@theme` syntax. `autoprefixer`
+  was removed (Tailwind v4 handles vendor prefixing internally). React
+  stays on 18.x (still a supported peer of Next 16). Verified: clean build,
+  `tsc --noEmit` clean, a real headless-browser pass across every route
+  (zero console errors, zero CSP violations), and a mobile-menu screenshot
+  confirming fonts/colors/layout/interactivity. **Not verified**: the
+  YouTube embed and Google Maps iframe specifically, since this sandbox
+  can't reach `youtube.com`/`google.com` — check those on the Vercel
+  preview before/after this merges to `main`.
+- **Security headers and ESLint are now set up** — see the two new bullets
+  above in "Conventions established in this codebase". Still open: the
+  `<img>` → `next/image` warnings `next lint` surfaces in `about/page.tsx`
+  and the four `ministries/*/page.tsx` pages (performance only, not a
+  correctness/dead-code issue — left alone since switching to `next/image`
+  needs explicit width/height and wasn't asked for here).
 - **Verify in production** (not yet confirmed there, only on Vercel
   previews, since this sandbox can't reach youtube.com/img.youtube.com/
   google.com/maps to test directly): the Latest Sermon embed shows a real
