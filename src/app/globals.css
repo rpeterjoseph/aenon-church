@@ -182,7 +182,14 @@
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  /* transform: none (not translateY(0)) — once settled, drop the element out of the
+     transformed/GPU-compositing path entirely. contain: paint only clips the bleed
+     while a transform value is present; a lingering translateY(0) still counts as
+     "transformed" to the browser and the text-selection highlight can still bleed
+     into the next section when selecting settled (non-animating) content. contain:
+     paint alone already creates this element's stacking context, so dropping the
+     transform here doesn't change stacking/z-index order. */
+  transform: none;
 }
 
 .reveal-delay-1 { transition-delay: 0.1s; }
