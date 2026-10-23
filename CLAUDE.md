@@ -108,15 +108,6 @@ pushing/merging to `main` triggers a production deploy automatically.
     "fix" these by restructuring them to satisfy the rule; the pattern is
     intentional and SSR-behavior-sensitive (see the MaintenanceGate bullet
     above).
-  - `eslint-config-next`'s own dependency chain (`@next/eslint-plugin-next`
-    → `fast-glob` → `micromatch` → `braces`) currently pulls in a `braces`
-    ReDoS CVE that `npm audit` flags as 5 high-severity findings. This is
-    dev-tooling-only (the linter never ships to the deployed app) and exists
-    in every current `eslint-config-next@16.x` release — not something
-    fixable by version-pinning on our end; `npm audit fix --force`'s
-    "solution" is to downgrade back to `eslint-config-next@14.2.35`, which
-    would just reintroduce the ESLint 8/flat-config incompatibility. Revisit
-    when `@next/eslint-plugin-next` bumps its own `fast-glob`/`braces`.
 - **`.reveal` gotcha**: the scroll-reveal `useEffect` queries
   `document.querySelectorAll('.reveal')` once, on mount, and observes only
   those elements. Anything that mounts later — a conditionally-rendered
@@ -152,28 +143,31 @@ pushing/merging to `main` triggers a production deploy automatically.
   `/api/contact`, `/api/volunteer`, `/api/prayer-request` (e.g. a handful
   of requests per IP per minute) → Save, then confirm it's enabled for
   Production (not just Preview).
-- **`npm audit`: the original 14 vulnerabilities (incl. the 1 critical) are
-  resolved** via `next` 14→16 and `tailwindcss` 3→4 (see the Next.js 16 /
-  Tailwind 4 bullet below) plus the earlier non-breaking `npm audit fix`.
-  What's left is a new, separate, dev-tooling-only finding: 5 high-severity
-  `braces` ReDoS findings via `eslint-config-next`'s own dependency chain
-  (`@next/eslint-plugin-next` → `fast-glob` → `micromatch` → `braces`) — see
-  the ESLint bullet above in "Conventions established in this codebase" for
-  why this isn't fixable on our end right now and isn't production-facing.
-- **Next.js 14→16 and Tailwind 3→4**: done. `next` is 16.4.x, `tailwindcss`
-  is 4.3.x. `postcss.config.js` uses `@tailwindcss/postcss`;
-  `globals.css` uses `@import 'tailwindcss'` plus
+- **`npm audit`: 0 vulnerabilities** (confirmed 2026-10-23) via `next` 14→16
+  and `tailwindcss` 3→4 (see the Next.js 16 / Tailwind 4 bullet below) plus
+  the earlier non-breaking `npm audit fix`. A `braces` ReDoS finding briefly
+  showed up via `eslint-config-next`'s own dependency chain
+  (`@next/eslint-plugin-next` → `fast-glob` → `micromatch` → `braces`) right
+  after that upgrade, but it cleared on its own on a later `npm audit` run
+  with the exact same lockfile — an npm/GitHub Advisory Database correction
+  upstream, not a change on our end. If `npm audit` ever shows it again,
+  check the exact resolved version against the registry's advisory bulk
+  endpoint before assuming it's real (it wasn't, last time).
+- **Next.js 14→16 and Tailwind 3→4**: code-complete on PR #28
+  (`chore/upgrade-next16-tailwind4`), not yet merged to `main`. `next` is
+  16.4.x, `tailwindcss` is 4.3.x. `postcss.config.js` uses
+  `@tailwindcss/postcss`; `globals.css` uses `@import 'tailwindcss'` plus
   `@config '../../tailwind.config.js'` to keep the existing JS theme config
   (custom `navy`/`accent`/`silver` colors, fonts, keyframes) working as-is
   rather than rewriting into v4's CSS-first `@theme` syntax. `autoprefixer`
   was removed (Tailwind v4 handles vendor prefixing internally). React
   stays on 18.x (still a supported peer of Next 16). Verified: clean build,
   `tsc --noEmit` clean, a real headless-browser pass across every route
-  (zero console errors, zero CSP violations), and a mobile-menu screenshot
-  confirming fonts/colors/layout/interactivity. **Not verified**: the
-  YouTube embed and Google Maps iframe specifically, since this sandbox
-  can't reach `youtube.com`/`google.com` — check those on the Vercel
-  preview before/after this merges to `main`.
+  (zero console errors, zero CSP violations), a mobile-menu screenshot
+  confirming fonts/colors/layout/interactivity, and — manually confirmed on
+  the PR's Vercel preview, 2026-10-23, since this sandbox can't reach
+  `youtube.com`/`google.com` to test those itself — the YouTube embed,
+  Google Maps iframe, and form submissions all work.
 - **Security headers and ESLint are now set up** — see the two new bullets
   above in "Conventions established in this codebase". Still open: the
   `<img>` → `next/image` warnings `next lint` surfaces in `about/page.tsx`
