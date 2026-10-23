@@ -59,19 +59,59 @@ pushing/merging to `main` triggers a production deploy automatically.
   the route returns a non-2xx status so the page can show the visitor an
   error instead of a false "Message Sent!". Requires `RESEND_API_KEY`,
   `CONTACT_EMAIL_TO` (staff inbox), and `CONTACT_EMAIL_FROM` (an address on
-  a domain verified in the Resend dashboard) — see `.env.example`.
+  a domain verified in the Resend dashboard) — see `.env.example`. All
+  three set/verified in Vercel and Resend as of 2026-10-23, but an actual
+  end-to-end send (submit on the live site → email arrives) hasn't been
+  confirmed back in conversation yet.
+- **Honeypot spam protection**: each of the three forms above has a hidden
+  `name="website"` input (`sr-only`, `tabIndex={-1}`, `aria-hidden`) that
+  real visitors never see or fill. Each route handler checks it *before*
+  calling Resend — if filled, it returns a fake `{ ok: true }` without
+  sending, so bots don't learn to adapt. This is bot-pattern detection
+  only, not rate limiting — there's no per-IP throttling (see open items).
+- **`.reveal` gotcha**: the scroll-reveal `useEffect` queries
+  `document.querySelectorAll('.reveal')` once, on mount, and observes only
+  those elements. Anything that mounts later — a conditionally-rendered
+  success/error state after a form submit, for example — will never be
+  observed, so if it carries the `.reveal` class it stays at
+  `opacity: 0` forever (looks like blank space, not an error). Don't put
+  `.reveal` on content that only appears after user interaction; reserve
+  it for content present at initial render. Separately, `.reveal` also
+  carries `contain: paint` — needed because its CSS `transform` triggers a
+  Chromium/WebKit bug where text-selection highlights bleed past the
+  element into following content; don't remove it.
+- **Homepage promo system**: `SiteChrome` (wraps all pages, in
+  `src/app/layout.tsx`) renders `AnnouncementBar` only on `/`, dismissible
+  via a `localStorage` flag. `PromoModal` (rendered from `HomeContent.tsx`,
+  homepage only) is the "You're Invited" lightbox cross-promoting
+  `/conference2026` and `/gracefestivals2026`. This is currently the only
+  way `/conference2026` is reachable from the homepage — it's still not in
+  the primary nav or footer.
 
-## Known open items (as of 2026-10-16)
+## Known open items (as of 2026-10-23)
 
-- **Postal address is incomplete everywhere it appears** (Contact page,
-  Terms, Refund Policy, Privacy Policy): only "Tarnaka, Secunderabad,
-  Hyderabad, Telangana, India" — no door/street number or PIN code. Needed
-  for the PayU merchant review this site went through.
-- **Privacy Policy still has an unfilled placeholder**:
-  `[PLACEHOLDER: name of trustee responsible]` for the Grievance Officer —
-  no real name exists anywhere in the codebase to fill it from.
-- **`/conference2026` is not linked from anywhere** (not in nav, footer, or
-  homepage) — it's a standalone URL by design, unless asked to link it.
+- **No per-IP rate limiting on the form API routes.** The honeypot (see
+  above) stops basic bots but not someone deliberately hammering
+  `/api/{contact,volunteer,prayer-request}` by hand — nothing currently
+  caps volume per visitor. Serverless functions here are stateless between
+  invocations, so real rate limiting needs either Vercel's own Firewall
+  rate-limit rules (dashboard config, no code/new dependency — the better
+  fit for this "no backend" site) or an external store like Upstash Redis
+  (adds a dependency). Nobody's set up the Firewall rules yet.
+- **`npm audit` reports 14 vulnerabilities (2 moderate, 11 high, 1
+  critical)** as of this date, including high-severity CVEs in `sharp`
+  (image optimization) and `source-map-js`. `npm audit fix` resolves some;
+  check whether the rest need `--force` (review for breaking changes
+  first) before using it.
+- **No security headers configured** — `next.config.js` has no `headers()`
+  block at all: no CSP, `X-Frame-Options`, `Referrer-Policy`,
+  `X-Content-Type-Options`, `Strict-Transport-Security`, etc.
+- **No ESLint config exists** — `npm run lint` / `next lint` hits an
+  interactive "how would you like to configure ESLint?" prompt instead of
+  running, so lint has not actually been run as part of any change in this
+  codebase's history. Worth setting up non-interactively (`next lint` with
+  a committed config, or migrate to ESLint 9 flat config) — would also
+  help surface unused imports/vars automatically.
 - **Verify in production** (not yet confirmed there, only on Vercel
   previews, since this sandbox can't reach youtube.com/img.youtube.com/
   google.com/maps to test directly): the Latest Sermon embed shows a real
@@ -80,9 +120,3 @@ pushing/merging to `main` triggers a production deploy automatically.
 - **Confirm `YOUTUBE_API_KEY` is scoped to Production in Vercel**, not just
   Preview — this was fixed for Preview but Production scope was never
   explicitly confirmed in conversation.
-- **Resend env vars (`RESEND_API_KEY`, `CONTACT_EMAIL_TO`,
-  `CONTACT_EMAIL_FROM`) still need to be set in Vercel** (Production and
-  Preview) and `CONTACT_EMAIL_FROM`'s domain verified in the Resend
-  dashboard before the Contact/Volunteer/Prayer Request forms will actually
-  deliver mail — without them the forms correctly show an error on submit
-  rather than a false success, but nothing gets sent.
