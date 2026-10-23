@@ -17,8 +17,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Sun,
-  Moon,
-  Sunrise,
   Flame,
 } from 'lucide-react';
 
