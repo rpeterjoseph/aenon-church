@@ -24,6 +24,7 @@ export default function PrayerRequestPage() {
           email: form.get('email'),
           message: form.get('message'),
           keepPrivate: form.get('keepPrivate') === 'on',
+          website: form.get('website'),
         }),
       });
       if (!res.ok) throw new Error('Request failed');
@@ -70,6 +71,14 @@ export default function PrayerRequestPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="sr-only"
+              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-navy-900 mb-2">First Name</label>
