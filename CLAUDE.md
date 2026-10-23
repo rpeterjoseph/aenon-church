@@ -84,13 +84,30 @@ pushing/merging to `main` triggers a production deploy automatically.
   nonce-based CSP needs dynamic rendering, which this site doesn't use.
   Verified with a real headless-browser run (no CSP console violations,
   mobile menu + YouTube facade still interactive) before this was committed.
-- **ESLint**: `.eslintrc.json` extends `next/core-web-vitals` and pinned to
-  `eslint@^8` + `eslint-config-next@14.2.35` (matching the installed `next`
-  version exactly — `eslint-config-next` is tightly coupled to the `next`
-  version it ships alongside). `@typescript-eslint/no-unused-vars` is
-  explicitly enabled (off by default in `core-web-vitals`) since catching
-  dead imports/vars was the main point of setting this up. `npm run lint`
-  now runs non-interactively and exits 0.
+- **ESLint**: `eslint.config.mjs` (flat config) imports
+  `eslint-config-next/core-web-vitals` and is pinned to `eslint@^9` +
+  `eslint-config-next@16.4.x` (matching the installed `next` version
+  exactly — `eslint-config-next` is tightly coupled to the `next` version
+  it ships alongside, and `eslint-config-next@16.x` requires ESLint 9's
+  flat config format; it will not load under `.eslintrc.json`/ESLint 8).
+  `@typescript-eslint/no-unused-vars` is explicitly enabled (off by default
+  in `core-web-vitals`) since catching dead imports/vars was the main point
+  of setting this up — note the plugin has to be re-declared in that same
+  config object (`plugins: { '@typescript-eslint': tseslint.plugin }`) since
+  flat config scopes plugins per config object, unlike `.eslintrc`'s global
+  plugin list. **`next lint` was removed in Next.js 16** — the `lint` script
+  is `eslint .` directly now. `npm run lint` runs non-interactively and
+  exits 0.
+  - `react-hooks/set-state-in-effect` (new default-error rule in the v7
+    `eslint-plugin-react-hooks` that ships with `eslint-config-next@16`, part
+    of React Compiler readiness) is downgraded to `warn` in
+    `eslint.config.mjs`. It flags `MaintenanceGate.tsx` and `SiteChrome.tsx`,
+    which both deliberately read a browser-only API (a cookie /
+    `localStorage`) in an effect and `setState` from it — the standard
+    SSR-hydration pattern, not something computable during render. Don't
+    "fix" these by restructuring them to satisfy the rule; the pattern is
+    intentional and SSR-behavior-sensitive (see the MaintenanceGate bullet
+    above).
 - **`.reveal` gotcha**: the scroll-reveal `useEffect` queries
   `document.querySelectorAll('.reveal')` once, on mount, and observes only
   those elements. Anything that mounts later — a conditionally-rendered
@@ -126,18 +143,31 @@ pushing/merging to `main` triggers a production deploy automatically.
   `/api/contact`, `/api/volunteer`, `/api/prayer-request` (e.g. a handful
   of requests per IP per minute) → Save, then confirm it's enabled for
   Production (not just Preview).
-- **`npm audit` still reports 9–12 vulnerabilities (2 moderate, 6–9 high, 1
-  critical) depending on whether dev deps are installed.** `npm audit fix`
-  (no `--force`) was run and resolved 5 of the original 14 (`sharp`,
-  `source-map-js`, `picomatch`, `browserslist`, `nanoid`) — build verified
-  green after. Everything left over traces to exactly two root packages,
-  both requiring a major-version `--force` bump: **Next.js 14→16** (the
-  critical CVE plus most of the highs) and **Tailwind 3→4** (the
-  moderates). Both are significant breaking-change rewrites (Next 16
-  changes async request APIs/caching defaults; Tailwind 4 drops the JS
-  config format entirely) on a site with no test suite — deliberately
-  left for an explicit decision rather than forced blind. `npm audit` for
-  the exact current count/detail.
+- **`npm audit`: 0 vulnerabilities** (confirmed 2026-10-23) via `next` 14→16
+  and `tailwindcss` 3→4 (see the Next.js 16 / Tailwind 4 bullet below) plus
+  the earlier non-breaking `npm audit fix`. A `braces` ReDoS finding briefly
+  showed up via `eslint-config-next`'s own dependency chain
+  (`@next/eslint-plugin-next` → `fast-glob` → `micromatch` → `braces`) right
+  after that upgrade, but it cleared on its own on a later `npm audit` run
+  with the exact same lockfile — an npm/GitHub Advisory Database correction
+  upstream, not a change on our end. If `npm audit` ever shows it again,
+  check the exact resolved version against the registry's advisory bulk
+  endpoint before assuming it's real (it wasn't, last time).
+- **Next.js 14→16 and Tailwind 3→4**: code-complete on PR #28
+  (`chore/upgrade-next16-tailwind4`), not yet merged to `main`. `next` is
+  16.4.x, `tailwindcss` is 4.3.x. `postcss.config.js` uses
+  `@tailwindcss/postcss`; `globals.css` uses `@import 'tailwindcss'` plus
+  `@config '../../tailwind.config.js'` to keep the existing JS theme config
+  (custom `navy`/`accent`/`silver` colors, fonts, keyframes) working as-is
+  rather than rewriting into v4's CSS-first `@theme` syntax. `autoprefixer`
+  was removed (Tailwind v4 handles vendor prefixing internally). React
+  stays on 18.x (still a supported peer of Next 16). Verified: clean build,
+  `tsc --noEmit` clean, a real headless-browser pass across every route
+  (zero console errors, zero CSP violations), a mobile-menu screenshot
+  confirming fonts/colors/layout/interactivity, and — manually confirmed on
+  the PR's Vercel preview, 2026-10-23, since this sandbox can't reach
+  `youtube.com`/`google.com` to test those itself — the YouTube embed,
+  Google Maps iframe, and form submissions all work.
 - **Security headers and ESLint are now set up** — see the two new bullets
   above in "Conventions established in this codebase". Still open: the
   `<img>` → `next/image` warnings `next lint` surfaces in `about/page.tsx`

@@ -9,6 +9,15 @@ const PROMO_MODAL_SEEN_KEY = 'aenon-promo-modal-seen';
 export default function PromoModal() {
   const [open, setOpen] = useState(false);
 
+  const close = () => {
+    setOpen(false);
+    try {
+      localStorage.setItem(PROMO_MODAL_SEEN_KEY, '1');
+    } catch {
+      // localStorage unavailable — modal just reappears next visit
+    }
+  };
+
   useEffect(() => {
     let alreadySeen = false;
     try {
@@ -34,17 +43,7 @@ export default function PromoModal() {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKey);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
-
-  const close = () => {
-    setOpen(false);
-    try {
-      localStorage.setItem(PROMO_MODAL_SEEN_KEY, '1');
-    } catch {
-      // localStorage unavailable — modal just reappears next visit
-    }
-  };
 
   if (!open) return null;
 
