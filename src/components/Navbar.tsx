@@ -277,7 +277,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
         }`}
       >
         <div className="flex flex-col justify-center h-full px-8 sm:px-12 overflow-y-auto py-24">
-          {navLinks.map((link, i) => (
+          {navLinks.map((link) => (
             <MobileAccordion
               key={link.href}
               item={link}
