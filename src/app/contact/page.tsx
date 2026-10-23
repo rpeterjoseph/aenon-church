@@ -37,6 +37,7 @@ export default function ContactPage() {
           email: form.get('email'),
           topic: form.get('topic'),
           message: form.get('message'),
+          website: form.get('website'),
         }),
       });
       if (!res.ok) throw new Error('Request failed');
@@ -78,7 +79,7 @@ export default function ContactPage() {
               </h2>
 
               {submitted ? (
-                <div className="reveal card-light !p-10 text-center">
+                <div className="card-light !p-10 text-center">
                   <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-6">
                     <Send className="w-7 h-7 text-green-600" />
                   </div>
@@ -86,12 +87,20 @@ export default function ContactPage() {
                     Message Sent!
                   </h3>
                   <p className="text-silver-400">
-                    Thank you for reaching out. We&apos;ll get back to you
-                    as soon as possible.
+                    Thank you for reaching out. You&apos;ll hear back from us
+                    within 24&ndash;48 hours.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="reveal reveal-delay-1 space-y-6">
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="sr-only"
+                  />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-navy-900 mb-2">

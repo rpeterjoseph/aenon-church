@@ -9,6 +9,12 @@ export async function POST(request: NextRequest) {
   const message = typeof body?.message === 'string' ? body.message.trim() : '';
   const keepPrivate = body?.keepPrivate === true;
 
+  // Honeypot: a hidden field real visitors never fill; a bot that fills it
+  // gets a fake success response so it doesn't adapt, but nothing is sent.
+  if (typeof body?.website === 'string' && body.website.trim() !== '') {
+    return NextResponse.json({ ok: true });
+  }
+
   if (!firstName || !message) {
     return NextResponse.json({ ok: false, error: 'Missing required fields.' }, { status: 400 });
   }
