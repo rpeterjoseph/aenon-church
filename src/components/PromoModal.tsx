@@ -82,7 +82,7 @@ export default function PromoModal() {
             <Link
               href="/conference2026"
               onClick={close}
-              className="group relative overflow-hidden rounded-2xl p-6 flex flex-col justify-end min-h-[200px] hover:shadow-lg transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl p-6 flex flex-col justify-end aspect-video hover:shadow-lg transition-all duration-300"
             >
               <Image
                 src="/images/conference-2026-hero.jpg"
@@ -102,7 +102,7 @@ export default function PromoModal() {
             <Link
               href="/gracefestivals2026"
               onClick={close}
-              className="group relative overflow-hidden rounded-2xl p-6 flex flex-col justify-end min-h-[200px] hover:shadow-lg transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl p-6 flex flex-col justify-end aspect-video hover:shadow-lg transition-all duration-300"
             >
               <Image
                 src="/images/grace-festivals-2026-hero.jpg"
