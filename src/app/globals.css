@@ -98,19 +98,25 @@
   }
 
   .heading-xl {
-    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95];
+    /* leading-[0.95] is repeated per breakpoint because md:/lg:/xl:text-*xl each carry
+       their own line-height in a later @media block, which would otherwise win over a
+       single trailing leading-[0.95] and clip descenders (e.g. "g", "y") at md+. */
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight
+           leading-[0.95] md:leading-[0.95] lg:leading-[0.95] xl:leading-[0.95];
   }
 
   .heading-lg {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05];
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight
+           leading-[1.05] md:leading-[1.05] lg:leading-[1.05];
   }
 
   .heading-md {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1];
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight
+           leading-[1.1] md:leading-[1.1] lg:leading-[1.1];
   }
 
   .heading-sm {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight leading-tight;
+    @apply text-2xl md:text-3xl font-semibold tracking-tight leading-tight md:leading-tight;
   }
 
   .label-text {
@@ -126,21 +132,25 @@
   }
 
   .btn-primary {
+    /* No hover:scale here — a rounded-full button scaling inside a .reveal ancestor
+       (contain: paint) can render with a clipped, un-rounded edge on one side during
+       the transition (Chromium compositing quirk from stacking scale + contain:paint).
+       Color/shadow hover feedback is kept instead. */
     @apply inline-flex items-center gap-2 px-8 py-4 bg-accent-500 text-white text-sm font-medium
            uppercase tracking-[0.15em] rounded-full transition-all duration-300
-           hover:bg-accent-600 hover:scale-105 hover:shadow-2xl;
+           hover:bg-accent-600 hover:shadow-2xl;
   }
 
   .btn-outline {
     @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-navy-900 text-navy-900 text-sm font-medium
            uppercase tracking-[0.15em] rounded-full transition-all duration-300
-           hover:bg-accent-500 hover:text-white hover:border-accent-500 hover:scale-105;
+           hover:bg-accent-500 hover:text-white hover:border-accent-500;
   }
 
   .btn-white {
     @apply inline-flex items-center gap-2 px-8 py-4 bg-white text-navy-900 text-sm font-medium
            uppercase tracking-[0.15em] rounded-full transition-all duration-300
-           hover:bg-silver-100 hover:scale-105 hover:shadow-2xl;
+           hover:bg-silver-100 hover:shadow-2xl;
   }
 
   .card-dark {
