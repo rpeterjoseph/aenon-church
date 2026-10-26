@@ -50,7 +50,7 @@ export default function HomeContent({ latestSermonEmbed }: { latestSermonEmbed: 
         {/* Background photo - grayscale */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-bg2.jpg"
+            src="/images/hero-preacher.jpg"
             alt=""
             fill
             priority
