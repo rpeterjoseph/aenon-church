@@ -139,9 +139,9 @@ export default function GraceFestivals2026Content() {
       {/* Highlights from 2025 */}
       <section className="section-gap bg-white">
         <div className="max-w-5xl mx-auto section-padding">
-          <p className="reveal label-text text-navy-900/40 mb-4">From Last Year</p>
+          <p className="reveal label-text text-navy-900/40 mb-4">Highlights</p>
           <h2 className="reveal heading-md text-navy-900 mb-12">
-            A glimpse of 2025.
+            Highlights from previous years&apos; festivals.
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
