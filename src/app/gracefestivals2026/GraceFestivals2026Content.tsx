@@ -136,8 +136,40 @@ export default function GraceFestivals2026Content() {
         </div>
       </section>
 
-      {/* Venue Map */}
+      {/* Highlights from 2025 */}
       <section className="section-gap bg-white">
+        <div className="max-w-5xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">Highlights</p>
+          <h2 className="reveal heading-md text-navy-900 mb-12">
+            Highlights from previous years&apos; festivals.
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+            {[
+              { src: '/images/grace-festivals-2025-crowd.jpg', alt: 'The congregation celebrating together at a past Grace Festivals' },
+              { src: '/images/grace-festivals-2025-worship.jpg', alt: 'The congregation in worship with hands raised at a past Grace Festivals' },
+              { src: '/images/conference-2025-worship.jpg', alt: 'Worship team leading the congregation in song' },
+              { src: '/images/conference-2025-audience.jpg', alt: 'The congregation gathered together' },
+              { src: '/images/conference-2025-moment.jpg', alt: 'A worship leader addressing a standing congregation' },
+            ].map((img, i) => (
+              <div
+                key={img.src}
+                className={`reveal reveal-delay-${Math.min(i + 1, 4)} relative aspect-[4/3] rounded-2xl overflow-hidden bg-navy-950`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Venue Map */}
+      <section className="section-gap bg-silver-100">
         <div className="max-w-5xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Venue</p>
           <h2 className="reveal heading-md text-navy-900 mb-12">
@@ -159,7 +191,7 @@ export default function GraceFestivals2026Content() {
       </section>
 
       {/* Related Event */}
-      <section className="section-gap bg-silver-100">
+      <section className="section-gap bg-white">
         <div className="max-w-5xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Also This November</p>
           <h2 className="reveal heading-md text-navy-900 mb-10">
