@@ -234,8 +234,38 @@ export default function Conference2026Content() {
         </div>
       </section>
 
-      {/* Speakers */}
+      {/* Highlights from 2025 */}
       <section className="section-gap bg-white">
+        <div className="max-w-5xl mx-auto section-padding">
+          <p className="reveal label-text text-navy-900/40 mb-4">From Last Year</p>
+          <h2 className="reveal heading-md text-navy-900 mb-12">
+            A glimpse of 2025.
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { src: '/images/conference-2025-worship.jpg', alt: 'Worship team leading the congregation in song at the 2025 conference' },
+              { src: '/images/conference-2025-audience.jpg', alt: 'Pastors and leaders seated together at the 2025 conference' },
+              { src: '/images/conference-2025-moment.jpg', alt: 'A worship leader addressing a standing congregation at the 2025 conference' },
+            ].map((img, i) => (
+              <div
+                key={img.src}
+                className={`reveal reveal-delay-${Math.min(i + 1, 3)} relative aspect-[4/3] rounded-2xl overflow-hidden bg-navy-950`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Speakers */}
+      <section className="section-gap bg-silver-100">
         <div className="max-w-5xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Speakers</p>
           <h2 className="reveal heading-md text-navy-900 mb-12">
@@ -268,7 +298,7 @@ export default function Conference2026Content() {
       </section>
 
       {/* FAQ */}
-      <section className="section-gap bg-silver-100">
+      <section className="section-gap bg-white">
         <div className="max-w-3xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">FAQ</p>
           <h2 className="reveal heading-md text-navy-900 mb-12">
@@ -304,7 +334,7 @@ export default function Conference2026Content() {
       </section>
 
       {/* Venue Map */}
-      <section className="section-gap bg-white">
+      <section className="section-gap bg-silver-100">
         <div className="max-w-5xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Venue</p>
           <h2 className="reveal heading-md text-navy-900 mb-12">
@@ -326,7 +356,7 @@ export default function Conference2026Content() {
       </section>
 
       {/* Related Event */}
-      <section className="section-gap bg-silver-100">
+      <section className="section-gap bg-white">
         <div className="max-w-5xl mx-auto section-padding">
           <p className="reveal label-text text-navy-900/40 mb-4">Also This November</p>
           <h2 className="reveal heading-md text-navy-900 mb-10">
