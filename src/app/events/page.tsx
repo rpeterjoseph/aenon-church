@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Calendar, Clock, MapPin, ArrowRight, ChevronDown } from 'lucide-react';
 import { generateRecurringEvents, MAPS_URL } from '@/lib/events';
+import RelatedEventCard from '@/components/RelatedEventCard';
 
 const PAGE_SIZE = 8;
 
@@ -30,9 +31,39 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Events List */}
+      {/* Special Events */}
       <section className="section-gap bg-white">
         <div className="max-w-4xl mx-auto section-padding">
+          <p className="label-text text-navy-900/40 mb-4">This November</p>
+          <h2 className="heading-sm text-navy-900 mb-10">
+            Special events coming up.
+          </h2>
+          <div className="grid grid-cols-1 gap-6">
+            <RelatedEventCard
+              href="/conference2026"
+              eyebrow="November 2026"
+              title="Christ-Centered: Pastors & Leaders Conference"
+              meta="November 12–14, 2026 · 9:00 AM – 2:00 PM"
+              variant="orange"
+            />
+            <RelatedEventCard
+              href="/gracefestivals2026"
+              eyebrow="November 2026"
+              title="Grace Festivals 2026"
+              meta="November 12–15, 2026 · Starts at 6:00 PM"
+              variant="blue"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Events List */}
+      <section className="section-gap bg-silver-100">
+        <div className="max-w-4xl mx-auto section-padding">
+          <p className="label-text text-navy-900/40 mb-4">Every Week</p>
+          <h2 className="heading-sm text-navy-900 mb-10">
+            Regular gatherings.
+          </h2>
           <div className="space-y-0">
             {visible.map((event, i) => (
               <div
