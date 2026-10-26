@@ -241,21 +241,23 @@ export default function Conference2026Content() {
           <h2 className="reveal heading-md text-navy-900 mb-12">
             Highlights from previous years&apos; conferences.
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
             {[
               { src: '/images/conference-2025-worship.jpg', alt: 'Worship team leading the congregation in song at the 2025 conference' },
               { src: '/images/conference-2025-audience.jpg', alt: 'Pastors and leaders seated together at the 2025 conference' },
               { src: '/images/conference-2025-moment.jpg', alt: 'A worship leader addressing a standing congregation at the 2025 conference' },
+              { src: '/images/grace-festivals-2025-crowd.jpg', alt: 'The congregation celebrating together at a past Grace Festivals' },
+              { src: '/images/grace-festivals-2025-worship.jpg', alt: 'The congregation in worship with hands raised at a past Grace Festivals' },
             ].map((img, i) => (
               <div
                 key={img.src}
-                className={`reveal reveal-delay-${Math.min(i + 1, 3)} relative aspect-[4/3] rounded-2xl overflow-hidden bg-navy-950`}
+                className={`reveal reveal-delay-${Math.min(i + 1, 4)} relative aspect-[4/3] rounded-2xl overflow-hidden bg-navy-950`}
               >
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
-                  sizes="(min-width: 640px) 33vw, 100vw"
+                  sizes="(min-width: 640px) 33vw, 50vw"
                   className="object-cover"
                 />
               </div>
