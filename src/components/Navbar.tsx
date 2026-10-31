@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 interface SubLink {
   label: string;
@@ -49,6 +49,7 @@ const navLinks: NavItem[] = [
     ],
   },
   { label: 'CONTACT', href: '/contact' },
+  { label: 'GIVING', href: '/give' },
 ];
 
 function DesktopDropdown({
@@ -243,14 +244,6 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                 </Link>
               )
             )}
-            <Link
-              href="/give"
-              className={`font-nav text-[11px] xl:text-xs font-medium tracking-[0.1em] transition-colors duration-300 hover:opacity-70 whitespace-nowrap shrink-0 ${
-                scrolled ? 'text-navy-900' : 'text-white/90'
-              }`}
-            >
-              GIVING
-            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -286,14 +279,6 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
               onNavigate={() => setMobileOpen(false)}
             />
           ))}
-          <Link
-            href="/give"
-            onClick={() => setMobileOpen(false)}
-            className="btn-primary mt-8 sm:mt-10 justify-center !text-sm font-nav tracking-wider"
-          >
-            GIVING
-            <ChevronRight className="w-4 h-4" />
-          </Link>
         </div>
       </div>
     </>
