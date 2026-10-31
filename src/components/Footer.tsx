@@ -14,7 +14,6 @@ import {
 const quickLinks = [
   { label: 'About', href: '/about' },
   { label: 'Sermons', href: '/sermons' },
-  { label: 'Ministries', href: '/ministries' },
   { label: 'Events', href: '/events' },
   { label: 'What We Believe', href: '/believe' },
   { label: 'Contact', href: '/contact' },

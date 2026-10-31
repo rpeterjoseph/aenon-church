@@ -11,13 +11,9 @@ import {
   MapPin,
   Clock,
   Calendar,
-  Users,
   Heart,
-  BookOpen,
   ArrowRight,
   ArrowUpRight,
-  Sun,
-  Flame,
 } from 'lucide-react';
 
 export default function HomeContent({ latestSermonEmbed }: { latestSermonEmbed: ReactNode }) {
@@ -196,118 +192,6 @@ export default function HomeContent({ latestSermonEmbed }: { latestSermonEmbed: 
                 </span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================= */}
-      {/* MINISTRIES PREVIEW */}
-      {/* ============================================= */}
-      <section className="section-gap bg-white">
-        <div className="max-w-7xl mx-auto section-padding">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
-            <div>
-              <p className="reveal label-text text-navy-900/40 mb-4">Ministries</p>
-              <h2 className="reveal heading-md text-navy-900">
-                Find your community.
-              </h2>
-            </div>
-            <div className="reveal mt-6 md:mt-0">
-              <Link href="/ministries" className="btn-outline !py-3 !px-6 !text-xs">
-                View All Ministries
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Ministry Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Aenon Beloved Men',
-                desc: 'Building men of faith through accountability, study, and brotherhood.',
-                icon: Users,
-                logo: '',
-                tag: 'Men',
-                gradient: 'from-navy-800 to-navy-950',
-                href: '/ministries/mens',
-              },
-              {
-                title: 'Aenon Lovely Women',
-                desc: 'Empowering women to grow in faith, friendship, and spiritual depth.',
-                icon: Heart,
-                logo: '',
-                tag: 'Women',
-                gradient: 'from-navy-700 to-navy-900',
-                href: '/ministries/womens',
-              },
-              {
-                title: 'Aenon Young Adults',
-                desc: 'A vibrant community for young adults to discover purpose and passion.',
-                icon: Sun,
-                logo: '',
-                tag: 'Young Adults',
-                gradient: 'from-navy-600 to-navy-800',
-                href: '/ministries/young-adults',
-              },
-              {
-                title: 'Aenon Kids',
-                desc: 'A safe, fun, and engaging environment for children to learn about Jesus.',
-                icon: BookOpen,
-                logo: '',
-                tag: 'Kids',
-                gradient: 'from-navy-700 to-navy-950',
-                href: '/ministries/kids',
-              },
-              {
-                title: 'Aenon Youth',
-                desc: 'Helping teens grow in faith, build lasting friendships, and live boldly for Christ.',
-                icon: Flame,
-                logo: '',
-                href: '/ministries/youth',
-                tag: 'Youth',
-                gradient: 'from-navy-900 to-navy-950',
-              },
-            ].map((ministry, i) => (
-              <Link
-                key={ministry.title}
-                href={ministry.href}
-                className={`reveal reveal-delay-${i} group`}
-              >
-                <div className={`relative overflow-hidden rounded-2xl mb-5 bg-gradient-to-br ${ministry.gradient} noise-bg aspect-[4/5] flex flex-col justify-between p-7 md:p-10`}>
-                  {/* Decorative glow */}
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/[0.03] rounded-full translate-y-1/2 -translate-x-1/2" />
-                  <div className="relative z-10">
-                    <span className="inline-block px-3 py-1 bg-white/10 text-white/70 text-xs font-medium rounded-full uppercase tracking-wider backdrop-blur-sm">
-                      {ministry.tag}
-                    </span>
-                  </div>
-                  <div className="relative z-10">
-                    {ministry.logo ? (
-                      <div className="relative w-14 h-14 md:w-16 md:h-16 mb-4">
-                        <Image
-                          src={ministry.logo}
-                          alt={`${ministry.title} logo`}
-                          fill
-                          sizes="64px"
-                          className="object-contain"
-                        />
-                      </div>
-                    ) : (
-                      <ministry.icon className="w-9 h-9 md:w-10 md:h-10 text-white/30 mb-4 group-hover:text-white/50 transition-colors" />
-                    )}
-                    <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors">
-                      {ministry.desc}
-                    </p>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-1 group-hover:text-accent-500 transition-colors flex items-center gap-2">
-                  {ministry.title}
-                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-accent-500" />
-                </h3>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
