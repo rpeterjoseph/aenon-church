@@ -245,7 +245,9 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
             )}
             <Link
               href="/give"
-              className="btn-primary !py-2 !px-5 !text-[11px] xl:!text-xs font-nav !gap-0 !rounded-full shrink-0"
+              className={`font-nav text-[11px] xl:text-xs font-medium tracking-[0.1em] transition-colors duration-300 hover:opacity-70 whitespace-nowrap shrink-0 ${
+                scrolled ? 'text-navy-900' : 'text-white/90'
+              }`}
             >
               GIVING
             </Link>
