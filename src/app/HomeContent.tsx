@@ -79,10 +79,6 @@ export default function HomeContent({ latestSermonEmbed }: { latestSermonEmbed: 
               Christ and committed to His purpose.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              <Link href="/about" className="btn-white justify-center sm:justify-start text-xs sm:text-sm">
-                Plan Your Visit
-                <ChevronRight className="w-4 h-4" />
-              </Link>
               <a
                 href="https://www.youtube.com/aenonchurch"
                 target="_blank"
