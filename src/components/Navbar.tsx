@@ -28,17 +28,6 @@ const navLinks: NavItem[] = [
     ],
   },
   { label: 'SERMONS', href: '/sermons' },
-  {
-    label: 'MINISTRIES',
-    href: '/ministries',
-    sub: [
-      { label: 'AENON BELOVED MEN', href: '/ministries/mens' },
-      { label: 'AENON LOVELY WOMEN', href: '/ministries/womens' },
-      { label: 'AENON YOUNG ADULTS', href: '/ministries/young-adults' },
-      { label: 'AENON KIDS', href: '/ministries/kids' },
-      { label: 'AENON YOUTH', href: '/ministries/youth' },
-    ],
-  },
   { label: 'EVENTS', href: '/events' },
   {
     label: 'WHAT WE BELIEVE',

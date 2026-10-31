@@ -7,6 +7,15 @@ const nextConfig = {
       { protocol: 'https', hostname: 'i.ytimg.com' },
     ],
   },
+  async redirects() {
+    // Ministries section is temporarily offline while it's reworked on a
+    // separate branch (feature/ministries-rework). Remove this once that
+    // work merges back in and the pages return.
+    return [
+      { source: '/ministries', destination: '/', permanent: false },
+      { source: '/ministries/:path*', destination: '/', permanent: false },
+    ];
+  },
   async headers() {
     // 'unsafe-inline' on script-src is required because almost every page
     // on this site is statically prerendered at build time: a per-request
